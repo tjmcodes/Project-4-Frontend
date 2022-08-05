@@ -1,0 +1,15 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+
+# Robots. txt file is a text file created by the designer to prevent the search engines and bots to crawl up their sites. It contains the list of allowed and disallowed sites and whenever a bot wants to access the website, it checks the robots.
+
+The "User-agent: *" means this section applies to all robots. The "Disallow: /" tells the robot that it should not visit any pages on the site.
+
+There are two important considerations when using /robots.txt:
+
+robots can ignore your /robots.txt. Especially malware robots that scan the web for security vulnerabilities, and email address harvesters used by spammers will pay no attention.
+the /robots.txt file is a publicly available file. Anyone can see what sections of your server you don't want robots to use.
+So don't try to use /robots.txt to hide information.
+
+
