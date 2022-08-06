@@ -1,11 +1,11 @@
 import React from 'react'
 
-function AllArtists() {
+function AllVenues() {
   const [artists, setArtists] = React.useState([])
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('/api/artists')
+      const res = await fetch('/api/venues')
       const json = await res.json()
       setArtists(json)
     }
@@ -28,4 +28,4 @@ function AllArtists() {
   )
 }
 
-export default AllArtists
+export default AllVenues

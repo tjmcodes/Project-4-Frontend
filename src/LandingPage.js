@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AllArtists() {
+function LandingPage() {
   const [artists, setArtists] = React.useState([])
 
   React.useEffect(() => {
@@ -28,4 +28,5 @@ function AllArtists() {
   )
 }
 
-export default AllArtists
+export default LandingPage
+
