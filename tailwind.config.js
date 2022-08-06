@@ -1,7 +1,7 @@
 module.exports = {
   content: [
     './src/App.js',
-    '.src/index.js',
+    './src/index.js',
     './src/AllArtists.js',
     './src/AllVenues.js',
     './src/ArtistLogin.js',
@@ -16,6 +16,13 @@ module.exports = {
     './src/VenueNavBar.js',
   ],
   theme: {
+    backgroundSize: {
+      'auto': 'auto',
+      'cover': 'cover',
+      'contain': 'contain',
+      '50%': '50%',
+      '16': '4rem',
+    },
     extend: {},
   },
   plugins: [],

@@ -20,7 +20,7 @@ function AllArtists() {
         <><h2 key={artists.artistName}>{artists.artistName}</h2>
             <img key={artists.id} src={artists.profileImage} alt={""}></img>
             <p key={artists.location}>{artists.location}</p>
-            <p key={artists.price}>£{artists.price}</p>
+            <p key={artists.price}>{artists.price}</p>
             </>)}
         {console.log(artists)}
       </div>
