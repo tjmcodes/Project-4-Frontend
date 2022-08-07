@@ -74,7 +74,6 @@ function VenueLogin() {
         </div>
       </div>
       <div className={styles.imageside}>
-
         <div className={styles.sideHero}>
           <div className={styles.sideHeroText}>
             <h2>Welcome Back</h2>
