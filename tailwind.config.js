@@ -35,7 +35,12 @@ module.exports = {
       'desktop': '1280px',
       // => @media (min-width: 1280px) { ... }
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/src/images/oscar-keys-background-dark.jpg')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      }
+    },
   },
   plugins: [],
 }
