@@ -14,6 +14,7 @@ module.exports = {
     './src/LandingPageNavBar.js',
     './src/ArtistNavBar.js',
     './src/VenueNavBar.js',
+    './src/StartJourney.js',
   ],
   theme: {
     backgroundSize: {
@@ -36,6 +37,9 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
     },
     extend: {
+      colors: {
+        'button': '#FF3DB1',
+      },
       backgroundImage: {
         'hero-pattern': "url('/src/images/oscar-keys-background-dark.jpg')",
         'footer-texture': "url('/img/footer-texture.png')",

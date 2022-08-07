@@ -8,6 +8,9 @@ import ArtistLogin from './ArtistLogin.js'
 import VenueLogin from './VenueLogin.js'
 import ShowArtist from './ShowArtist.js'
 import ShowVenue from './ShowVenue.js'
+import StartJourney from './StartJourney.js'
+import ArtistStart from './ArtistStart.js'
+import VenueStart from './VenueStart.js'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -23,6 +26,9 @@ function App() {
         <Route Path='/venue-register'  element={<VenueRegister /> } />
         <Route path='/artist-login' element={<ArtistLogin />} />  
         <Route path='/venue-login' element={<VenueLogin />} />
+        <Route path='/startjourney' element={<StartJourney/> } />
+        <Route path='/artiststart' element={<ArtistStart />} />
+        <Route path='/venuestart' element={<VenueStart />} />
       </Routes>
     </Router>
   )
