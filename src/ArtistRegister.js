@@ -289,7 +289,7 @@ function ArtistRegister() {
         </div>
         <select className={styles.optionInput} id="cars" name="cars">
           <option value="london">London</option>
-          <option value="manchester">Machester</option>
+          <option value="manchester">Manchester</option>
           <option value="birmingham">Birmingham</option>
           <option value="leeds">Leeds</option>
         </select>
