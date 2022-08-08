@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import styles from "./VenueRegister.module.css"
-=======
-// import React, { useState } from "react";
-// import axios from 'axios'
-// import { useNavigate } from 'react-router-dom'
-// import styles from "./VenueRegister.module.css"
->>>>>>> refs/remotes/origin/main
 
 function VenueRegister() {
   
-<<<<<<< HEAD
   const [Q1, setQ1] = React.useState(true)
   const [Q2, setQ2] = React.useState(false)
   const [Q3, setQ3] = React.useState(false)
@@ -20,17 +12,6 @@ function VenueRegister() {
   const [Q7, setQ7] = React.useState(false)
   const [proccedlogin, setproccedlogin] = React.useState(false)
   const [addanother1, setaddanother1] = React.useState(false)
-=======
-//   const [Q1, setQ1] = React.useState(true)
-//   const [Q2, setQ2] = React.useState(false)
-//   const [Q3, setQ3] = React.useState(false)
-//   const [Q4, setQ4] = React.useState(false)
-//   const [Q5, setQ5] = React.useState(false)
-//   const [proccedlogin, setproccedlogin] = React.useState(false)
-//   const [addanother1, setaddanother1] = React.useState(false)
-//   const [button, updateButton] = useState(false)
-//   const navigate = useNavigate()
->>>>>>> refs/remotes/origin/main
 
   const progressBar = document.getElementById("progress")
 
@@ -223,18 +204,6 @@ function handleGalleryUpload3() {
   }
 
 
-<<<<<<< HEAD
-  // async function handleSubmit(event) {
-  //   event.preventDefault()
-  //   try {
-  //     await axios.post(`/artist-signup`, formData)
-  //     updateButton(!button)
-  //     navigate('/artist-login')
-  //   } catch (err) {    
-  //     setErrors(err.response.data.errors)
-  //   }
-  // }
-=======
 //   async function handleSubmit(event) {
 //     event.preventDefault()
 //     try {
@@ -245,7 +214,6 @@ function handleGalleryUpload3() {
 //       setErrors(err.response.data.errors)
 //     }
 //   }
->>>>>>> refs/remotes/origin/main
   
     
   function postQ1() {
