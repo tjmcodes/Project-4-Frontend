@@ -1,4 +1,6 @@
 // import React, { useState } from "react";
+// import axios from 'axios'
+// import { useNavigate } from 'react-router-dom'
 // import styles from "./VenueRegister.module.css"
 
 // function VenueRegister() {
@@ -10,6 +12,8 @@
 //   const [Q5, setQ5] = React.useState(false)
 //   const [proccedlogin, setproccedlogin] = React.useState(false)
 //   const [addanother1, setaddanother1] = React.useState(false)
+//   const [button, updateButton] = useState(false)
+//   const navigate = useNavigate()
 
 //   const progressBar = document.getElementById("progress")
 
@@ -202,16 +206,16 @@
 //   }
 
 
-//   // async function handleSubmit(event) {
-//   //   event.preventDefault()
-//   //   try {
-//   //     await axios.post(`/artist-signup`, formData)
-//   //     updateButton(!button)
-//   //     navigate('/artist-login')
-//   //   } catch (err) {    
-//   //     setErrors(err.response.data.errors)
-//   //   }
-//   // }
+//   async function handleSubmit(event) {
+//     event.preventDefault()
+//     try {
+//       await axios.post(`/venue-signup`, formData)
+//       updateButton(!button)
+//       navigate('/venue-login')
+//     } catch (err) {    
+//       setErrors(err.response.data.errors)
+//     }
+//   }
   
     
 //   function postQ1() {
