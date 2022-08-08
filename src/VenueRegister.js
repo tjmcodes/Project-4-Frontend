@@ -25,6 +25,7 @@ function VenueRegister() {
   const [formData, setFormData] = useState({
     email:"", //
     username:"", //
+    password: "",//
     profileImage:"", //
     title:"", //
     role:"", // 

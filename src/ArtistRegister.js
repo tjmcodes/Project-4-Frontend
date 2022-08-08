@@ -14,10 +14,10 @@ function ArtistRegister() {
   const [Q7, setQ7] = React.useState(false)
   const [Q8, setQ8] = React.useState(false)
   const [Q9, setQ9] = React.useState(false)
-  const [Q10, setQ10] = React.useState(false)
+  
   
   const [proccedlogin, setproccedlogin] = React.useState(false)
-  const [addanother1, setaddanother1] = React.useState(false)
+  // const [addanother1, setaddanother1] = React.useState(false)
   const [button, updateButton] = useState(false)
   const navigate = useNavigate()
 
@@ -27,6 +27,7 @@ function ArtistRegister() {
     username: "",
     email:  "" , 
     artistName: "",
+    password: "",
     profileImage: "",
     location: "",
     travel: "",
@@ -217,7 +218,7 @@ function ArtistRegister() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      await axios.post(`/artist-signup`, formData)
+      await axios.post(`/api/artist-signup`, formData)
       updateButton(!button)
       navigate('/artist-login')
     } catch (err) {    
@@ -287,20 +288,13 @@ function ArtistRegister() {
   function postQ9() {
     console.log("clicked")
     setQ9(false)
-    setQ10(true)
+    setproccedlogin(true)
     const newCountVal = 90
     progressBar.value = newCountVal
   }
-  function postQ10() {
-    console.log("clicked")
-    setQ10(false)
-    setproccedlogin(true)
-    const newCountVal = 100
-    progressBar.value = newCountVal
-  }
-  function addanother() {
-    setaddanother1(true)
-  } 
+  // function addanother() {
+  //   setaddanother1(true)
+  // } 
   return (
     <>
       <progress id="progress" className={styles.formprogress} value="0" max="100"></progress>
@@ -370,23 +364,14 @@ function ArtistRegister() {
 
       {Q3 ? <>
         <div className={styles.questionbox}>
-          <div>
-            <input 
-              type="checkbox" 
-              id="check" 
-              name="willingToTravel" 
-              value={formData.willingToTravel}
-              onChange={handleChange}  
-            />
-            <label for="scales"> Are you willing to travel?</label>
-          </div>
+          
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>How far are you willing to travel?</h3>
           </div>
           <input 
             onChange={handleChange} 
             className={styles.textinput} 
-            type="text" 
+            type="number" 
             placeholder="Enter maximum distance in miles (Number only)"
             name="travel" 
             value={formData.travel}
@@ -524,35 +509,9 @@ function ArtistRegister() {
             name="instagramUrl" 
             value={formData.instagramUrl}
           />
-          
+          <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
         </div></> : null }
    
-      {Q10 ? <>
-        <div className={styles.questionbox}>
-          <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>Genre?</h3> {/* Genres posting */}
-          </div>
-          <input 
-            onChange={handleChange} 
-            className={styles.textinput} 
-            type="text" 
-            placeholder="enter genre that best suits your music"
-            name="genre" 
-            value={formData.genre}
-          />
-          { addanother1 ? null : <button onClick={addanother}className={styles.addanotherbutton }>add another + </button>}
-          {addanother1 && <>
-            <input 
-            onChange={handleChange} 
-            className={styles.textinput} 
-            type="text" 
-            placeholder="enter another genre that best suits your music"
-            name="genre" 
-            value={formData.genre}
-          />
-          <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
-          <button onClick={postQ10} className={styles.nextbutton}>{`Submit Form -> `}</button>
-        </div></> : null }
 
       {proccedlogin ? <>
         <div className={styles.proccedlogin}>
