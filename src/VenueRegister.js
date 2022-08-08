@@ -21,9 +21,6 @@ function VenueRegister() {
   const navigate = useNavigate()
 
   const progressBar = document.getElementById("progress")
-
-  
-
   
   const [formData, setFormData] = useState({
     email:"", //
@@ -222,8 +219,18 @@ function handleGalleryUpload3() {
   }
 
 
-  
-  
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    try {
+      await axios.post(`/venue-signup`, formData)
+      updateButton(!button)
+      navigate('/venue-login')
+    } catch (err) {    
+      setErrors(err.response.data.errors)
+    }
+  }
+ 
     
   function postQ1() {
     setQ1(false)
@@ -316,12 +323,12 @@ function handleGalleryUpload3() {
         <h3 className={styles.h3}>Choose a Username</h3>
       </div>
       <input 
-      onChange={handleChange} 
-      className={styles.textinput} 
-      type="text" 
-      placeholder="Enter your name"
-      name={'username'}
-      value={formData.username}>
+        onChange={handleChange} 
+        className={styles.textinput} 
+        type="text" 
+        placeholder="Enter your name"
+        name={'username'}
+        value={formData.username}>
       </input>
       
       <div>
@@ -345,6 +352,7 @@ function handleGalleryUpload3() {
       <button onClick={postQ1} className={styles.nextbutton}>{`Next -> `}</button>
     </div>
     </> : null }
+
   {Q2 ? <>
   <h2 className={styles.titlebanner}>Now a couple of details about you</h2>
   <div className={styles.questionbox}>
@@ -363,13 +371,13 @@ function handleGalleryUpload3() {
       <h3 className={styles.h3}>What is your Job title</h3>
     </div>
     <input 
-    onChange={handleChange} 
-    className={styles.textinput} 
-    type="text" 
-    placeholder="eg. Assistant Manager, Owner"
-    name={'role'}
-    value={formData.role}>
-  </input>
+      onChange={handleChange} 
+      className={styles.textinput} 
+      type="text" 
+      placeholder="eg. Assistant Manager, Owner"
+      name={'role'}
+      value={formData.role}>
+    </input>
     <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
   </div></> : null }
   
@@ -421,11 +429,11 @@ function handleGalleryUpload3() {
         <p className={styles.subheading}>(this will be displayed on your profile)</p>
       </div>
       <textarea 
-      onChange={handleChange} 
-      className={styles.textarea} 
-      placeholder="Click hear to enter a brief description of your venue"
-      name={'description'}
-      value={formData.description}
+        onChange={handleChange} 
+        className={styles.textarea} 
+        placeholder="Click hear to enter a brief description of your venue"
+        name={'description'}
+        value={formData.description}
       ></textarea>
       <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button>
     </div></> : null }
@@ -479,10 +487,38 @@ function handleGalleryUpload3() {
       <div className={styles.titlebanner}>
         <h3 className={styles.h3}>Lifes better when you share! add your social media accounts below</h3>
       </div>
-      <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Facebook (optional)"></input>
-      <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Twitter (optional)"></input>
-      <input onChange={handleChange} className={styles.textinput} type="text" placeholder="YouTube (optional)"></input>
-      <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Instagram (optional)"></input>
+      <input 
+            placeholder="Facebook (optional)"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="fbUrl" 
+            value={formData.fbUrl}
+          />
+          <input 
+            placeholder="Twitter (optional)"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="twitterUrl" 
+            value={formData.twitterUrl}
+          />
+          <input 
+            placeholder="YouTube (optional)"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="youTubeUrl" 
+            value={formData.youTubeUrl}
+          />
+          <input 
+            placeholder="Instagram (optional)"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="instagramUrl" 
+            value={formData.instagramUrl}
+          />
       {/* { addanother1 ? null : <button onClick={addanother}className={styles.addanotherbutton }>add another + </button>}
       {addanother1 && <><input onChange={handleChange} className={styles.textinput} type="text" placeholder="post the link to another social media account"></input>
         <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
