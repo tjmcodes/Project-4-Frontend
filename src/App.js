@@ -28,7 +28,7 @@ function App() {
         <Route path='/startjourney' element={<StartJourney/> } />
         <Route path='/artiststart' element={<ArtistStart />} />
         <Route path='/venuestart' element={<VenueStart />} />
-        <Route path='/venueregister' element={<VenueRegister/>} />
+        <Route path='/venue-register' element={<VenueRegister/>} />
       </Routes>
     </Router>
   )

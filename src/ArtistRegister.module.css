@@ -30,7 +30,7 @@ h2 {
 }
 
 .h3 {
-  font-size: 60px;
+  font-size: 30px;
   text-align: left;
   margin-left: 5%;
 }
@@ -84,7 +84,7 @@ progress::-webkit-progress-value {
 
 .formprogress {
   width: 100%;
-  height: 40px;
+  height: 20px;
   border: none;
   border-radius: none;
   margin: 0;
@@ -121,7 +121,7 @@ progress::-webkit-progress-value {
 
 .addanotherbutton {
   display: block;
-  margin-left: 5%;
+  text-align: center;
   margin-top: 10px;
   border-radius: 10px;
   color: green;

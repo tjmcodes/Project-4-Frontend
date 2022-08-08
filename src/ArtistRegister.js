@@ -304,34 +304,61 @@ function ArtistRegister() {
   return (
     <>
       <progress id="progress" className={styles.formprogress} value="0" max="100"></progress>
-      <h2 className={styles.h2}>signup sheet</h2>
+      
       {Q1 ? <>
-
+        <h2 className={styles.titlebanner}>To get started lets setup your login credentials</h2>
         <div className={styles.questionbox}>
-          <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>What is your name?</h3>
+          <div>
+            <h3 className={styles.h3}>Enter your Email address</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your name"></input>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="email"
+            value={formData.email} 
+            placeholder="examaple@example.com">
+          </input>
           
-          <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>What is your email address?</h3>
+          <div>
+            <h3 className={styles.h3}>Choose a Username</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your email address"></input>
-          
-          <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>Choose a password?</h3>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="Enter your name"
+            name="username"
+            value={formData.username}> 
+          </input>
+                    
+          <div>
+            <h3 className={styles.h3}>Choose a password</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your password"></input>
-          
-          <button onClick={handleProfileUpload} className={styles.nextbutton}>Click to upload profile picture</button>           
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="Enter your password"
+            name="password"
+            value={formData.password}>
+            </input>
+          <div>
+            <h3 className={styles.h3}>Please upload a profile image by clicking on the button below</h3>
+          </div>
+          <button onClick={handleProfileUpload} className={styles.nextbutton}>upload profile picture</button>{
+            formData.profileImage === "" ? null : <img src={formData.profileImage} alt="profile image"></img>
+          }           
           <button onClick={postQ1} className={styles.nextbutton}>{`Next -> `}</button>
-        </div></> : null }
+        </div>
+        </> : null }
 
-      {Q2 ? <><div className={styles.questionbox}>
+      {Q2 ? <>
+      <div className={styles.questionbox}>
         <div className={styles.titlebanner}>
           <h3 className={styles.h3}>Where are you located?</h3>
         </div>
-        <select className={styles.optionInput} id="cities" name="city">
+        <select className={styles.optionInput} name="location" value={formData.location} onChange={handleChange} id="cities">
           <option value="london">London</option>
           <option value="manchester">Manchester</option>
           <option value="birmingham">Birmingham</option>
@@ -344,13 +371,26 @@ function ArtistRegister() {
       {Q3 ? <>
         <div className={styles.questionbox}>
           <div>
-            <input type="checkbox" id="check" name="check" />
+            <input 
+              type="checkbox" 
+              id="check" 
+              name="willingToTravel" 
+              value={formData.willingToTravel}
+              onChange={handleChange}  
+            />
             <label for="scales"> Are you willing to travel?</label>
           </div>
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>How far are you willing to travel?</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter maximum distance in miles (Number only)"></input>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="Enter maximum distance in miles (Number only)"
+            name="travel" 
+            value={formData.travel}
+          />
           <button onClick={postQ3} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
 
@@ -359,16 +399,31 @@ function ArtistRegister() {
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>What is your website address?</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your website address (url)"></input>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="Enter your website address (url)"
+            name="websiteUrl" 
+            value={formData.websiteUrl}
+          />
           <button onClick={postQ4} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
       
       {Q5 ? <>
         <div className={styles.questionbox}>
           <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>Show us what you got!</h3>
+            <h3 className={styles.h3}>Upload a link to you performing live</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Upload a link to you perfoming"></input>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="Upload your link"
+            name="videoUrl" 
+            value={formData.videoUrl}
+          />
+         
           <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
       
@@ -377,55 +432,99 @@ function ArtistRegister() {
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>Where can we listen to your music?</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Upload a link to your music (Spotify / Bandcamp etc.)"></input>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="Upload the link to your music (Spotify / Bandcamp etc.)"
+            name="musicUrl" 
+            value={formData.musicUrl}
+          />
           <button onClick={postQ6} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
       
       {Q7 ? <>
         <div className={styles.questionbox}>
           <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>Show us what you got!</h3>
+            <h3 className={styles.h3}>Show Potential Venues what you are like</h3>
+            <p> add a background cover image and up to three gallery images below</p>
           </div>
-          <button onClick={handleBackgroundUpload} className={styles.nextbutton}>Click to upload background picture</button>            
-          <button onClick={handleGalleryUpload1} className={styles.nextbutton}>Click to upload gallery picture</button>            
-          <button onClick={handleGalleryUpload2} className={styles.nextbutton}>Click to upload gallery picture 2</button>            
-          <button onClick={handleGalleryUpload3} className={styles.nextbutton}>Click to upload gallery picture 3</button>            
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Upload a Link to you perfoming"></input>
+
+          <button onClick={handleBackgroundUpload} className={styles.nextbutton}>upload background cover image</button>            
+          <button onClick={handleGalleryUpload1} className={styles.nextbutton}>upload gallery image</button>            
+          <button onClick={handleGalleryUpload2} className={styles.nextbutton}>upload gallery image</button>            
+          <button onClick={handleGalleryUpload3} className={styles.nextbutton}>upload gallery image</button>            
+
           <button onClick={postQ7} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
     
       {Q8 ? <>
         <div className={styles.questionbox}>
           <div className={styles.titlebanner}>
+            <h3 className={styles.h3}>What is your Artist Name?</h3>
+          </div>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="Enter your artist name"
+            name="artistName" 
+            value={formData.artistName}
+          />
+          
+          <div className={styles.titlebanner}>
             <h3 className={styles.h3}>Add your bio</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your bio info here"></input>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="Enter your bio info here"
+            name="bio" 
+            value={formData.bio}
+          />
+          
           <button onClick={postQ8} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
      
       {Q9 ? <>
         <div className={styles.questionbox}>
           <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>What is your facebook URL?</h3>
+            <h3 className={styles.h3}>Lifes better when you share! add your social media accounts below</h3>
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your facebook link"></input>
+          <input 
+            placeholder="Facebook (optional)"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="fbUrl" 
+            value={formData.fbUrl}
+          />
+          <input 
+            placeholder="Twitter (optional)"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="twitterUrl" 
+            value={formData.twitterUrl}
+          />
+          <input 
+            placeholder="YouTube (optional)"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="youTubeUrl" 
+            value={formData.youTubeUrl}
+          />
+          <input 
+            placeholder="Instagram (optional)"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="instagramUrl" 
+            value={formData.instagramUrl}
+          />
           
-          <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>What is your twitter URL?</h3>
-          </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your twitter link"></input>
-          
-          <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>What is your YouTube URL?</h3>
-          </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your YouTube link"></input>
-
-          <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>What is your instagram URL?</h3>
-          </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="Enter your Instagram link"></input>
-
-          <button onClick={postQ9} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
    
       {Q10 ? <>
@@ -433,10 +532,25 @@ function ArtistRegister() {
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>Genre?</h3> {/* Genres posting */}
           </div>
-          <input onChange={handleChange} className={styles.textinput} type="text" placeholder="post the link to your social media account"></input>
+          <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="enter genre that best suits your music"
+            name="genre" 
+            value={formData.genre}
+          />
           { addanother1 ? null : <button onClick={addanother}className={styles.addanotherbutton }>add another + </button>}
-          {addanother1 && <><input onChange={handleChange} className={styles.textinput} type="text" placeholder="post the link to another social media account"></input>
-            <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
+          {addanother1 && <>
+            <input 
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            placeholder="enter another genre that best suits your music"
+            name="genre" 
+            value={formData.genre}
+          />
+          <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
           <button onClick={postQ10} className={styles.nextbutton}>{`Submit Form -> `}</button>
         </div></> : null }
 

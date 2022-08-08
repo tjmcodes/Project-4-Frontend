@@ -130,3 +130,16 @@ progress::-webkit-progress-value {
   background-color: transparent;
   font-size: 20px;
 }
+
+.textarea {
+  margin-left: 5%;
+  width: 90%;
+  height: 20vh;
+  border: black solid 1px;
+  border-radius: 10px;
+}
+
+.subheading {
+  margin-left: 5%;
+  text-align: left;
+}
