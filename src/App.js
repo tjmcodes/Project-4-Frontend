@@ -23,7 +23,7 @@ function App() {
         <Route path='/artists' element={<AllArtists />} />
         <Route path='/show-artist/:artistid' element={<ShowArtist />} />
         <Route path='/artist-register' element={<ArtistRegister />} />
-        <Route Path='/venue-register'  element={<VenueRegister /> } />
+        <Route Path='/venue-register' element={<VenueRegister /> } />
         <Route path='/artist-login' element={<ArtistLogin />} />  
         <Route path='/venue-login' element={<VenueLogin />} />
         <Route path='/startjourney' element={<StartJourney/> } />

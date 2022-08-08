@@ -1,0 +1,132 @@
+
+
+h2 { 
+  font-size: 50px;
+  text-align: center;
+}
+
+.questionbox {
+  margin-top: 15vh;
+  margin-bottom: 50vh;
+  width: 80%;
+  height: 40vh;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+
+.proccedlogin {
+  margin-top: 15vh;
+  margin-bottom: 50vh;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 40vh;
+  text-align: center;
+}
+
+.titlebanner {
+  height: 100px;
+}
+
+.h3 {
+  font-size: 60px;
+  text-align: left;
+  margin-left: 5%;
+}
+
+.textinput {
+  width: 90%;
+  height: 60px;
+  margin-top: 10px;
+  border: none;
+  border-bottom: 1px black solid;
+  font-size: 40px;
+}
+
+.textinput:focus {
+  outline:none;
+  border-bottom: 2.5px black solid;
+}
+.optionInput {
+  width: 90%;
+  height: 60px;
+  margin-top: 5px;
+  border: none;
+  border-bottom: 1px black solid;
+  font-size: 40px;
+}
+
+.optioninput:focus {
+  outline:none;
+  border-bottom: 3px black solid;
+}
+.nextbutton {
+  display: block;
+  margin-top: 30px;
+  margin-left: 5%;
+  font-size: 40px;
+  color: white;
+  background-color: green;
+  border: none;
+  padding: 5px 20px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: rgb(255, 255, 255);
+  border: none;
+}
+
+progress::-webkit-progress-value {
+  transition: all 1s;
+  background-color: green
+}
+
+.formprogress {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: none;
+  margin: 0;
+  background-color: white;
+}
+
+.proccedlogin {
+  text-align: center;
+}
+
+.logintext {
+  text-align: center;
+}
+
+.h3login {
+  font-size: 60px;
+  text-align: center;
+}
+
+.h4login {
+  font-size: 40px;
+  text-align: center;
+}
+
+.loginbutton {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 40px;
+  color: white;
+  background-color: green;
+  border: none;
+  padding: 5px 20px;
+}
+
+.addanotherbutton {
+  display: block;
+  margin-left: 5%;
+  margin-top: 10px;
+  border-radius: 10px;
+  color: green;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
