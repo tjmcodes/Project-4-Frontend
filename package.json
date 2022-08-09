@@ -5,20 +5,14 @@
   "dependencies": {
     "@babel/eslint-parser": "^7.16.5",
     "axios": "^0.27.2",
-    "moment": "^2.29.4",
     "eslint": "^8.7.0",
     "eslint-plugin-jsx": "^0.1.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "http-proxy-middleware": "^2.0.6",
-<<<<<<< HEAD
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-=======
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
->>>>>>> e41f98f81b35651804c8c051472240ebc88ff84c
     "react-router-dom": "^6.3.0",
     "react-select": "^5.3.2"
   
