@@ -4,10 +4,13 @@ import heart from './images/heart.jpg'
 import unheart from './images/unheart.jpg'
 import moment from 'moment'
 import NavBar from './NavBar.js'
+// import {  getLoggedInUserId } from './lib/auth.js'
+import axios from 'axios'
 
 
 function ShowArtists() {
   const [artist, setArtist] = useState([])
+  const [commentContent, setCommentContent] = React.useState('')
   const { artist_id } = useParams()
   /* can use = 1 instead of useParams */
   const [like, setLike] = useState(false)
@@ -22,6 +25,23 @@ function ShowArtists() {
     getData()
   }, [artist_id])
   console.log(artist)
+
+  async function handleComment() {
+  
+    try {
+      const { data } = await axios.post(
+        `/api/artists/${artist_id}/comments`, 
+        { content: commentContent },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
+        }
+      )
+      setArtist(data)
+      window.location.reload()
+    } catch (err) {
+    }    
+  }
+
 
   return ( 
     <div className="bg-black">
@@ -179,11 +199,7 @@ function ShowArtists() {
                     <p className={'mt-8 text-m'}>Ratings: {comment.rating} stars</p>
                       
                   </div></>
-              
-                
-              })}
-                 
-                 
+              })}  
                  
                  {/* A R T I S T  L I K E  */}
                  <div className="flex items-end bg-gray-200 p-2 ml-4 rounded-xl" onClick={() => setLike(!like)}>
@@ -191,6 +207,34 @@ function ShowArtists() {
                  </div>
                </div>
              </div>
+              
+              {/*  // P O S T I N G  A  C O M M E N T // }
+          {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
+          <div key={artist.id} className={"flex flex-col w-1/3 mt-4 bg-gray-400 rounded-xl col-span-3"}>
+          {/* {getLoggedInUserId() &&  */}
+            <article >
+              <div className={""}>
+                <div className="">
+                  <textarea 
+                    className="mt-4 mb-4 ml-4 flex flex-col w-3/4 mt-4 rounded-xl col-span-3 "
+                    maxLength={280}
+                    placeholder="Write out your post here.."
+                    onChange={(event) => setCommentContent(event.target.value)}>
+                  </textarea>
+                </div>
+              
+                <div className="field">
+                  <div className="control">
+                    <button 
+                      className="ml-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                      onClick={handleComment}>
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
              
           {console.log(artist)}
           </div>

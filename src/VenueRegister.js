@@ -22,6 +22,10 @@ function VenueRegister() {
 
   const progressBar = document.getElementById("progress")
   
+  const [features, setFeatures]= React.useState(
+    { features: "", }
+  )
+
   const [formData, setFormData] = useState({
     email:"", //
     username:"", //
@@ -75,17 +79,6 @@ function VenueRegister() {
     youTubeUrl: "",
     instagramUrl: "",
   })
-
-  // async function handleSubmit(event) {
-  //   event.preventDefault()
-  //   try {
-  //     await axios.post(`/api/venue-signup`, formData)
-  //     updateButton(!button)
-  //     navigate('/venue-login')
-  //   } catch (err) {    
-  //     setErrors(err.response.data.errors)
-  //   }
-  // }
 
   
   function handleChange(e) {
@@ -224,6 +217,10 @@ function handleGalleryUpload3() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
+      const newFormData = {
+        ...formData,
+        ...features, 
+      }
       await axios.post(`/api/venue-signup`, formData)
       updateButton(!button)
       navigate('/venue-login')
