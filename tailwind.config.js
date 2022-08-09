@@ -15,6 +15,8 @@ module.exports = {
     './src/ArtistNavBar.js',
     './src/VenueNavBar.js',
     './src/StartJourney.js',
+    './src/VenueStart.js',
+    './src/ArtistStart.js',
   ],
   theme: {
     backgroundSize: {
