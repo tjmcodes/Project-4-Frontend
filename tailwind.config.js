@@ -15,6 +15,7 @@ module.exports = {
     './src/ArtistNavBar.js',
     './src/VenueNavBar.js',
     './src/StartJourney.js',
+    './node_modules/flowbite/**/*.js',
   ],
   theme: {
     backgroundSize: {
@@ -46,5 +47,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+],
 }

@@ -31,13 +31,13 @@ function ArtistRegister() {
     profileImage: "",
     location: "",
     travel: "",
-    totalRatings: "",
-    price: "",
+    // totalRatings: "",
+    // price: "",
     websiteUrl: "",
     videoUrl: "",
-    optionUrl: "",
+    // optionUrl: "",
     musicUrl: "",
-    backgroundCoverCardImage: "",
+    backgroundCardImage: "",
     galleryImage1: "",
     galleryImage2: "",
     galleryImage3: "",
@@ -56,13 +56,13 @@ function ArtistRegister() {
     profileImage: "",
     location: "",
     travel: "",
-    totalRatings: "",
-    price: "",
+    // totalRatings: "",
+    // price: "",
     websiteUrl: "",
     videoUrl: "",
-    optionUrl: "",
+    // optionUrl: "",
     musicUrl: "",
-    backgroundCoverCardImage: "",
+    backgroundCardImage: "",
     galleryImage1: "",
     galleryImage2: "",
     galleryImage3: "",
@@ -71,7 +71,7 @@ function ArtistRegister() {
     twitterUrl: "",
     youTubeUrl: "",
     instagramUrl:"",
-    genre: ""
+    // genre: ""
   })
 
 
@@ -138,7 +138,7 @@ function ArtistRegister() {
         }
         setFormData({
           ...formData,
-          backgroundCoverCardImage: result.info.url,
+          backgroundCardImage: result.info.url,
         })
       }
       ).open()

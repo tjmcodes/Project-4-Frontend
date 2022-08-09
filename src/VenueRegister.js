@@ -63,8 +63,8 @@ function VenueRegister() {
     address:"",
     budget:"",
     websiteUrl:"",
-    videoUrl:"",
-    optionUrl:"",
+    // videoUrl:"",
+    // optionUrl:"",
     backgroundCardImage:"",
     galleryImage1:"",
     galleryImage2: "",
@@ -76,18 +76,18 @@ function VenueRegister() {
     instagramUrl: "",
   })
 
+  // async function handleSubmit(event) {
+  //   event.preventDefault()
+  //   try {
+  //     await axios.post(`/api/venue-signup`, formData)
+  //     updateButton(!button)
+  //     navigate('/venue-login')
+  //   } catch (err) {    
+  //     setErrors(err.response.data.errors)
+  //   }
+  // }
 
-
-  async function handleSubmit(event) {
-    event.preventDefault()
-    try {
-      await axios.post(`/venue-signup`, formData)
-      updateButton(!button)
-      navigate('/venue-login')
-    } catch (err) {    
-      setErrors(err.response.data.errors)
-    }
-  }
+  
   function handleChange(e) {
     console.log(e.target.value)
     const { name, value } = e.target
@@ -106,7 +106,7 @@ function VenueRegister() {
     window.cloudinary.createUploadWidget(
       {
         cloudName: 'dgk61wxpy', 
-        uploadPreset: 'Venue-user-profile', 
+        uploadPreset: 'venue-user-profile', 
         folder: 'VenuesArtists',
         cropping: true,
         placeholderImage: true,
@@ -224,7 +224,7 @@ function handleGalleryUpload3() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      await axios.post(`/venue-signup`, formData)
+      await axios.post(`/api/venue-signup`, formData)
       updateButton(!button)
       navigate('/venue-login')
     } catch (err) {    
@@ -302,6 +302,8 @@ function handleGalleryUpload3() {
   function addanother() {
     setaddanother1(true)
   } 
+
+ 
 
  return (
   <>
@@ -524,35 +526,37 @@ function handleGalleryUpload3() {
       {addanother1 && <><input onChange={handleChange} className={styles.textinput} type="text" placeholder="post the link to another social media account"></input>
         <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
       <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button> */}
-      <button onClick={postQ8} className={styles.nextbutton}>{`Submit Form -> `}</button>
+      <button onClick={postQ8} className={styles.nextbutton}>{`Next -> `}</button>
     </div></> : null }
-  
-    {Q9 ? <>
-        <div className={styles.questionbox}>
-          <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>Type</h3> {/* Genres posting */}
-          </div>
+
+  {Q9 ? <>
+      <div className={styles.questionbox}>
+        <div className={styles.titlebanner}>
+          <h3 className={styles.h3}>Type</h3> {/* Genres posting */}
+        </div>
+        <input 
+          onChange={handleChange} 
+          className={styles.textinput} 
+          type="text" 
+          placeholder="enter the type of venue you are"
+          name="type" 
+          value={formData.type}
+        />
+        { addanother1 ? null : <button onClick={addanother}className={styles.addanotherbutton }>add another + </button>}
+        {addanother1 && <>
           <input 
-            onChange={handleChange} 
-            className={styles.textinput} 
-            type="text" 
-            placeholder="enter the type of venue you are"
-            name="type" 
-            value={formData.type}
-          />
-          { addanother1 ? null : <button onClick={addanother}className={styles.addanotherbutton }>add another + </button>}
-          {addanother1 && <>
-            <input 
-            onChange={handleChange} 
-            className={styles.textinput} 
-            type="text" 
-            placeholder="enter another genre that best suits your music"
-            name="type" 
-            value={formData.type}
-          />
-          <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
-          <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
-        </div></> : null }
+          onChange={handleChange} 
+          className={styles.textinput} 
+          type="text" 
+          placeholder="enter another genre that best suits your music"
+          name="type" 
+          value={formData.type}
+        />
+        <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
+        <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
+      </div></> : null }
+
+    
 
   
   

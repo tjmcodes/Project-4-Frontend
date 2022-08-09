@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import heart from './images/heart.jpg'
 import unheart from './images/unheart.jpg'
 import moment from 'moment'
+import NavBar from './NavBar.js'
+
 
 function ShowArtists() {
   const [artist, setArtist] = useState([])
@@ -23,6 +25,7 @@ function ShowArtists() {
 
   return ( 
     <div className="bg-black">
+      <NavBar />
       <div className="bg-hero-pattern bg-cover tablet:bg-center pt-10 pb-20">
         {artist ? ( 
           <div style={{backgroundColor: "rgba(250, 32, 84, 0.2)", width:"100%"}} className="flex desktop:p-8 desktop:m-0 mx-auto laptop:p-8 laptop:m-0 tablet:m-0 fold:p-2 fold:m-2 grid">
@@ -117,7 +120,7 @@ function ShowArtists() {
                 <path d="M27.29 16.119H14.711C14.1234 16.119 13.6484 16.5332 13.6484 17.0456C13.6484 17.558 14.1234 17.9722 14.711 17.9722H27.29C27.8776 17.9722 28.3526 17.558 28.3526 17.0456C28.3526 16.5332 27.8776 16.119 27.29 16.119Z" fill="#FF0000"/>
                 <path d="M27.5194 27.9388H14.4825C13.8948 27.9388 13.4199 28.353 13.4199 28.8654V41.0122C13.4199 41.5247 13.8948 41.9388 14.4825 41.9388H27.5194C28.107 41.9388 28.582 41.5247 28.582 41.0122V28.8654C28.582 28.353 28.107 27.9388 27.5194 27.9388ZM26.4568 40.0855H15.5451V29.7918H26.4568V40.0855Z" fill="#FF0000"/>
               </svg>
-              <p className="flex justify-center text-white">{artist.travel}</p>
+              <p className="flex justify-center text-white">{artist.willingToTravel}{artist.travel}</p>
             </div>
             
             <div className="flex flex-col tablet:pt-1">
