@@ -556,9 +556,9 @@ function handleGalleryUpload3() {
         <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
       </div></> : null }
 
-    
-
   
+
+
   
   {proccedlogin ? <>
     <div className={styles.proccedlogin}>

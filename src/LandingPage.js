@@ -51,7 +51,7 @@ function LandingPage() {
             
             <div className="flex justify-end p-8 tablet:pt-1">
             {/* Button */}
-              <Link to="./artist-login">
+              <Link to="./startJourney">
                 <button className="bg-button p-4 rounded-xl fold:p-3 desktop:text-2xl tablet:text-lg fold:text-xs text-white"><p>Start your</p><p>journey...</p></button>
               </Link>
 
