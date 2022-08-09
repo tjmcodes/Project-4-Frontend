@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import styles from "./VenueRegister.module.css"
+import features from './data/features.js'
+import Select from 'react-select'
 
 function VenueRegister() {
   
@@ -16,15 +18,12 @@ function VenueRegister() {
   const [Q9, setQ9] = React.useState(false)
 
   const [proccedlogin, setproccedlogin] = React.useState(false)
-  const [addanother1, setaddanother1] = React.useState(false)
+  // const [addanother1, setaddanother1] = React.useState(false)
   const [button, updateButton] = useState(false)
   const navigate = useNavigate()
 
   const progressBar = document.getElementById("progress")
-  
-  const [features, setFeatures]= React.useState(
-    { features: "", }
-  )
+
 
   const [formData, setFormData] = useState({
     email:"", //
@@ -296,9 +295,9 @@ function handleGalleryUpload3() {
     progressBar.value = newCountVal
   }
 
-  function addanother() {
-    setaddanother1(true)
-  } 
+  // function addanother() {
+  //   setaddanother1(true)
+  // } 
 
  
 
@@ -527,36 +526,23 @@ function handleGalleryUpload3() {
     </div></> : null }
 
   {Q9 ? <>
-      <div className={styles.questionbox}>
-        <div className={styles.titlebanner}>
-          <h3 className={styles.h3}>Type</h3> {/* Genres posting */}
-        </div>
-        <input 
-          onChange={handleChange} 
-          className={styles.textinput} 
-          type="text" 
-          placeholder="enter the type of venue you are"
-          name="type" 
-          value={formData.type}
-        />
-        { addanother1 ? null : <button onClick={addanother}className={styles.addanotherbutton }>add another + </button>}
-        {addanother1 && <>
-          <input 
-          onChange={handleChange} 
-          className={styles.textinput} 
-          type="text" 
-          placeholder="enter another genre that best suits your music"
-          name="type" 
-          value={formData.type}
-        />
-        <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
-        <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
-      </div></> : null }
+    <div className={styles.questionbox}>
+      <div className={styles.titlebanner}>
+        <h3 className={styles.h3}>What genre?</h3>
+      </div>
+      <Select
+        defaultValue={[]}
+        isMulti
+        name="colors"
+        options={features}
+        className="basic-multi-select"
+        classNamePrefix="select"
+        onChange={(features) => setFormData({ ...formData, features })}
+        value={formData.features}
+      />
+      <button onClick={postQ9} className={styles.nextbutton}>{`Submit form -> `}</button>
+    </div></> : null }
 
-  
-
-
-  
   {proccedlogin ? <>
     <div className={styles.proccedlogin}>
       <div className={styles.logintext}>
