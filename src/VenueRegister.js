@@ -30,7 +30,7 @@ function VenueRegister() {
     title:"", //
     role:"", // 
     venueName: "", //
-    type: "",
+    // type: "",
     // venueImage: "", 
     location: "", //
     address:"", //
@@ -57,7 +57,7 @@ function VenueRegister() {
     title:"",
     role:"",
     venueName: "",
-    type: "",
+    // type: "",
     venueImage: "",
     location: "",
     address:"",
@@ -532,13 +532,13 @@ function handleGalleryUpload3() {
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>Type</h3> {/* Genres posting */}
           </div>
-          <input 
+          {/* <input 
             onChange={handleChange} 
             className={styles.textinput} 
             type="text" 
             placeholder="enter the type of venue you are"
-            name="type" 
-            value={formData.type}
+            name="type"  */}
+        
           />
           { addanother1 ? null : <button onClick={addanother}className={styles.addanotherbutton }>add another + </button>}
           {addanother1 && <>
