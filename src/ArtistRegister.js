@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import styles from "./ArtistRegister.module.css"
+import styles from './ArtistRegister.module.css'
+import genres from './data/genres.js'
+import Select from 'react-select'
 
 function ArtistRegister() {
 
@@ -14,6 +16,7 @@ function ArtistRegister() {
   const [Q7, setQ7] = React.useState(false)
   const [Q8, setQ8] = React.useState(false)
   const [Q9, setQ9] = React.useState(false)
+  const [Q10, setQ10] = React.useState(false)
   
   
   const [proccedlogin, setproccedlogin] = React.useState(false)
@@ -22,6 +25,9 @@ function ArtistRegister() {
   const navigate = useNavigate()
 
   const progressBar = document.getElementById("progress")
+
+  const [genreType, setGenreType] = React.useState(
+    { genre: '' })
   
   const [formData, setFormData] = useState({
     username: "",
@@ -71,7 +77,7 @@ function ArtistRegister() {
     twitterUrl: "",
     youTubeUrl: "",
     instagramUrl:"",
-    // genre: ""
+    genre: ""
   })
 
 
@@ -94,7 +100,12 @@ function ArtistRegister() {
       ...errors,
       [name]: '',
     })
-    console.log(name)
+    setGenreType({
+      genre: [{genre: (genres)}]
+      // genreArray: e.target.value,
+      // genreObjects: genreArray.map(genreElem => ({ genre: genreElem })),
+    })
+    console.log(genres)
   }
 
   function handleProfileUpload() {
@@ -217,8 +228,12 @@ function ArtistRegister() {
 
   async function handleSubmit(event) {
     event.preventDefault()
+    const newFormData = {
+      ...formData,
+      ...genreType
+    }
     try {
-      await axios.post(`/api/artist-signup`, formData)
+      await axios.post(`/api/artist-signup`, newFormData)
       updateButton(!button)
       navigate('/artist-login')
     } catch (err) {    
@@ -288,13 +303,18 @@ function ArtistRegister() {
   function postQ9() {
     console.log("clicked")
     setQ9(false)
-    setproccedlogin(true)
+    setQ10(true)
     const newCountVal = 90
     progressBar.value = newCountVal
   }
-  // function addanother() {
-  //   setaddanother1(true)
-  // } 
+  function postQ10() {
+    console.log("clicked")
+    setQ10(false)
+    setproccedlogin(true)
+    const newCountVal = 100
+    progressBar.value = newCountVal
+  }
+ 
   return (
     <>
       <progress id="progress" className={styles.formprogress} value="0" max="100"></progress>
@@ -510,6 +530,24 @@ function ArtistRegister() {
             value={formData.instagramUrl}
           />
           <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
+        </div></> : null }
+
+        {Q10 ? <>
+        <div className={styles.questionbox}>
+          <div className={styles.titlebanner}>
+            <h3 className={styles.h3}>What genre?</h3>
+          </div>
+          <Select
+            defaultValue={[]}
+            isMulti
+            name="genre"
+            options={genres}
+            className="basic-multi-select"
+            classNamePrefix="select"
+            onChange={(genre) => setFormData({ ...formData, genre })}
+            value={formData.genre}
+          />
+          <button onClick={postQ10} className={styles.nextbutton}>{`Submit form -> `}</button>
         </div></> : null }
    
 
