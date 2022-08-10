@@ -31,7 +31,7 @@ function ArtistRegister() {
   
   const [formData, setFormData] = useState({
     username: "",
-    email:  "" , 
+    email: "" , 
     artistName: "",
     password: "",
     profileImage: "",
@@ -51,13 +51,13 @@ function ArtistRegister() {
     fbUrl: "",
     twitterUrl: "",
     youTubeUrl: "",
-    instagramUrl:"",
-    genre: ""
+    instagramUrl: "",
+    genre: "",
   })
 
   const [errors, setErrors] = useState({
     username: "",
-    email:  "" , 
+    email: "" , 
     artistName: "",
     profileImage: "",
     location: "",
@@ -128,9 +128,9 @@ function ArtistRegister() {
           profileImage: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
     
   function handleBackgroundUpload() {
     window.cloudinary.createUploadWidget(
@@ -152,9 +152,9 @@ function ArtistRegister() {
           backgroundCardImage: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
   function handleGalleryUpload1() {
     window.cloudinary.createUploadWidget(
       {
@@ -175,9 +175,9 @@ function ArtistRegister() {
           galleryImage1: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
   function handleGalleryUpload2() {
     window.cloudinary.createUploadWidget(
       {
@@ -198,9 +198,9 @@ function ArtistRegister() {
           galleryImage2: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
 
   function handleGalleryUpload3() {
     window.cloudinary.createUploadWidget(
@@ -222,9 +222,9 @@ function ArtistRegister() {
           galleryImage3: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -253,12 +253,10 @@ function ArtistRegister() {
     setQ2(false)
     if (event.target.value === 'back') {
       setQ1(true)
-      const newCountVal = 10
-      progressBar.value = newCountVal
+      progressBar.value = 10
     } else {
       setQ3(true)
-      const newCountVal = 20
-      progressBar.value = newCountVal
+      progressBar.value = 20
     }
   }
 
@@ -266,12 +264,10 @@ function ArtistRegister() {
     setQ3(false)
     if (event.target.value === 'back') {
       setQ2(true)
-      const newCountVal = 20
-      progressBar.value = newCountVal
+      progressBar.value = 20
     } else {
       setQ4(true)
-      const newCountVal = 30
-      progressBar.value = newCountVal
+      progressBar.value = 30
     }
   }
 
@@ -279,12 +275,10 @@ function ArtistRegister() {
     setQ4(false)
     if (event.target.value === 'back') {
       setQ3(true)
-      const newCountVal = 30
-      progressBar.value = newCountVal
+      progressBar.value = 30
     } else {
       setQ5(true)
-      const newCountVal = 40
-      progressBar.value = newCountVal
+      progressBar.value = 40
     }
   }
 
@@ -292,12 +286,10 @@ function ArtistRegister() {
     setQ5(false)
     if (event.target.value === 'back') {
       setQ4(true)
-      const newCountVal = 40
-      progressBar.value = newCountVal
+      progressBar.value = 40
     } else {
       setQ6(true)
-      const newCountVal = 50
-      progressBar.value = newCountVal
+      progressBar.value = 50
     }
   }
 
@@ -305,12 +297,10 @@ function ArtistRegister() {
     setQ6(false)
     if (event.target.value === 'back') {
       setQ5(true)
-      const newCountVal = 50
-      progressBar.value = newCountVal
+      progressBar.value = 50
     } else {
       setQ7(true)
-      const newCountVal = 60
-      progressBar.value = newCountVal
+      progressBar.value = 60
     }
   }
 
@@ -318,12 +308,10 @@ function ArtistRegister() {
     setQ7(false)
     if (event.target.value === 'back') {
       setQ6(true)
-      const newCountVal = 60
-      progressBar.value = newCountVal
+      progressBar.value = 60
     } else {
       setQ8(true)
-      const newCountVal = 70
-      progressBar.value = newCountVal
+      progressBar.value = 70
     }
   }
 
@@ -331,12 +319,10 @@ function ArtistRegister() {
     setQ8(false)
     if (event.target.value === 'back') {
       setQ7(true)
-      const newCountVal = 70
-      progressBar.value = newCountVal
+      progressBar.value = 70
     } else {
       setQ9(true)
-      const newCountVal = 80
-      progressBar.value = newCountVal
+      progressBar.value = 80
     }
   }
 
@@ -344,12 +330,10 @@ function ArtistRegister() {
     setQ9(false)
     if (event.target.value === 'back') {
       setQ8(true)
-      const newCountVal = 80
-      progressBar.value = newCountVal
+      progressBar.value = 80
     } else {
       setQ10(true)
-      const newCountVal = 90
-      progressBar.value = newCountVal
+      progressBar.value = 90
     }
   }
 
@@ -357,12 +341,10 @@ function ArtistRegister() {
     setQ10(false)
     if (event.target.value === 'back') {
       setQ9(true)
-      const newCountVal = 90
-      progressBar.value = newCountVal
+      progressBar.value = 90
     } else {
       setproccedlogin(true)
-      const newCountVal = 100
-      progressBar.value = newCountVal
+      progressBar.value = 100
     }
   }
  
@@ -407,7 +389,7 @@ function ArtistRegister() {
             placeholder="Enter your password"
             name="password"
             value={formData.password}>
-            </input>
+          </input>
           <div>
             <h3 className={styles.h3}>Please upload a profile image by clicking on the button below</h3>
           </div>
@@ -416,23 +398,23 @@ function ArtistRegister() {
           }           
           <button onClick={postQ1} className={styles.nextbutton}>{`Next -> `}</button>
         </div>
-        </> : null }
+      </> : null }
 
       {Q2 ? <>
-      <div className={styles.questionbox}>
-        <div className={styles.titlebanner}>
-          <h3 className={styles.h3}>Where are you located?</h3>
-        </div>
-        <select className={styles.optionInput} name="location" value={formData.location} onChange={handleChange} id="cities">
-          <option value="london">London</option>
-          <option value="manchester">Manchester</option>
-          <option value="birmingham">Birmingham</option>
-          <option value="leeds">Leeds</option>
-          <option value="Liverpool">Liverpool</option>
-        </select>
-        <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
-        <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
-      </div></> : null }
+        <div className={styles.questionbox}>
+          <div className={styles.titlebanner}>
+            <h3 className={styles.h3}>Where are you located?</h3>
+          </div>
+          <select className={styles.optionInput} name="location" value={formData.location} onChange={handleChange} id="cities">
+            <option value="london">London</option>
+            <option value="manchester">Manchester</option>
+            <option value="birmingham">Birmingham</option>
+            <option value="leeds">Leeds</option>
+            <option value="Liverpool">Liverpool</option>
+          </select>
+          <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
+        </div></> : null }
 
       {Q3 ? <>
         <div className={styles.questionbox}>
@@ -454,7 +436,7 @@ function ArtistRegister() {
 
       {Q4 ? <>
         <div className={styles.questionbox}>
-            <h3 className={styles.h3}>What is your website address?</h3>
+          <h3 className={styles.h3}>What is your website address?</h3>
           <div className={styles.titlebanner}>
           </div>
           <input 
@@ -590,7 +572,7 @@ function ArtistRegister() {
           <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
         </div></> : null }
 
-        {Q10 ? <>
+      {Q10 ? <>
         <div className={styles.questionbox}>
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>What genre?</h3>
