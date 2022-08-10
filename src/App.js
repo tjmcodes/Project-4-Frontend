@@ -21,9 +21,9 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/venues' element={<AllVenues />} />
-        <Route path='/show-venue/:venue_id' element={<ShowVenue />} />
+        <Route path='/show-venue/:venueId' element={<ShowVenue />} />
         <Route path='/artists' element={<AllArtists />} />
-        <Route path='/show-artist/:artist_id' element={<ShowArtist />} />
+        <Route path='/show-artist/:artistId' element={<ShowArtist />} />
         <Route path='/artist-register' element={<ArtistRegister />} />
         <Route path='/artist-login' element={<ArtistLogin />} />  
         <Route path='/venue-login' element={<VenueLogin />} />

@@ -29,6 +29,34 @@ function VenueRegister() {
 
   const [formData, setFormData] = useState({
     email: "", //
+    username:  "", //
+    password: "",//
+    profileImage:  "", //
+    title:  "", //
+    role:  "", // 
+    venueName: "", //
+    type: [],
+    // venueImage: "", 
+    location: "", //
+    address:  "", //
+    budget:  "",
+    websiteUrl:  "",
+    // videoUrl:"",
+    // optionUrl:"",
+    backgroundCardImage:  "", //
+    galleryImage1:  "", //
+    galleryImage2: "", //
+    galleryImage3: "", //
+    description: "", //
+    fbUrl: "", //
+    twitterUrl: "", //
+    youTubeUrl: "", //
+    instagramUrl: "", //
+  })
+
+
+  const [errors, setErrors] = useState({
+    email: "", //
     username: "", //
     password: "",//
     profileImage: "", //
@@ -54,33 +82,6 @@ function VenueRegister() {
     instagramUrl: "", //
   })
 
-
-  const [errors, setErrors] = useState({
-    email: "",
-    username: "",
-    profileImage: "",
-    title: "",
-    role: "",
-    venueName: "",
-    type: "",
-    venueImage: "",
-    location: "",
-    address: "",
-    budget: "",
-    websiteUrl: "",
-    // videoUrl:"",
-    // optionUrl:"",
-    backgroundCardImage: "",
-    galleryImage1: "",
-    galleryImage2: "",
-    galleryImage3: "",
-    description: "",
-    fbUrl: "",
-    twitterUrl: "",
-    youTubeUrl: "",
-    instagramUrl: "",
-  })
-
   
   function handleChange(e) {
     console.log(e.target.value)
@@ -96,7 +97,7 @@ function VenueRegister() {
       [name]: '',
     })
     setVenueType({
-      type: [{type: (e.target.value)}]
+      type: [{ type: (e.target.value) }],
     })
     console.log(type)
   }
@@ -224,7 +225,7 @@ function VenueRegister() {
     event.preventDefault()
     const newFormData = {
       ...formData,
-      ...venueType
+      ...venueType,
     }
     console.log(event.target.value)
     try {
