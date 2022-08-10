@@ -2,11 +2,12 @@ import React from "react";
 // import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './VenueLogin.module.css'
+import { useNavigate } from "react-router-dom";
 
 function VenueLogin() {
 
-  // const navigate = useNavigate() --> this will allow the page to navigate to ... once user is logged in.
-
+  //  --> this will allow the page to navigate to ... once user is logged in.
+  const navigate = useNavigate()
   const [formData, setFormData] = React.useState({
     password: "",
     email: "",
@@ -27,7 +28,8 @@ function VenueLogin() {
     try {
       const { data } = await axios.post('/api/venue-login', formData)  // axios communicates with the API endpoint and returns a JSON object
       localStorage.setItem('token', data.token) // token needed to use for secure routes
-      console.log(data.token) 
+      console.log(data.token)
+      navigate('/artists') 
     } catch (err) {
       console.log(err.response.data)  
     }
