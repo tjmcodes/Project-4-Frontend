@@ -1,0 +1,19 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#f2ff00",
+    "titleBar.activeBackground": "#f2ff00",
+    "titleBar.inactiveBackground": "#f2ff00",
+    "statusBar.foreground": "#000",
+    "titleBar.inactiveForeground": "#000",
+    "titleBar.activeForeground": "#000",
+  },
+  "window.title": "REACT FRONTEND Project 4",
+  "python.formatting.proider": "black",
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintArgs": [
+    "--disable=C0413,C0114,C0116,W0104,W0613,W0105,R0903,R0913,C0103,R0914,C0304,F0401,W0402,E1101,W0614,C0111,C0301, W0703"
+  ]
+
+
+}
