@@ -31,7 +31,7 @@ function ArtistRegister() {
   
   const [formData, setFormData] = useState({
     username: "",
-    email:  "" , 
+    email: "", 
     artistName: "",
     password: "",
     profileImage: "",
@@ -51,14 +51,15 @@ function ArtistRegister() {
     fbUrl: "",
     twitterUrl: "",
     youTubeUrl: "",
-    instagramUrl:"",
-    genre: ""
+    instagramUrl: "",
+    genre: "",
   })
 
   const [errors, setErrors] = useState({
     username: "",
-    email:  "" , 
+    email: "", 
     artistName: "",
+    password: "",
     profileImage: "",
     location: "",
     travel: "",
@@ -76,8 +77,8 @@ function ArtistRegister() {
     fbUrl: "",
     twitterUrl: "",
     youTubeUrl: "",
-    instagramUrl:"",
-    genre: ""
+    instagramUrl: "",
+    genre: "",
   })
 
 
@@ -101,7 +102,7 @@ function ArtistRegister() {
       [name]: '',
     })
     setGenreType({
-      genre: [{genre: (genres)}]
+      genre: [{ genre: (genres) }],
       // genreArray: e.target.value,
       // genreObjects: genreArray.map(genreElem => ({ genre: genreElem })),
     })
@@ -128,9 +129,9 @@ function ArtistRegister() {
           profileImage: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
     
   function handleBackgroundUpload() {
     window.cloudinary.createUploadWidget(
@@ -152,9 +153,9 @@ function ArtistRegister() {
           backgroundCardImage: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
   function handleGalleryUpload1() {
     window.cloudinary.createUploadWidget(
       {
@@ -175,9 +176,10 @@ function ArtistRegister() {
           galleryImage1: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
+  
   function handleGalleryUpload2() {
     window.cloudinary.createUploadWidget(
       {
@@ -198,9 +200,9 @@ function ArtistRegister() {
           galleryImage2: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
 
   function handleGalleryUpload3() {
     window.cloudinary.createUploadWidget(
@@ -222,15 +224,15 @@ function ArtistRegister() {
           galleryImage3: result.info.url,
         })
       }
-      ).open()
-    }
-    console.log(formData)
+    ).open()
+  }
+  console.log(formData)
 
   async function handleSubmit(event) {
     event.preventDefault()
     const newFormData = {
       ...formData,
-      ...genreType
+      ...genreType,
     }
     try {
       await axios.post(`/api/artist-signup`, newFormData)
@@ -244,6 +246,7 @@ function ArtistRegister() {
     
   function postQ1() {
     setQ1(false)
+    {errors.email && <small className="errors">{errors.email}</small>}
     setQ2(true)
     const newCountVal = 10
     progressBar.value = newCountVal
@@ -385,6 +388,7 @@ function ArtistRegister() {
             placeholder="examaple@example.com">
           </input>
           
+          
           <div>
             <h3 className={styles.h3}>Choose a Username</h3>
           </div>
@@ -396,6 +400,7 @@ function ArtistRegister() {
             name="username"
             value={formData.username}> 
           </input>
+          {errors.username && <small className="errors">{errors.username}</small>}
                     
           <div>
             <h3 className={styles.h3}>Choose a password</h3>
@@ -403,36 +408,40 @@ function ArtistRegister() {
           <input 
             onChange={handleChange} 
             className={styles.textinput} 
-            type="text" 
+            type="password" 
             placeholder="Enter your password"
             name="password"
             value={formData.password}>
-            </input>
+          </input>
+          {errors.password && <small className="errors">{errors.password}</small>}
+          
           <div>
             <h3 className={styles.h3}>Please upload a profile image by clicking on the button below</h3>
           </div>
           <button onClick={handleProfileUpload} className={styles.nextbutton}>upload profile picture</button>{
             formData.profileImage === "" ? null : <img src={formData.profileImage} alt="profile image"></img>
-          }           
+          }
+          {errors.profileImage && <small className="errors">{errors.profileImage}</small>}           
           <button onClick={postQ1} className={styles.nextbutton}>{`Next -> `}</button>
         </div>
-        </> : null }
+      </> : null }
 
       {Q2 ? <>
-      <div className={styles.questionbox}>
-        <div className={styles.titlebanner}>
-          <h3 className={styles.h3}>Where are you located?</h3>
-        </div>
-        <select className={styles.optionInput} name="location" value={formData.location} onChange={handleChange} id="cities">
-          <option value="london">London</option>
-          <option value="manchester">Manchester</option>
-          <option value="birmingham">Birmingham</option>
-          <option value="leeds">Leeds</option>
-          <option value="Liverpool">Liverpool</option>
-        </select>
-        <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
-        <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
-      </div></> : null }
+        <div className={styles.questionbox}>
+          <div className={styles.titlebanner}>
+            <h3 className={styles.h3}>Where are you located?</h3>
+          </div>
+          <select className={styles.optionInput} name="location" value={formData.location} onChange={handleChange} id="cities">
+            <option value="london">London</option>
+            <option value="manchester">Manchester</option>
+            <option value="birmingham">Birmingham</option>
+            <option value="leeds">Leeds</option>
+            <option value="Liverpool">Liverpool</option>
+          </select>
+          {errors.location && <small className="errors">{errors.location}</small>}
+          <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
+        </div></> : null }
 
       {Q3 ? <>
         <div className={styles.questionbox}>
@@ -448,13 +457,14 @@ function ArtistRegister() {
             name="travel" 
             value={formData.travel}
           />
+          {errors.travel && <small className="errors">{errors.travel}</small>}
           <button onClick={postQ3} className={styles.nextbutton}>{`Next -> `}</button>
           <button onClick={postQ3} className={styles.backbutton} value='back'>Previous step</button>
         </div></> : null }
 
       {Q4 ? <>
         <div className={styles.questionbox}>
-            <h3 className={styles.h3}>What is your website address?</h3>
+          <h3 className={styles.h3}>What is your website address?</h3>
           <div className={styles.titlebanner}>
           </div>
           <input 
@@ -465,6 +475,7 @@ function ArtistRegister() {
             name="websiteUrl" 
             value={formData.websiteUrl}
           />
+          {errors.websiteUrl && <small className="errors">{errors.websiteUrl}</small>}
           <button onClick={postQ4} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ4} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
@@ -482,6 +493,7 @@ function ArtistRegister() {
             name="videoUrl" 
             value={formData.videoUrl}
           />
+          {errors.videoUrl && <small className="errors">{errors.videoUrl}</small>}
           <button onClick={postQ5} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
@@ -499,6 +511,7 @@ function ArtistRegister() {
             name="musicUrl" 
             value={formData.musicUrl}
           />
+          {errors.musicUrl && <small className="errors">{errors.musicUrl}</small>}
           <button onClick={postQ6} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ6} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
@@ -510,7 +523,9 @@ function ArtistRegister() {
             <p> add a background cover image and up to three gallery images below</p>
           </div>
 
+          {errors.backgroundCardImage && <small className="errors">{errors.backgroundCardImage}</small>}
           <button onClick={handleBackgroundUpload} className={styles.nextbutton}>upload background cover image</button>            
+          {errors.galleryImage1 && <small className="errors">{errors.galleryImage1}</small>}
           <button onClick={handleGalleryUpload1} className={styles.nextbutton}>upload gallery image</button>            
           <button onClick={handleGalleryUpload2} className={styles.nextbutton}>upload gallery image</button>            
           <button onClick={handleGalleryUpload3} className={styles.nextbutton}>upload gallery image</button>            
@@ -532,6 +547,7 @@ function ArtistRegister() {
             name="artistName" 
             value={formData.artistName}
           />
+          {errors.artistName && <small className="errors">{errors.artistName}</small>}
           
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>Add your bio</h3>
@@ -544,6 +560,7 @@ function ArtistRegister() {
             name="bio" 
             value={formData.bio}
           />
+          {errors.bio && <small className="errors">{errors.bio}</small>}
           
           <button onClick={postQ8} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ8} className={styles.nextbutton}>{`Next -> `}</button>
@@ -562,6 +579,8 @@ function ArtistRegister() {
             name="fbUrl" 
             value={formData.fbUrl}
           />
+          {errors.fbUrl && <small className="errors">{errors.fbUrl}</small>}
+
           <input 
             placeholder="Twitter (optional)"
             onChange={handleChange} 
@@ -570,6 +589,8 @@ function ArtistRegister() {
             name="twitterUrl" 
             value={formData.twitterUrl}
           />
+          {errors.twitterUrl && <small className="errors">{errors.twitterUrl}</small>}
+          
           <input 
             placeholder="YouTube (optional)"
             onChange={handleChange} 
@@ -578,6 +599,8 @@ function ArtistRegister() {
             name="youTubeUrl" 
             value={formData.youTubeUrl}
           />
+          {errors.youTubeUrl && <small className="errors">{errors.youTubeUrl}</small>}
+          
           <input 
             placeholder="Instagram (optional)"
             onChange={handleChange} 
@@ -586,11 +609,12 @@ function ArtistRegister() {
             name="instagramUrl" 
             value={formData.instagramUrl}
           />
+          {errors.instagramUrl && <small className="errors">{errors.instagramUrl}</small>}
           <button onClick={postQ9} className={styles.backbutton} value='back'>Previous step</button>
-          <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
+          <button onClick={postQ9} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
 
-        {Q10 ? <>
+      {Q10 ? <>
         <div className={styles.questionbox}>
           <div className={styles.titlebanner}>
             <h3 className={styles.h3}>What genre?</h3>
@@ -605,6 +629,7 @@ function ArtistRegister() {
             onChange={(genre) => setFormData({ ...formData, genre })}
             value={formData.genre}
           />
+          {errors.genre && <small className="errors">{errors.genre}</small>}
           <button onClick={postQ10} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ10} className={styles.nextbutton}>{`Submit form -> `}</button>
         </div></> : null }

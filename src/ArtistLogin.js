@@ -70,10 +70,10 @@ function ArtistLogin() {
                 <button className={styles.loginbutton}>Log in </button>
               
                 <Link to="/venue-login"> 
-                <button className={styles.button} >Switch to Venue Login</button>
+                  <button className={styles.button} >Switch to Venue Login</button>
                 </Link>
                 <Link to="/artist-register">
-                <button className={styles.venuebutton}>Dont have an account? <b className={styles.link}>Sign up</b></button>
+                  <button className={styles.venuebutton}>Dont have an account? <b className={styles.link}>Sign up</b></button>
                 </Link>
               </div>
             </form>

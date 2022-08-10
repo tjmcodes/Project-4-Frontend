@@ -29,56 +29,57 @@ function VenueRegister() {
 
   const [formData, setFormData] = useState({
     email: "", //
-    username:"", //
+    username: "", //
     password: "",//
-    profileImage:"", //
-    title:"", //
-    role:"", // 
+    profileImage: "", //
+    title: "", //
+    role: "", // 
     venueName: "", //
     type: [],
     // venueImage: "", 
     location: "", //
-    address:"", //
-    budget:"",
-    websiteUrl:"",
+    address: "", //
+    budget: "",
+    websiteUrl: "",
     // videoUrl:"",
     // optionUrl:"",
-    backgroundCardImage:"", //
-    galleryImage1:"", //
+    backgroundCardImage: "", //
+    galleryImage1: "", //
     galleryImage2: "", //
     galleryImage3: "", //
     description: "", //
     fbUrl: "", //
-    twitterUrl:"", //
+    twitterUrl: "", //
     youTubeUrl: "", //
     instagramUrl: "", //
   })
 
 
   const [errors, setErrors] = useState({
-    email:"",
-    username:"",
-    profileImage:"",
-    title:"",
-    role:"",
-    venueName: "",
-    type: "",
-    venueImage: "",
-    location: "",
-    address:"",
-    budget:"",
-    websiteUrl:"",
+    email: "", //
+    username: "", //
+    password: "",//
+    profileImage: "", //
+    title: "", //
+    role: "", // 
+    venueName: "", //
+    type: [],
+    // venueImage: "", 
+    location: "", //
+    address: "", //
+    budget: "",
+    websiteUrl: "",
     // videoUrl:"",
     // optionUrl:"",
-    backgroundCardImage:"",
-    galleryImage1:"",
-    galleryImage2: "",
-    galleryImage3: "",
-    description: "",
-    fbUrl: "",
-    twitterUrl:"",
-    youTubeUrl: "",
-    instagramUrl: "",
+    backgroundCardImage: "", //
+    galleryImage1: "", //
+    galleryImage2: "", //
+    galleryImage3: "", //
+    description: "", //
+    fbUrl: "", //
+    twitterUrl: "", //
+    youTubeUrl: "", //
+    instagramUrl: "", //
   })
 
   
@@ -96,7 +97,7 @@ function VenueRegister() {
       [name]: '',
     })
     setVenueType({
-      type: [{type: (e.target.value)}]
+      type: [{ type: (e.target.value) }],
     })
     console.log(type)
   }
@@ -224,7 +225,7 @@ function VenueRegister() {
     event.preventDefault()
     const newFormData = {
       ...formData,
-      ...venueType
+      ...venueType,
     }
     console.log(event.target.value)
     try {
