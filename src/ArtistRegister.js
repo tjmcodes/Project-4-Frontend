@@ -25,6 +25,9 @@ function ArtistRegister() {
   const navigate = useNavigate()
 
   const progressBar = document.getElementById("progress")
+
+  const [genreType, setGenreType] = React.useState(
+    { genre: '' })
   
   const [formData, setFormData] = useState({
     username: "",
@@ -49,7 +52,7 @@ function ArtistRegister() {
     twitterUrl: "",
     youTubeUrl: "",
     instagramUrl:"",
-    genre: []
+    genre: ""
   })
 
   const [errors, setErrors] = useState({
@@ -74,7 +77,7 @@ function ArtistRegister() {
     twitterUrl: "",
     youTubeUrl: "",
     instagramUrl:"",
-    genre: []
+    genre: ""
   })
 
 
@@ -97,7 +100,12 @@ function ArtistRegister() {
       ...errors,
       [name]: '',
     })
-    console.log(name)
+    setGenreType({
+      genre: [{genre: (genres)}]
+      // genreArray: e.target.value,
+      // genreObjects: genreArray.map(genreElem => ({ genre: genreElem })),
+    })
+    console.log(genres)
   }
 
   function handleProfileUpload() {
@@ -220,8 +228,12 @@ function ArtistRegister() {
 
   async function handleSubmit(event) {
     event.preventDefault()
+    const newFormData = {
+      ...formData,
+      ...genreType
+    }
     try {
-      await axios.post(`/api/artist-signup`, formData)
+      await axios.post(`/api/artist-signup`, newFormData)
       updateButton(!button)
       navigate('/artist-login')
     } catch (err) {    
@@ -528,7 +540,7 @@ function ArtistRegister() {
           <Select
             defaultValue={[]}
             isMulti
-            name="colors"
+            name="genre"
             options={genres}
             className="basic-multi-select"
             classNamePrefix="select"

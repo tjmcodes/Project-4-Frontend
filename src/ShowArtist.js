@@ -38,6 +38,7 @@ function ShowArtists() {
       )
       setArtist(data)
       window.location.reload()
+      console.log(data)
     } catch (err) {
     }    
   }

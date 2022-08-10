@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import styles from "./VenueRegister.module.css"
-import features from './data/features.js'
-import Select from 'react-select'
+// import features from './data/features.js'
+// import Select from 'react-select'
 
 function VenueRegister() {
   
@@ -24,6 +24,8 @@ function VenueRegister() {
 
   const progressBar = document.getElementById("progress")
 
+  const [venueType, setVenueType] = React.useState( 
+    { type: '' } );
 
   const [formData, setFormData] = useState({
     email:"", //
@@ -91,7 +93,10 @@ function VenueRegister() {
       ...errors,
       [name]: '',
     })
-    console.log(name)
+    setVenueType({
+      type: [{type: (e.target.value)}]
+    })
+    console.log(type)
   }
 
   function handleProfileUpload() {
@@ -215,17 +220,19 @@ function handleGalleryUpload3() {
 
   async function handleSubmit(event) {
     event.preventDefault()
+    const newFormData = {
+      ...formData,
+      ...venueType
+    }
+    console.log(event.target.value)
     try {
-      const newFormData = {
-        ...formData,
-        ...features, 
-      }
-      await axios.post(`/api/venue-signup`, formData)
+      await axios.post(`/api/venue-signup`, newFormData)
       updateButton(!button)
       navigate('/venue-login')
     } catch (err) {    
       setErrors(err.response.data.errors)
     }
+    console.log(newFormData.type)
   }
  
     
@@ -528,18 +535,16 @@ function handleGalleryUpload3() {
   {Q9 ? <>
     <div className={styles.questionbox}>
       <div className={styles.titlebanner}>
-        <h3 className={styles.h3}>What genre?</h3>
+        <h3 className={styles.h3}>What is the type of your venue? (Indoor, outdoor etc)</h3>
       </div>
-      <Select
-        defaultValue={[]}
-        isMulti
-        name="colors"
-        options={features}
-        className="basic-multi-select"
-        classNamePrefix="select"
-        onChange={(features) => setFormData({ ...formData, features })}
-        value={formData.features}
-      />
+      <input 
+        placeholder="Enter type in here"
+        onChange={handleChange} 
+        className={styles.textinput} 
+        type="text" 
+        name="type" 
+        value={formData.type}
+          />
       <button onClick={postQ9} className={styles.nextbutton}>{`Submit form -> `}</button>
     </div></> : null }
 
