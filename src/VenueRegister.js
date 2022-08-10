@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import styles from "./VenueRegister.module.css"
+import { set } from "mongoose";
 
 function VenueRegister() {
   
@@ -22,15 +23,22 @@ function VenueRegister() {
 
   const progressBar = document.getElementById("progress")
   
+
+  const [mail, setmail] = React.useState("")
+  function mailChange(e) {
+    setmail(e.target.value)
+    console.log(mail)
+  }
+
   const [formData, setFormData] = useState({
-    email:"", //
+    email: mail, //
     username:"", //
     password: "",//
     profileImage:"", //
     title:"", //
     role:"", // 
     venueName: "", //
-    type: "",
+    type: [],
     // venueImage: "", 
     location: "", //
     address:"", //
@@ -87,14 +95,15 @@ function VenueRegister() {
   //   }
   // }
 
-  
   function handleChange(e) {
     console.log(e.target.value)
     const { name, value } = e.target
     setFormData({
       ...formData, //  This is whatever the form data was before, all it's fields.
       [name]: value, 
+      
     })
+    console.log(formData)
     setErrors({
       ...errors,
       [name]: '',
@@ -240,13 +249,19 @@ function handleGalleryUpload3() {
     progressBar.value = newCountVal
   }
 
-  function postQ2() {
+  function postQ2(event) {
+    
     console.log("clicked")
-    setQ2(false)
-    setQ3(true)
-    const newCountVal = 30
-    progressBar.value = newCountVal
+  
+      setQ2(false)
+      if (event.target.value === 'back') {
+      setQ1(true)
+      } else {
+      setQ3(true)
+      const newCountVal = 30
+      progressBar.value = newCountVal
   }
+}
 
   function postQ3() {
     console.log("clicked")
@@ -293,16 +308,24 @@ function handleGalleryUpload3() {
   }
   function postQ9() {
     console.log("clicked")
+    const typearray = formData.type 
+    console.log(typearray)
+    const typeobject = typearray.map((tag, index) => ({ type: tag, index: index + 1 }));
+    console.log(typeobject)
+    formData.type = typeobject
     setQ9(false)
     setproccedlogin(true)
     const newCountVal = 100
     progressBar.value = newCountVal
+
   }
 
   function addanother() {
     setaddanother1(true)
   } 
 
+
+  
  
 
  return (
@@ -315,11 +338,11 @@ function handleGalleryUpload3() {
         <h3 className={styles.h3}>Enter your Email address</h3>
       </div>
       <input 
-        onChange={handleChange} 
+        onChange={mailChange} 
         className={styles.textinput} 
         type="text" 
         name={'email'}
-        value={formData.email}
+        value={mail}
         placeholder="examaple@example.com">
       </input>
       <div>
@@ -349,10 +372,10 @@ function handleGalleryUpload3() {
       <div>
         <h3 className={styles.h3}>Please upload a profile image by clicking on the button below</h3>
       </div>
-      <button onClick={handleProfileUpload} className={styles.nextbutton}>upload profile picture</button>{
+      <button onClick={handleProfileUpload} className={styles.uploadbutton}>upload profile picture</button>{
         formData.profileImage === "" ? null : <img src={formData.profileImage} alt="profile image"></img>
       }
-      <button onClick={postQ1} className={styles.nextbutton}>{`Next -> `}</button>
+      <button onClick={postQ1} className={styles.nextbutton}>{`Next Step`}</button>
     </div>
     </> : null }
 
@@ -381,7 +404,8 @@ function handleGalleryUpload3() {
       name={'role'}
       value={formData.role}>
     </input>
-    <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
+    <button onClick={postQ2} className={styles.nextbutton}>Next Step</button>
+    <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
   </div></> : null }
   
   {Q3 ? <>
@@ -476,10 +500,10 @@ function handleGalleryUpload3() {
         <p className={styles.subheading}> add a background cover image and up to three gallery images below</p>
       </div>
                 
-      <button onClick={handleBackgroundUpload} className={styles.nextbutton}>upload background cover image</button>            
-      <button onClick={handleGalleryUpload1} className={styles.nextbutton}>upload gallery image</button>            
-      <button onClick={handleGalleryUpload2} className={styles.nextbutton}>upload gallery image</button>            
-      <button onClick={handleGalleryUpload3} className={styles.nextbutton}>upload gallery image</button>            
+      <button onClick={handleBackgroundUpload} className={styles.gallerybutton}>upload background cover image</button>            
+      <button onClick={handleGalleryUpload1} className={styles.gallerybutton}>upload gallery image</button>            
+      <button onClick={handleGalleryUpload2} className={styles.gallerybutton}>upload gallery image</button>            
+      <button onClick={handleGalleryUpload3} className={styles.gallerybutton}>upload gallery image</button>            
 
       <button onClick={postQ7} className={styles.nextbutton}>{`Next -> `}</button>
 

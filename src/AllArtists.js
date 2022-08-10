@@ -1,6 +1,7 @@
 import React from 'react'
 import unheart from './images/unheart.jpg'
 import Loader from './loader.js'
+import { Link } from 'react-router-dom'
 
 function AllArtists() {
   const [artists, setArtists] = React.useState([])
@@ -76,6 +77,7 @@ function AllArtists() {
               </div>
               
               {/* V E N U E   D E T A I L S*/}
+              <Link to={`/show-artist/${artist.id}`}>
             <div className="flex flex-col justify-start laptop:pt-20 laptop:pb-1  fold:pt-10 fold:pb-1">
               <div className="bg-gray-100 opacity-75 rounded-xl flex justify-between flex-row laptop:p-4 laptop:m-6 tablet:p-4 tablet:mt-8 fold:p-2 fold:m-2 fold:mt-8">
                 <div className="flex flex-col">
@@ -88,6 +90,7 @@ function AllArtists() {
                   </div>  
                 </div>
               </div>
+              </Link>
             </div>
           
           )}

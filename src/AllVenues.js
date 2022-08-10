@@ -1,11 +1,13 @@
 import React from 'react'
 import unheart from './images/unheart.jpg'
 import Loader from './loader.js'
+import { Link } from 'react-router-dom'
 
 function AllVenues() {
   const [venues, setVenues] = React.useState([])
   const [searchparam, setSearchParams] = React.useState("")
   const [data, setdata] = React.useState(false)
+  const [filter,setfilter] = React.useState()
 
   React.useEffect(() => {
     const getData = async () => {
@@ -17,10 +19,22 @@ function AllVenues() {
     getData()
   }, [])
 
+  function handleselect(e) {
+    console.log(e.target.value)
+    const _filter = e.target.value
+    setfilter(_filter)
+    console.log(filter)
+  }
   function venuesSearch() {
+    if (filter === "location") {
     return venues.filter((venue) => {
       return ( venue.location.toLowerCase().includes(searchparam.toLowerCase())
-    )})
+    )})} else if (filter === 'name') {
+      return venues.filter((venue) => {
+        return ( venue.location.toLowerCase().includes(searchparam.toLowerCase())
+      )})}  else {
+      return venues 
+    }
   }
 
   return (
@@ -35,7 +49,16 @@ function AllVenues() {
             type="text" 
             placeholder="filter artists by"
             onChange={(e) => setSearchParams(e.target.value)}>
-              </input>
+          </input>
+          <select 
+            className="rounded-3xl" 
+            name={'filter'}
+            value={filter}
+            onChange={handleselect}>
+        <option value="location">Location</option>
+        <option value="name">Name</option>
+      </select>
+              
         </div>
       </div>
       <p className='text-white ml-12 mt-10 text-xl'>Click on a card to view full venue info</p>
@@ -79,6 +102,7 @@ function AllVenues() {
               </div>
               
               {/* V E N U E   D E T A I L S*/}
+            <Link to={`/show-venue/${venue.id}`}>
             <div className="flex flex-col justify-start laptop:pt-20 laptop:pb-1  fold:pt-10 fold:pb-1">
               <div className="bg-gray-100 opacity-75 rounded-xl flex justify-between flex-row laptop:p-4 laptop:m-6 tablet:p-4 tablet:mt-8 fold:p-2 fold:m-2 fold:mt-8">
                 <div className="flex flex-col">
@@ -91,7 +115,9 @@ function AllVenues() {
                   </div>  
                 </div>
               </div>
+              </Link>
             </div> 
+            
           
           )}
           </div>
