@@ -29,22 +29,22 @@ function VenueRegister() {
 
   const [formData, setFormData] = useState({
     email: "", //
-    username: "", //
+    username:  "", //
     password: "",//
-    profileImage: "", //
-    title: "", //
-    role: "", // 
+    profileImage:  "", //
+    title:  "", //
+    role:  "", // 
     venueName: "", //
     type: [],
     // venueImage: "", 
     location: "", //
-    address: "", //
-    budget: "",
-    websiteUrl: "",
+    address:  "", //
+    budget:  "",
+    websiteUrl:  "",
     // videoUrl:"",
     // optionUrl:"",
-    backgroundCardImage: "", //
-    galleryImage1: "", //
+    backgroundCardImage:  "", //
+    galleryImage1:  "", //
     galleryImage2: "", //
     galleryImage3: "", //
     description: "", //
@@ -247,12 +247,11 @@ function VenueRegister() {
   }
 
   function postQ2(event) {
-    
-    console.log("clicked")
-  
     setQ2(false)
     if (event.target.value === 'back') {
       setQ1(true)
+      const newCountVal = 0
+      progressBar.value = newCountVal
     } else {
       setQ3(true)
       const newCountVal = 30
@@ -260,49 +259,86 @@ function VenueRegister() {
     }
   }
 
-  function postQ3() {
-    console.log("clicked")
+  function postQ3(event) {
     setQ3(false)
-    setQ4(true)
-    const newCountVal = 40
-    progressBar.value = newCountVal
-  }
-  function postQ4() {
-    console.log("clicked")
-    setQ4(false)
-    setQ5(true)
-    const newCountVal = 50
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ2(true)
+      const newCountVal = 20
+      progressBar.value = newCountVal
+    } else {
+      setQ4(true)
+      const newCountVal = 40
+      progressBar.value = newCountVal
+    }
   }
 
-  function postQ5() {
-    console.log("clicked")
+  function postQ4(event) {
+    setQ4(false)
+    if (event.target.value === 'back') {
+      setQ3(true)
+      const newCountVal = 30
+      progressBar.value = newCountVal
+    } else {
+      setQ5(true)
+      const newCountVal = 50
+      progressBar.value = newCountVal
+    }
+  }
+
+  function postQ5(event) {
     setQ5(false)
-    setQ6(true)
-    const newCountVal = 60
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ4(true)
+      const newCountVal = 40
+      progressBar.value = newCountVal
+    } else {
+      setQ6(true)
+      const newCountVal = 60
+      progressBar.value = newCountVal
+    }
   }
-  function postQ6() {
-    console.log("clicked")
+
+  function postQ6(event) {
     setQ6(false)
-    setQ7(true)
-    const newCountVal = 70
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ5(true)
+      const newCountVal = 50
+      progressBar.value = newCountVal
+    } else {
+      setQ7(true)
+      const newCountVal = 70
+      progressBar.value = newCountVal
+    }
   }
-  function postQ7() {
-    console.log("clicked")
+
+
+  function postQ7(event) {
     setQ7(false)
-    setQ8(true)
-    const newCountVal = 80
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ6(true)
+      const newCountVal = 60
+      progressBar.value = newCountVal
+    } else {
+      setQ8(true)
+      const newCountVal = 80
+      progressBar.value = newCountVal
+    }
   }
-  function postQ8() {
-    console.log("clicked")
+
+  function postQ8(event) {
     setQ8(false)
-    setQ9(true)
-    const newCountVal = 90
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ7(true)
+      const newCountVal = 70
+      progressBar.value = newCountVal
+    } else {
+      setQ9(true)
+      const newCountVal = 90
+      progressBar.value = newCountVal
+    }
   }
+
+
   function postQ9() {
     console.log("clicked")
     const typearray = formData.type 
@@ -314,16 +350,8 @@ function VenueRegister() {
     setproccedlogin(true)
     const newCountVal = 100
     progressBar.value = newCountVal
-
   }
 
-  // function addanother() {
-  //   setaddanother1(true)
-  // } 
-
-
-  
- 
 
   return (
     <>
@@ -335,11 +363,11 @@ function VenueRegister() {
             <h3 className={styles.h3}>Enter your Email address</h3>
           </div>
           <input 
-            onChange={mailChange} 
+            onChange={handleChange} 
             className={styles.textinput} 
             type="text" 
             name={'email'}
-            value={mail}
+            value={formData.email}
             placeholder="examaple@example.com">
           </input>
           <div>
@@ -418,7 +446,8 @@ function VenueRegister() {
             name={'venueName'}
             value={formData.venueName}>
           </input>
-          <button onClick={postQ3} className={styles.nextbutton}>{`Next -> `}</button>
+          <button onClick={postQ3} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ3} className={styles.backbutton} value='back'>Previous step</button>
         </div></> : null }
   
       {Q4 ? <>
@@ -444,6 +473,7 @@ function VenueRegister() {
             name={'address'}
             value={formData.address}></input>
           <button onClick={postQ4} className={styles.nextbutton}>{`Next -> `}</button>
+          <button onClick={postQ4} className={styles.backbutton} value='back'>Previous step</button>
         </div></> : null }
     
       {Q5 ? <>
@@ -460,6 +490,7 @@ function VenueRegister() {
             value={formData.description}
           ></textarea>
           <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button>
+          <button onClick={postQ5} className={styles.backbutton} value='back'>Previous step</button>
         </div></> : null }
   
       {Q6 ? <>
@@ -478,6 +509,7 @@ function VenueRegister() {
           </input>
           <div>
             <h3 className={styles.h3}>what is your budget for performers(£)</h3>
+            <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
           </div>
           <input 
             onChange={handleChange} 
@@ -488,6 +520,7 @@ function VenueRegister() {
             value={formData.budget}>
           </input>
           <button onClick={postQ6} className={styles.nextbutton}>{`Next -> `}</button>
+          <button onClick={postQ6} className={styles.backbutton} value='back'>Previous step</button>
         </div></> : null }
 
       { Q7 ? <>
@@ -503,6 +536,7 @@ function VenueRegister() {
           <button onClick={handleGalleryUpload3} className={styles.gallerybutton}>upload gallery image</button>            
 
           <button onClick={postQ7} className={styles.nextbutton}>{`Next -> `}</button>
+          <button onClick={postQ7} className={styles.backbutton} value='back'>Previous step</button>
 
         </div></> : null}
 
@@ -548,6 +582,7 @@ function VenueRegister() {
         <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
       <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button> */}
           <button onClick={postQ8} className={styles.nextbutton}>{`Next -> `}</button>
+          <button onClick={postQ8} className={styles.backbutton} value='back'>Previous step</button>
         </div></> : null }
 
       {Q9 ? <>
@@ -564,6 +599,7 @@ function VenueRegister() {
             value={formData.type}
           />
           <button onClick={postQ9} className={styles.nextbutton}>{`Submit form -> `}</button>
+          <button onClick={postQ9} className={styles.backbutton} value='back'>Previous step</button>
         </div></> : null }
 
       {proccedlogin ? <>
