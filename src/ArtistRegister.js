@@ -249,70 +249,121 @@ function ArtistRegister() {
     progressBar.value = newCountVal
   }
 
-  function postQ2() {
-    console.log("clicked")
+  function postQ2(event) {
     setQ2(false)
-    setQ3(true)
-    const newCountVal = 20
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ1(true)
+      const newCountVal = 10
+      progressBar.value = newCountVal
+    } else {
+      setQ3(true)
+      const newCountVal = 20
+      progressBar.value = newCountVal
+    }
   }
 
-  function postQ3() {
-    console.log("clicked")
+  function postQ3(event) {
     setQ3(false)
-    setQ4(true)
-    const newCountVal = 30    
-    progressBar.value = newCountVal
-  }
-  function postQ4() {
-    console.log("clicked")
-    setQ4(false)
-    setQ5(true)
-    const newCountVal = 40  
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ2(true)
+      const newCountVal = 20
+      progressBar.value = newCountVal
+    } else {
+      setQ4(true)
+      const newCountVal = 30
+      progressBar.value = newCountVal
+    }
   }
 
-  function postQ5() {
-    console.log("clicked")
+  function postQ4(event) {
+    setQ4(false)
+    if (event.target.value === 'back') {
+      setQ3(true)
+      const newCountVal = 30
+      progressBar.value = newCountVal
+    } else {
+      setQ5(true)
+      const newCountVal = 40
+      progressBar.value = newCountVal
+    }
+  }
+
+  function postQ5(event) {
     setQ5(false)
-    setQ6(true)
-    const newCountVal = 50
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ4(true)
+      const newCountVal = 40
+      progressBar.value = newCountVal
+    } else {
+      setQ6(true)
+      const newCountVal = 50
+      progressBar.value = newCountVal
+    }
   }
-  function postQ6() {
-    console.log("clicked")
+
+  function postQ6(event) {
     setQ6(false)
-    setQ7(true)
-    const newCountVal = 60
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ5(true)
+      const newCountVal = 50
+      progressBar.value = newCountVal
+    } else {
+      setQ7(true)
+      const newCountVal = 60
+      progressBar.value = newCountVal
+    }
   }
-  function postQ7() {
-    console.log("clicked")
+
+  function postQ7(event) {
     setQ7(false)
-    setQ8(true)
-    const newCountVal = 70
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ6(true)
+      const newCountVal = 60
+      progressBar.value = newCountVal
+    } else {
+      setQ8(true)
+      const newCountVal = 70
+      progressBar.value = newCountVal
+    }
   }
-  function postQ8() {
-    console.log("clicked")
+
+  function postQ8(event) {
     setQ8(false)
-    setQ9(true)
-    const newCountVal = 80
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ7(true)
+      const newCountVal = 70
+      progressBar.value = newCountVal
+    } else {
+      setQ9(true)
+      const newCountVal = 80
+      progressBar.value = newCountVal
+    }
   }
-  function postQ9() {
-    console.log("clicked")
+
+  function postQ9(event) {
     setQ9(false)
-    setQ10(true)
-    const newCountVal = 90
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ8(true)
+      const newCountVal = 80
+      progressBar.value = newCountVal
+    } else {
+      setQ10(true)
+      const newCountVal = 90
+      progressBar.value = newCountVal
+    }
   }
-  function postQ10() {
-    console.log("clicked")
+
+  function postQ10(event) {
     setQ10(false)
-    setproccedlogin(true)
-    const newCountVal = 100
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ9(true)
+      const newCountVal = 90
+      progressBar.value = newCountVal
+    } else {
+      setproccedlogin(true)
+      const newCountVal = 100
+      progressBar.value = newCountVal
+    }
   }
  
   return (
@@ -379,6 +430,7 @@ function ArtistRegister() {
           <option value="leeds">Leeds</option>
           <option value="Liverpool">Liverpool</option>
         </select>
+        <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
         <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
       </div></> : null }
 
@@ -397,12 +449,13 @@ function ArtistRegister() {
             value={formData.travel}
           />
           <button onClick={postQ3} className={styles.nextbutton}>{`Next -> `}</button>
+          <button onClick={postQ3} className={styles.backbutton} value='back'>Previous step</button>
         </div></> : null }
 
       {Q4 ? <>
         <div className={styles.questionbox}>
-          <div className={styles.titlebanner}>
             <h3 className={styles.h3}>What is your website address?</h3>
+          <div className={styles.titlebanner}>
           </div>
           <input 
             onChange={handleChange} 
@@ -412,6 +465,7 @@ function ArtistRegister() {
             name="websiteUrl" 
             value={formData.websiteUrl}
           />
+          <button onClick={postQ4} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ4} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
       
@@ -428,7 +482,7 @@ function ArtistRegister() {
             name="videoUrl" 
             value={formData.videoUrl}
           />
-         
+          <button onClick={postQ5} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
       
@@ -445,6 +499,7 @@ function ArtistRegister() {
             name="musicUrl" 
             value={formData.musicUrl}
           />
+          <button onClick={postQ6} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ6} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
       
@@ -460,6 +515,7 @@ function ArtistRegister() {
           <button onClick={handleGalleryUpload2} className={styles.nextbutton}>upload gallery image</button>            
           <button onClick={handleGalleryUpload3} className={styles.nextbutton}>upload gallery image</button>            
 
+          <button onClick={postQ7} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ7} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
     
@@ -489,6 +545,7 @@ function ArtistRegister() {
             value={formData.bio}
           />
           
+          <button onClick={postQ8} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ8} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
      
@@ -529,6 +586,7 @@ function ArtistRegister() {
             name="instagramUrl" 
             value={formData.instagramUrl}
           />
+          <button onClick={postQ9} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ9} className={styles.nextbutton}>{`Submit Form -> `}</button>
         </div></> : null }
 
@@ -547,6 +605,7 @@ function ArtistRegister() {
             onChange={(genre) => setFormData({ ...formData, genre })}
             value={formData.genre}
           />
+          <button onClick={postQ10} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ10} className={styles.nextbutton}>{`Submit form -> `}</button>
         </div></> : null }
    

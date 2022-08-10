@@ -28,7 +28,7 @@ function VenueRegister() {
     { type: '' } );
 
   const [formData, setFormData] = useState({
-    email: mail, //
+    email: "", //
     username:"", //
     password: "",//
     profileImage:"", //
