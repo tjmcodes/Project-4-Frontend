@@ -60,7 +60,7 @@ function VenueLogin() {
               <label className={styles.label}>Password</label>
               <input 
                 className={styles.textinput} 
-                type="text" 
+                type="password" 
                 placeholder="Enter your Password" 
                 name={'password'}
                 value={formData.password}

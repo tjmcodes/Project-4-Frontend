@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './ArtistLogin.module.css'
 import { Link } from 'react-router-dom';
@@ -60,7 +60,7 @@ function ArtistLogin() {
               <label className={styles.label}>Password</label>
               <input 
                 className={styles.textinput} 
-                type="text" 
+                type="password" 
                 placeholder="Enter your Password" 
                 name={'password'}
                 value={formData.password}
