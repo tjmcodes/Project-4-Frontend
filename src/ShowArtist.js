@@ -186,11 +186,11 @@ function ShowArtists() {
 
             {/* A R T I S T  C O M M E N T S */}
             <h1 className="flex laptop:text-3xl tablet:text-xl text-white underline underline-offset-8 justify-start ml-4"> Reviews </h1>
-            <div className="flex flex-row mt-10 bg-gray- rounded-xl col-span-3 justify-start">
+            <div className="flex flex-row mt-2 rounded-xl col-span-3 justify-start">
               
               <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 w-full">
                 {artist.comments && artist.comments.map((comment, index) => {
-                  return <><div key={artist.comments.id} className="bg-red-300 p-2 m-2 rounded-xl w-full flex flex-row">
+                  return <><div key={artist.comments.id} className="bg-red-300 p-2 mb-3 rounded-xl w-full flex flex-row">
                     
                     {/* V E N U E  P O S T E D  O N  A R T I S T  A V A T A R */}
                     <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 ">
@@ -201,7 +201,7 @@ function ShowArtists() {
                     <div key={index} className="flex flex-col grow w-full flex-col justify-end pl-4 bg-gray-200 rounded-xl ">
                       <p className={'text-xs underlineunderline-text-offset-6 tex-black mb-6'}>Posted: At {moment(comment.created_at)._d.toString().split("2022")[1].split("GMT")[0].slice(0, -4)} on {comment.created_at.split("T")[0].split("-"). slice(0).reverse().join(" ")}</p> 
                       <p className={'flex grow w-full flex-col justify-end  bg-gray-200 rounded-xl text-lg'}>{comment.content}</p>
-                      <p className={'flex grow w-full flex-col justify-end bg-gray-200  rounded-xl mt-8 text-m'}>Ratings: {comment.rating}stars</p>
+                      <p className={'flex grow w-full flex-col justify-end bg-gray-200  rounded-xl mt-8 text-m'}>Ratings: {comment.rating} stars</p>
                       
                       {/* V E N U E  L I K I N G  A R T I S T  */}
                       <div className="flex items-end bg-gray-200 rounded-xl" onClick={() => setLike(!like)}>
@@ -220,7 +220,7 @@ function ShowArtists() {
 
             {/*  // V E N U E  P O S T I N G  A  C O M M E N T // }
           {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-            <div key={artist.comments} className={"flex item-center w-1/2 item-center m-4 bg-gray-500 rounded-xl col-span-3"}>
+            <div key={artist.comments} className={"grid grid-2 m-4 bg-gray-500 rounded-xl col-span-3"}>
               {/* {getLoggedInUserId() &&  */}
               <article className="w-full">
                 <div className={""}>
@@ -256,7 +256,7 @@ function ShowArtists() {
                   </div>
                 </div>
               </article>
-              {/* }  */}
+              {/* } */}
             </div>
     
             {console.log(artist)}

@@ -4,7 +4,7 @@ import heart from './images/heart.jpg'
 import unheart from './images/unheart.jpg'
 import moment from 'moment'
 import NavBar from './NavBar.js'
-import { getLoggedInUserId } from './lib/auth.js'
+// import { getLoggedInUserId } from './lib/auth.js'
 import axios from 'axios'
 
 
@@ -43,7 +43,7 @@ function ShowVenues() {
         }
       )
       setVenue(data)
-      // window.location.reload()
+      window.location.reload()
       console.log(data)
     } catch (err) { 
       console.log(err)
@@ -196,7 +196,7 @@ function ShowVenues() {
             {/* V E N U E  C O M M E N T S */}
 
             <h1 className="flex laptop:text-3xl tablet:text-xl text-white underline underline-offset-8 justify-start ml-4"> Reviews </h1>
-            <div className="flex flex-row mt-10 bg-gray- rounded-xl col-span-3 justify-start">
+            <div className="flex flex-row mt-2 rounded-xl col-span-3 justify-start">
               
               <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 w-full">
                 {venue.comments && venue.comments.map((comment, index) => {
@@ -211,7 +211,7 @@ function ShowVenues() {
                     <div key={index} className="flex flex-col grow w-full flex-col justify-end pl-4 bg-gray-200 rounded-xl ">
                       <p className={'text-xs underlineunderline-text-offset-6 tex-black mb-6'}>Posted: At {moment(comment.created_at)._d.toString().split("2022")[1].split("GMT")[0].slice(0, -4)} on {comment.created_at.split("T")[0].split("-"). slice(0).reverse().join(" ")}</p> 
                       <p className={'flex grow w-full flex-col justify-end  bg-gray-200 rounded-xl text-lg'}>{comment.content}</p>
-                      <p className={'flex grow w-full flex-col justify-end bg-gray-200  rounded-xl mt-8 text-m'}>Ratings: {comment.rating}stars</p>
+                      <p className={'flex grow w-full flex-col justify-end bg-gray-200  rounded-xl mt-8 text-m'}>Ratings: {comment.rating} stars</p>
                       
                       {/* A R T I S T  L I K I N G  V E N U E  */}
                       <div className="flex items-end bg-gray-200 rounded-xl" onClick={() => setLike(!like)}>
@@ -230,13 +230,13 @@ function ShowVenues() {
 
             {/*  // A R T I S T P O S T I N G  A  C O M M E N T // }
           {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-            <div key={venue.id} className={"flex flex-col w-1/2 m-10 bg-gray-400 rounded-xl col-span-3"}>
-              {getLoggedInUserId() && 
-              <article>
+            <div key={venue.id} className={"grid grid-2 m-4 bg-gray-500 rounded-xl col-span-3"}>
+              {/* {getLoggedInUserId() &&  */}
+              <article className={"w-full"}>
                 <div className={""}>
-                  <div className="">
+                  <div className="m-4">
                     <textarea 
-                      className="mt-4 mb-4 ml-4 flex flex-col w-3/4 mt-4 rounded-xl col-span-3 "
+                      className="mt-4 mb-4 flex w-full mt-4 rounded-xl"
                       maxLength={280}
                       placeholder="Write out your post here.."
                       onChange={(event) => setCommentContent(event.target.value)}>
@@ -266,7 +266,7 @@ function ShowVenues() {
                   </div>
                 </div>
               </article>
-              }
+              {/* } */}
             </div>
             {console.log(venue)}
           </div>
