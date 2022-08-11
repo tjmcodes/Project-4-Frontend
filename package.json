@@ -6,6 +6,7 @@
     "@babel/eslint-parser": "^7.16.5",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^1.0.6",
+    "@sefailyasoz/react-carousel": "^1.1.1",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "eslint": "^8.7.0",
