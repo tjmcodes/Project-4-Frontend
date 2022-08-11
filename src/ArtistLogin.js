@@ -41,8 +41,8 @@ function ArtistLogin() {
       navigate('/venues') 
     } catch (err) {
       console.log(err)
-      setErrors(err.response.data.errors)
-      console.log(err.response.data)
+      setErrors(err.response.data.message)
+      // console.log(err.response.data.message)
     }
   }
   
@@ -79,7 +79,7 @@ function ArtistLogin() {
                 value={formData.password}
                 onChange={handleChange}>
               </input>
-              {/* {errors.password === "" ? null : <small>{errors.password}</small>}  */}
+              {errors.password === "" ? null : <small>{errors.password}</small>} 
               <div className={styles.buttondiv}>
 
                 <button className={styles.loginbutton}>Log in </button>
