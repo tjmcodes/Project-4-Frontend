@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import heart from './images/heart.jpg'
 import unheart from './images/unheart.jpg'
+import NavBar from './NavBar.js'
 
 function LandingPage() {
   const [artists, setArtists] = React.useState([])
@@ -29,6 +30,7 @@ function LandingPage() {
 
   return ( 
     <div className="bg-black">
+      <NavBar />
       <div className="bg-hero-pattern bg-cover tablet:bg-center pt-10 pb-20">
        
         <div style={{ backgroundColor: "rgba(250, 32, 84, 0.2)", width: "100%" }} className="flex desktop:p-8 desktop:m-0 mx-auto laptop:p-8 laptop:m-0 tablet:m-0 fold:p-2 fold:m- grid tablet:grid-cols-3">
