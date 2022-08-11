@@ -242,20 +242,17 @@ function VenueRegister() {
   function postQ1() {
     setQ1(false)
     setQ2(true)
-    const newCountVal = 20
-    progressBar.value = newCountVal
+    progressBar.value = 20
   }
 
   function postQ2(event) {
     setQ2(false)
     if (event.target.value === 'back') {
       setQ1(true)
-      const newCountVal = 0
-      progressBar.value = newCountVal
+      progressBar.value = 0
     } else {
       setQ3(true)
-      const newCountVal = 30
-      progressBar.value = newCountVal
+      progressBar.value = 30
     }
   }
 
@@ -263,12 +260,10 @@ function VenueRegister() {
     setQ3(false)
     if (event.target.value === 'back') {
       setQ2(true)
-      const newCountVal = 20
-      progressBar.value = newCountVal
+      progressBar.value = 20
     } else {
       setQ4(true)
-      const newCountVal = 40
-      progressBar.value = newCountVal
+      progressBar.value = 40
     }
   }
 
@@ -276,12 +271,10 @@ function VenueRegister() {
     setQ4(false)
     if (event.target.value === 'back') {
       setQ3(true)
-      const newCountVal = 30
-      progressBar.value = newCountVal
+      progressBar.value = 30
     } else {
       setQ5(true)
-      const newCountVal = 50
-      progressBar.value = newCountVal
+      progressBar.value = 50
     }
   }
 
@@ -289,12 +282,10 @@ function VenueRegister() {
     setQ5(false)
     if (event.target.value === 'back') {
       setQ4(true)
-      const newCountVal = 40
-      progressBar.value = newCountVal
+      progressBar.value = 40
     } else {
       setQ6(true)
-      const newCountVal = 60
-      progressBar.value = newCountVal
+      progressBar.value = 60
     }
   }
 
@@ -302,12 +293,10 @@ function VenueRegister() {
     setQ6(false)
     if (event.target.value === 'back') {
       setQ5(true)
-      const newCountVal = 50
-      progressBar.value = newCountVal
+      progressBar.value = 50
     } else {
       setQ7(true)
-      const newCountVal = 70
-      progressBar.value = newCountVal
+      progressBar.value = 70
     }
   }
 
@@ -316,12 +305,10 @@ function VenueRegister() {
     setQ7(false)
     if (event.target.value === 'back') {
       setQ6(true)
-      const newCountVal = 60
-      progressBar.value = newCountVal
+      progressBar.value = 60
     } else {
       setQ8(true)
-      const newCountVal = 80
-      progressBar.value = newCountVal
+      progressBar.value = 80
     }
   }
 
@@ -329,12 +316,10 @@ function VenueRegister() {
     setQ8(false)
     if (event.target.value === 'back') {
       setQ7(true)
-      const newCountVal = 70
-      progressBar.value = newCountVal
+      progressBar.value = 70
     } else {
       setQ9(true)
-      const newCountVal = 90
-      progressBar.value = newCountVal
+      progressBar.value = 90
     }
   }
 

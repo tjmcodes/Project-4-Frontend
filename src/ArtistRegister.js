@@ -31,7 +31,11 @@ function ArtistRegister() {
   
   const [formData, setFormData] = useState({
     username: "",
+<<<<<<< HEAD
+    email: "" , 
+=======
     email: "", 
+>>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
     artistName: "",
     password: "",
     profileImage: "",
@@ -57,7 +61,11 @@ function ArtistRegister() {
 
   const [errors, setErrors] = useState({
     username: "",
+<<<<<<< HEAD
+    email: "" , 
+=======
     email: "", 
+>>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
     artistName: "",
     password: "",
     profileImage: "",
@@ -179,7 +187,10 @@ function ArtistRegister() {
     ).open()
   }
   console.log(formData)
+<<<<<<< HEAD
+=======
   
+>>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
   function handleGalleryUpload2() {
     window.cloudinary.createUploadWidget(
       {
@@ -256,12 +267,10 @@ function ArtistRegister() {
     setQ2(false)
     if (event.target.value === 'back') {
       setQ1(true)
-      const newCountVal = 10
-      progressBar.value = newCountVal
+      progressBar.value = 10
     } else {
       setQ3(true)
-      const newCountVal = 20
-      progressBar.value = newCountVal
+      progressBar.value = 20
     }
   }
 
@@ -269,12 +278,10 @@ function ArtistRegister() {
     setQ3(false)
     if (event.target.value === 'back') {
       setQ2(true)
-      const newCountVal = 20
-      progressBar.value = newCountVal
+      progressBar.value = 20
     } else {
       setQ4(true)
-      const newCountVal = 30
-      progressBar.value = newCountVal
+      progressBar.value = 30
     }
   }
 
@@ -282,12 +289,10 @@ function ArtistRegister() {
     setQ4(false)
     if (event.target.value === 'back') {
       setQ3(true)
-      const newCountVal = 30
-      progressBar.value = newCountVal
+      progressBar.value = 30
     } else {
       setQ5(true)
-      const newCountVal = 40
-      progressBar.value = newCountVal
+      progressBar.value = 40
     }
   }
 
@@ -295,12 +300,10 @@ function ArtistRegister() {
     setQ5(false)
     if (event.target.value === 'back') {
       setQ4(true)
-      const newCountVal = 40
-      progressBar.value = newCountVal
+      progressBar.value = 40
     } else {
       setQ6(true)
-      const newCountVal = 50
-      progressBar.value = newCountVal
+      progressBar.value = 50
     }
   }
 
@@ -308,12 +311,10 @@ function ArtistRegister() {
     setQ6(false)
     if (event.target.value === 'back') {
       setQ5(true)
-      const newCountVal = 50
-      progressBar.value = newCountVal
+      progressBar.value = 50
     } else {
       setQ7(true)
-      const newCountVal = 60
-      progressBar.value = newCountVal
+      progressBar.value = 60
     }
   }
 
@@ -321,12 +322,10 @@ function ArtistRegister() {
     setQ7(false)
     if (event.target.value === 'back') {
       setQ6(true)
-      const newCountVal = 60
-      progressBar.value = newCountVal
+      progressBar.value = 60
     } else {
       setQ8(true)
-      const newCountVal = 70
-      progressBar.value = newCountVal
+      progressBar.value = 70
     }
   }
 
@@ -334,12 +333,10 @@ function ArtistRegister() {
     setQ8(false)
     if (event.target.value === 'back') {
       setQ7(true)
-      const newCountVal = 70
-      progressBar.value = newCountVal
+      progressBar.value = 70
     } else {
       setQ9(true)
-      const newCountVal = 80
-      progressBar.value = newCountVal
+      progressBar.value = 80
     }
   }
 
@@ -347,12 +344,10 @@ function ArtistRegister() {
     setQ9(false)
     if (event.target.value === 'back') {
       setQ8(true)
-      const newCountVal = 80
-      progressBar.value = newCountVal
+      progressBar.value = 80
     } else {
       setQ10(true)
-      const newCountVal = 90
-      progressBar.value = newCountVal
+      progressBar.value = 90
     }
   }
 
@@ -360,12 +355,10 @@ function ArtistRegister() {
     setQ10(false)
     if (event.target.value === 'back') {
       setQ9(true)
-      const newCountVal = 90
-      progressBar.value = newCountVal
+      progressBar.value = 90
     } else {
       setproccedlogin(true)
-      const newCountVal = 100
-      progressBar.value = newCountVal
+      progressBar.value = 100
     }
   }
  
@@ -413,8 +406,11 @@ function ArtistRegister() {
             name="password"
             value={formData.password}>
           </input>
+<<<<<<< HEAD
+=======
           {errors.password && <small className="errors">{errors.password}</small>}
           
+>>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
           <div>
             <h3 className={styles.h3}>Please upload a profile image by clicking on the button below</h3>
           </div>
@@ -438,7 +434,10 @@ function ArtistRegister() {
             <option value="leeds">Leeds</option>
             <option value="Liverpool">Liverpool</option>
           </select>
+<<<<<<< HEAD
+=======
           {errors.location && <small className="errors">{errors.location}</small>}
+>>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
           <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
