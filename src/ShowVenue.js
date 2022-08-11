@@ -51,7 +51,7 @@ function ShowVenues() {
   }
 
   return ( 
-    <div className="bg-black">
+    <div className="bg-black grid">
       <NavBar />
       <div className="bg-hero-pattern bg-cover bg-fixed tablet:bg-center pt-10 pb-20">
         {venue ? ( 
