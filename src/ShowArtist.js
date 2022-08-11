@@ -190,8 +190,8 @@ function ShowArtists() {
                   return <><div key={artist.comments.id} className="bg-red-300 p-2 m-2 rounded-xl w-full flex flex-row">
                     {/* A R T I S T  A V A T A R */}
                     <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 ">
-                      <img className="flex w-40 rounded-full" src={comment.artist.profileImage} alt="" />
-                      <p className="capitalize flex justify-center laptop:text-xl tablet:text-lg fold:text-xs">{comment.artist.artistName}</p>
+                      <img className="flex w-40 rounded-full" src={comment.venue.profileImage} alt="" />
+                      <p className="capitalize flex justify-center laptop:text-xl tablet:text-lg fold:text-xs">{comment.venue.artistName}</p>
                     </div>
                     <div key={index} className="flex flex-col grow w-full flex-col justify-end pl-4 bg-gray-200 rounded-xl ">
                       <p className={'text-xs underlineunderline-text-offset-6 tex-black mb-6'}>Posted: At {moment(comment.created_at)._d.toString().split("2022")[1].split("GMT")[0].slice(0, -4)} on {comment.created_at.split("T")[0].split("-"). slice(0).reverse().join(" ")}</p> 
