@@ -1,13 +1,13 @@
 import React from 'react';
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './ArtistLogin.module.css'
 import { Link } from 'react-router-dom';
 
 function ArtistLogin() {
 
-  // const navigate = useNavigate() --> this will allow the page to navigate to ... once user is logged in.
-
+  //  --> this will allow the page to navigate to ... once user is logged in.
+  const navigate = useNavigate()
   const [formData, setFormData] = React.useState({
     password: "",
     email: "",
@@ -29,6 +29,7 @@ function ArtistLogin() {
       const { data } = await axios.post('/api/artist-login', formData)
       localStorage.setItem('token', data.token)
       console.log(data.token)
+      navigate('/venues')
     } catch (err) {
       console.log(err.response.data)
     }
@@ -59,7 +60,7 @@ function ArtistLogin() {
               <label className={styles.label}>Password</label>
               <input 
                 className={styles.textinput} 
-                type="text" 
+                type="password" 
                 placeholder="Enter your Password" 
                 name={'password'}
                 value={formData.password}

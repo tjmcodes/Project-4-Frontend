@@ -32,8 +32,7 @@ function ArtistRegister() {
   const [formData, setFormData] = useState({
     username: "",
 
-    email: "" , 
-
+    email: "", 
     artistName: "",
     password: "",
     profileImage: "",
@@ -60,7 +59,6 @@ function ArtistRegister() {
   const [errors, setErrors] = useState({
     username: "",
     email: "" , 
-
     artistName: "",
     password: "",
     profileImage: "",
@@ -423,7 +421,9 @@ function ArtistRegister() {
             <option value="leeds">Leeds</option>
             <option value="Liverpool">Liverpool</option>
           </select>
+
           {errors.location && <small className="errors">{errors.location}</small>}
+
           <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
@@ -618,7 +618,6 @@ function ArtistRegister() {
           <button onClick={postQ10} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ10} className={styles.nextbutton}>{`Submit form -> `}</button>
         </div></> : null }
-   
 
       {proccedlogin ? <>
         <div className={styles.proccedlogin}>

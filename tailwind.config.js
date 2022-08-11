@@ -15,7 +15,7 @@ module.exports = {
     './src/ArtistNavBar.js',
     './src/VenueNavBar.js',
     './src/StartJourney.js',
-    './node_modules/flowbite/**/*.js',
+    './node_modules/flowbite/**/*.{js,jsx}',
     './src/VenueStart.js',
     './src/ArtistStart.js',
   ],

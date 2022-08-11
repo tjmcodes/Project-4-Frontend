@@ -29,22 +29,22 @@ function VenueRegister() {
 
   const [formData, setFormData] = useState({
     email: "", //
-    username:  "", //
+    username: "", //
     password: "",//
-    profileImage:  "", //
-    title:  "", //
-    role:  "", // 
+    profileImage: "", //
+    title: "", //
+    role: "", // 
     venueName: "", //
     type: [],
     // venueImage: "", 
     location: "", //
-    address:  "", //
-    budget:  "",
-    websiteUrl:  "",
+    address: "", //
+    budget: "",
+    websiteUrl: "",
     // videoUrl:"",
     // optionUrl:"",
-    backgroundCardImage:  "", //
-    galleryImage1:  "", //
+    backgroundCardImage: "", //
+    galleryImage1: "", //
     galleryImage2: "", //
     galleryImage3: "", //
     description: "", //
@@ -99,8 +99,8 @@ function VenueRegister() {
     setVenueType({
       type: [{ type: (e.target.value) }],
     })
-    console.log(type)
   }
+  // console.log(type)
 
   function handleProfileUpload() {
     window.cloudinary.createUploadWidget(
@@ -373,7 +373,7 @@ function VenueRegister() {
           <input 
             onChange={handleChange} 
             className={styles.textinput} 
-            type="text" 
+            type="password" 
             placeholder="Enter your password"
             name={'password'}
             value={formData.password}>

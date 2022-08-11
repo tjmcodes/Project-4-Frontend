@@ -13,7 +13,7 @@ import VenueStart from './VenueStart.js'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import VenueRegister from './VenueRegister.js'
 import ArtistDashboard from './ArtistDashboard.js'
-import VenueDashboard from './VenueDashboard.js'
+// import VenueDashboard from './VenueDashboard.js'
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
         <Route path='/venuestart' element={<VenueStart />} />
         <Route path='/venue-register' element={<VenueRegister/>} />
         <Route path='/artist-dashboard' element={<ArtistDashboard/>} />
-        <Route path='/venue-dashboard' element={<VenueDashboard />} />
+        {/* <Route path='/venue-dashboard' element={<VenueDashboard />} /> */}
       </Routes>
     </Router>
   )
