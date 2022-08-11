@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 // import { useNavigate } from 'react-router-dom'
 import styles from './ArtistRegister.module.css'
-import genres from './data/genres.js'
-import Select from 'react-select'
+
 
 function ArtistRegister() {
 
@@ -18,7 +17,7 @@ function ArtistRegister() {
   const [Q9, setQ9] = React.useState(false)
   const [Q10, setQ10] = React.useState(false)
   const [review, setreview] = React.useState(false)
-  const [proccedlogin, setproccedlogin] = React.useState(false)
+  // const [proccedlogin, setproccedlogin] = React.useState(false)
 
   // const [addanother1, setaddanother1] = React.useState(false)
   const [button, updateButton] = useState(false)
@@ -33,7 +32,7 @@ function ArtistRegister() {
   
 
   const [genreType, setGenreType] = React.useState(
-    { genre: [] })
+    { genre: "" })
   
   const [formData, setFormData] = useState({
     username: "",
@@ -59,7 +58,7 @@ function ArtistRegister() {
     twitterUrl: "",
     youTubeUrl: "",
     instagramUrl: "",
-    genre: [],
+    genre: "",
   })
 
   const [errors, setErrors] = useState({
@@ -85,7 +84,7 @@ function ArtistRegister() {
     twitterUrl: "",
     youTubeUrl: "",
     instagramUrl: "",
-    genre: [],
+    genre: "",
   })
 
 
@@ -109,11 +108,12 @@ function ArtistRegister() {
       [name]: '',
     })
     setGenreType({
-      genre: (genreType.map(genreElem => ({ genre: genreElem.value }))),
+      genre: [{ genre: (e.target.value) }],
+      // genre: genres.map(genreElem => ({ genre: genreElem.value })),
       // genreArray: e.target.value,
       // genreObjects: genreArray.map(genreElem => ({ genre: genreElem.value })),
     })
-    console.log(genreType)
+    // console.log(genreType)
   }
 
   function handleProfileUpload() {
@@ -248,6 +248,7 @@ function ArtistRegister() {
       setErrors(err.response.data.errors)
       console.log(err.response.data)
     }
+    console.log(newFormData.genre)
   }
   
   // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -621,22 +622,19 @@ function ArtistRegister() {
       {Q10 ? <>
         <div className={styles.questionbox}>
           <div className={styles.titlebanner}>
-            <h3 className={styles.h3}>What genre?</h3>
+            <h3 className={styles.h3}>What genre is your music?</h3>
           </div>
-          <Select
-            defaultValue={[]}
-            isMulti
-            name="genre"
-            options={genres}
-            className="basic-multi-select"
-            classNamePrefix="select"
-            // onChange={(genre) => setFormData({ ...formData, genre })}
-            onChange={handleChange}
+          <input 
+            placeholder="Enter genre in here"
+            onChange={handleChange} 
+            className={styles.textinput} 
+            type="text" 
+            name="genre" 
             value={formData.genre}
           />
           {errors.genre && <small className="errors">{errors.genre}</small>}
           <button onClick={postQ10} className={styles.backbutton} value='back'>Previous step</button>
-          <button onClick={postQ10} className={styles.nextbutton}>Review and submit</button>
+          <button onClick={handleSubmit} className={styles.nextbutton}>Review and submit</button>
         </div></> : null }
       {review ? <>
         <h2>Review your details</h2>
@@ -738,14 +736,14 @@ function ArtistRegister() {
           <button  className={styles.nextbutton} onClick={handleSubmit}>Submit Registration</button>
         </div> </> : null 
       }
-      {proccedlogin ? <>
+      {/* {proccedlogin ? <>
         <div className={styles.procceprdlogin}>
           <div className={styles.logintext}>
             <h3 className={styles.h3login}>You are now Registered!</h3>
             <h4 className={styles.h4login}>Welcome to our talented family</h4>
             <button className={styles.loginbutton}>Click to proceed to login</button>
           </div>
-        </div></> : null }
+        </div></> : null } */}
     </>
   )
 }

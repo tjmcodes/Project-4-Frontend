@@ -25,7 +25,7 @@ function VenueRegister() {
   const progressBar = document.getElementById("progress")
 
   const [venueType, setVenueType] = React.useState( 
-    { type: '' } );
+    { type: "" } );
 
   const [formData, setFormData] = useState({
     email: "", //
@@ -35,7 +35,7 @@ function VenueRegister() {
     title: "", //
     role: "", // 
     venueName: "", //
-    type: [],
+    type: "",
     // venueImage: "", 
     location: "", //
     address: "", //
@@ -63,7 +63,7 @@ function VenueRegister() {
     title: "", //
     role: "", // 
     venueName: "", //
-    type: [],
+    type: "",
     // venueImage: "", 
     location: "", //
     address: "", //
