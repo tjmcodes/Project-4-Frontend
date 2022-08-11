@@ -12,7 +12,7 @@ import ArtistStart from './ArtistStart.js'
 import VenueStart from './VenueStart.js'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import VenueRegister from './VenueRegister.js'
-// import ArtistDashboard from './ArtistDashboard.js'
+import ArtistDashboard from './ArtistDashboard.js'
 // import VenueDashboard from './VenueDashboard.js'
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
         <Route path='/artiststart' element={<ArtistStart />} />
         <Route path='/venuestart' element={<VenueStart />} />
         <Route path='/venue-register' element={<VenueRegister/>} />
-        {/* <Route path='/artist-dashboard' element={<ArtistDashboard/>} /> */}
+        <Route path='/artist-dashboard' element={<ArtistDashboard/>} />
         {/* <Route path='/venue-dashboard' element={<VenueDashboard />} /> */}
       </Routes>
     </Router>
