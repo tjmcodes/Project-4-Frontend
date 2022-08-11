@@ -240,9 +240,9 @@ function ShowArtists() {
                   </div>
                 </div>
               </article>
-              {/* } */}
+              {/* }  */}
             </div>
-             
+    
             {console.log(artist)}
           </div>
           

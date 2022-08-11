@@ -7,11 +7,14 @@ import NavBar from './NavBar.js'
 // import { getLoggedInUserId } from './lib/auth.js'
 import axios from 'axios'
 
+
 function ShowVenues() {
   const [venue, setVenue] = useState([])
   const { venueId } = useParams()
   const [like, setLike] = useState(false)
   const [commentContent, setCommentContent] = React.useState('')
+  const [venueRating , setVenueRating] = useState()
+
   
   // const [activeLike, setactivelike] = React.useState()
 
@@ -28,15 +31,19 @@ function ShowVenues() {
   async function handleComment() {
   
     try {
+      console.log('function started')
+      console.log(commentContent)
       const { data } = await axios.post(
         `/api/venues/${venueId}/comments`, 
-        { content: commentContent },
+        { content: commentContent,
+          rating: venueRating,
+        },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
         }
       )
       setVenue(data)
-      // window.location.reload()
+      window.location.reload()
       console.log(data)
     } catch (err) { 
       console.log(err)
@@ -235,6 +242,14 @@ function ShowVenues() {
                       onChange={(event) => setCommentContent(event.target.value)}>
                     </textarea>
                   </div>
+                  <div className="">
+                    <input 
+                      className="mt-4 mb-4 ml-4 flex flex-col w-3/4 mt-4 rounded-xl col-span-3 "
+                      type="number"
+                      onChange={(event) => setVenueRating(event.target.value)}>
+                    </input>
+                    
+                  </div>
                 
                   <div className="field">
                     <div className="control">
@@ -247,9 +262,8 @@ function ShowVenues() {
                   </div>
                 </div>
               </article>
-              {/* } */}
+              {/* }  */}
             </div>
-             
             {console.log(venue)}
           </div>
           
