@@ -31,11 +31,9 @@ function ArtistRegister() {
   
   const [formData, setFormData] = useState({
     username: "",
-<<<<<<< HEAD
+
     email: "" , 
-=======
-    email: "", 
->>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
+
     artistName: "",
     password: "",
     profileImage: "",
@@ -61,11 +59,8 @@ function ArtistRegister() {
 
   const [errors, setErrors] = useState({
     username: "",
-<<<<<<< HEAD
     email: "" , 
-=======
-    email: "", 
->>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
+
     artistName: "",
     password: "",
     profileImage: "",
@@ -187,10 +182,7 @@ function ArtistRegister() {
     ).open()
   }
   console.log(formData)
-<<<<<<< HEAD
-=======
-  
->>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
+
   function handleGalleryUpload2() {
     window.cloudinary.createUploadWidget(
       {
@@ -406,11 +398,8 @@ function ArtistRegister() {
             name="password"
             value={formData.password}>
           </input>
-<<<<<<< HEAD
-=======
           {errors.password && <small className="errors">{errors.password}</small>}
           
->>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
           <div>
             <h3 className={styles.h3}>Please upload a profile image by clicking on the button below</h3>
           </div>
@@ -434,10 +423,7 @@ function ArtistRegister() {
             <option value="leeds">Leeds</option>
             <option value="Liverpool">Liverpool</option>
           </select>
-<<<<<<< HEAD
-=======
           {errors.location && <small className="errors">{errors.location}</small>}
->>>>>>> 9fcc3037a504e398f8edf2ed31f4af9ad5f772a1
           <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ2} className={styles.nextbutton}>{`Next -> `}</button>
         </div></> : null }
