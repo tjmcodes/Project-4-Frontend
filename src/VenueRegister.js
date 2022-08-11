@@ -322,20 +322,30 @@ function VenueRegister() {
       progressBar.value = 90
     }
   }
-
-
-  function postQ9() {
-    console.log("clicked")
-    const typearray = formData.type 
-    console.log(typearray)
-    const typeobject = typearray.map((tag, index) => ({ type: tag, index: index + 1 }));
-    console.log(typeobject)
-    formData.type = typeobject
+  function postQ9(event) {
     setQ9(false)
-    setproccedlogin(true)
-    const newCountVal = 100
-    progressBar.value = newCountVal
+    if (event.target.value === 'back') {
+      setQ8(true)
+      progressBar.value = 80
+    } else {
+      setproccedlogin(true)
+      progressBar.value = 100
+    }
   }
+
+
+  // function postQ9() {
+  //   console.log("clicked")
+  //   const typearray = formData.type 
+  //   console.log(typearray)
+  //   const typeobject = typearray.map((tag, index) => ({ type: tag, index: index + 1 }));
+  //   console.log(typeobject)
+  //   formData.type = typeobject
+  //   setQ9(false)
+  //   setproccedlogin(true)
+  //   const newCountVal = 100
+  //   progressBar.value = newCountVal
+  // }
 
 
   return (

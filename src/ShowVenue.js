@@ -51,7 +51,7 @@ function ShowVenues() {
   }
 
   return ( 
-    <div className="bg-black">
+    <div className="bg-black grid">
       <NavBar />
       <div className="bg-hero-pattern bg-cover bg-fixed tablet:bg-center pt-10 pb-20">
         {venue ? ( 
@@ -65,7 +65,6 @@ function ShowVenues() {
               <div className="flex justify-between tablet:items-center fold:items-center">
                 <h1 className="flex laptop:text-3xl text-2xl tablet:text-3xl fold:text-lg font-bold desktop:m-5 laptop:mb-1 tablet:mb-5 fold:m-2 text-white underline underline-offset-8">{venue.venueName} </h1>
                   
-                {/* V E N U E  S O C I A L S */}
                 {/* V E N U E S   S O C I A L S */}
                 <div className="flex justify-end tablet:items-center fold:items-center">
                   <div className="flex justify-end laptop:m-4 laptop:items-center tablet:mx-auto tablet:mt-2 fold:m-1">
@@ -184,7 +183,7 @@ function ShowVenues() {
               </div>          
             </div>
 
-            {/* A R T I S T S  G A L L E R Y  P I X */}
+            {/* V E N U E  G A L L E R Y  P I X */}
             <div key={venue.venueId} className="flex flex-row rounded-xl">
   
               <div className="flex flex-col">
@@ -194,61 +193,66 @@ function ShowVenues() {
               </div>
             </div>
 
-            {/* A R T I S T S  C O M M E N T S */}
+            {/* V E N U E  C O M M E N T S */}
 
             <h1 className="flex laptop:text-3xl tablet:text-xl text-white underline underline-offset-8 justify-start ml-4"> Reviews </h1>
-            <div className="flex flex-row mt-10 bg-gray- rounded-xl col-span-3 justify-start">
+            <div className="flex flex-row mt-2 rounded-xl col-span-3 justify-start">
               
-              <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 ">
+              <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 w-full">
                 {venue.comments && venue.comments.map((comment, index) => {
                   return <><div key={venue.comments} className="bg-red-300 p-2 m-2 rounded-xl w-full flex flex-row">
-                    {/* A R T I S T  A V A T A R */}
+                    
+                    {/* A R T I S T  P O S T E D  O N  V E N U E  A V A T A R */}
                     <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 ">
                       <img className="flex w-40 rounded-full" src={comment.artist.profileImage} alt="" />
                       <p className="capitalize flex justify-center laptop:text-xl tablet:text-lg fold:text-xs">{comment.artist.artistName}</p>
                     </div>
+                    {/* C O M M E N T  C O N T E N T */}
                     <div key={index} className="flex flex-col grow w-full flex-col justify-end pl-4 bg-gray-200 rounded-xl ">
                       <p className={'text-xs underlineunderline-text-offset-6 tex-black mb-6'}>Posted: At {moment(comment.created_at)._d.toString().split("2022")[1].split("GMT")[0].slice(0, -4)} on {comment.created_at.split("T")[0].split("-"). slice(0).reverse().join(" ")}</p> 
                       <p className={'flex grow w-full flex-col justify-end  bg-gray-200 rounded-xl text-lg'}>{comment.content}</p>
-                      <p className={'flex grow w-full flex-col justify-end bg-gray-200  rounded-xl mt-8 text-m'}>Ratings: {comment.rating}stars</p>
+                      <p className={'flex grow w-full flex-col justify-end bg-gray-200  rounded-xl mt-8 text-m'}>Ratings: {comment.rating} stars</p>
+                      
+                      {/* A R T I S T  L I K I N G  V E N U E  */}
                       <div className="flex items-end bg-gray-200 rounded-xl" onClick={() => setLike(!like)}>
-                        {like ? <img src={heart} alt="like"></img> : <img src={unheart} alt="unheart"></img>}
+                        {like ? 
+                          <img src={heart} alt="like"></img> : <img src={unheart} alt="unheart"></img> 
+                        }
                       </div>
                     </div>
                   </div>
-                  {/* C O M M E N T  C O N T E N T */}
-                  {/* <div className={"flex grow w-full flex-col justify-end pl-4 bg-gray-200  p-2 ml-4 rounded-xl"}>
-                    
-                  </div> */}
                   </>          
                 })}
-                {/* A R T I S T  L I K E  */}
                   
               </div>
           
             </div>
 
-            {/*  // P O S T I N G  A  C O M M E N T // }
+            {/*  // A R T I S T P O S T I N G  A  C O M M E N T // }
           {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-            <div key={venue.id} className={"flex flex-col w-1/2 m-10 bg-gray-400 rounded-xl col-span-3"}>
+            <div key={venue.id} className={"grid grid-2 m-4 bg-gray-500 rounded-xl col-span-3"}>
               {/* {getLoggedInUserId() &&  */}
-              <article>
+              <article className={"w-full"}>
                 <div className={""}>
-                  <div className="">
+                  <div className="m-4">
                     <textarea 
-                      className="mt-4 mb-4 ml-4 flex flex-col w-3/4 mt-4 rounded-xl col-span-3 "
+                      className="mt-4 mb-4 flex w-full mt-4 rounded-xl"
                       maxLength={280}
                       placeholder="Write out your post here.."
                       onChange={(event) => setCommentContent(event.target.value)}>
                     </textarea>
                   </div>
+
+                  <h2 className="text-sm flex justify-start m-4"> 1 is low and 4 is best</h2>
                   <div className="">
                     <input 
-                      className="mt-4 mb-4 ml-4 flex flex-col w-3/4 mt-4 rounded-xl col-span-3 "
+                      className="flex m-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none  focus:ring-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 mt-4 mb-4 flex flex-col w-1/2 mt-4 rounded-xl col-span-3"
                       type="number"
+                      placeholder='Select rating'
+                      min='1'
+                      max='4'
                       onChange={(event) => setVenueRating(event.target.value)}>
                     </input>
-                    
                   </div>
                 
                   <div className="field">
@@ -256,13 +260,13 @@ function ShowVenues() {
                       <button 
                         className="ml-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                         onClick={handleComment}>
-                        Submit
+                        Post comment
                       </button>
                     </div>
                   </div>
                 </div>
               </article>
-              {/* }  */}
+              {/* } */}
             </div>
             {console.log(venue)}
           </div>

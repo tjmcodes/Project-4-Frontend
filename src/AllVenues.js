@@ -2,6 +2,7 @@ import React from 'react'
 import unheart from './images/unheart.jpg'
 import Loader from './loader.js'
 import { Link } from 'react-router-dom'
+import NavBar from './NavBar.js'
 
 function AllVenues() {
   const [venues, setVenues] = React.useState([])
@@ -42,6 +43,7 @@ function AllVenues() {
 
   return (
     <div className=" bg-hero-pattern bg-cover bg-fixed min-h-screen bg-center">
+      <NavBar />
       <div className=" desktop:grid desktop:grid-cols-3 tablet:block fold:block mobile:block">
         <div>
           <h1 className="text-8xl text-white font-bold  pt-20 mb-10 ml-12 font-light"> All Venues </h1>

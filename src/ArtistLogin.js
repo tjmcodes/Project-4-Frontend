@@ -37,13 +37,15 @@ function ArtistLogin() {
       const { data } = await axios.post('/api/artist-login', formData)
       localStorage.setItem('token', data.token)
       console.log(data.token)
-      
+      console.log('logged in')
+      navigate('/venues') 
     } catch (err) {
       console.log(err)
       setErrors(err.response.data.errors)
       console.log(err.response.data)
     }
   }
+  
 
   return ( <>
     <div className={styles.page}>
@@ -67,7 +69,7 @@ function ArtistLogin() {
                 value={formData.email}
                 onChange={handleChange}>
               </input>
-              {/* {errors.email === "" ? null : <small>{errors.email}</small>}  */}
+
               <label className={styles.label}>Password</label>
               <input 
                 className={styles.textinput} 
@@ -81,10 +83,13 @@ function ArtistLogin() {
               <div className={styles.buttondiv}>
 
                 <button className={styles.loginbutton}>Log in </button>
-              
+                
                 <Link to="/venue-login"> 
                   <button className={styles.button} >Switch to Venue Login</button>
                 </Link>
+                
+                {/* <button onClick={logout} className={styles.loginbutton}>Log out </button> */}
+
                 <Link to="/artist-register">
                   <button className={styles.venuebutton}>Dont have an account? <b className={styles.link}>Sign up</b></button>
                 </Link>

@@ -13,7 +13,8 @@ function ShowArtists() {
   const [artist, setArtist] = useState([])
   // const [venue, setVenue] = useState([])
 
-  const [commentContent, setCommentContent] = React.useState('')
+  const [commentContent, setCommentContent] = useState('')
+  const [venueRating, setVenueRating] = useState('')
 
   const { artistId } = useParams()
   /* can use = 1 instead of useParams */
@@ -35,13 +36,16 @@ function ShowArtists() {
     try {
       const { data } = await axios.post(
         `/api/artists/${artistId}/comments`, 
-        { content: commentContent },
+        { 
+          content: commentContent,
+          rating: venueRating,        
+        },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
         }
       )
       setArtist(data)
-      // window.location.reload()
+      window.location.reload()
       console.log(data)
     } catch (err) { 
       console.log(err)
@@ -50,7 +54,7 @@ function ShowArtists() {
 
 
   return ( 
-    <div className="bg-black">
+    <div className="bg-black grid">
       <NavBar />
       <div className="bg-hero-pattern bg-cover bg-fixed tablet:bg-center pt-10 pb-20">
         {artist ? ( 
@@ -173,60 +177,72 @@ function ShowArtists() {
             <div key={artist.artistId} className="flex flex-row rounded-xl">
   
               <div className="flex flex-col shrink">
-                <div><img className="bg-cover flex grow p-2 laptop:bg-center rounded-xl desktop:m-5 tablet:m-1 fold:m-2" src={artist.galleryImage1} alt="" /></div>
-                <div><img className="bg-cover p-2 laptop:bg-center rounded-xl desktop:m-5 tablet:m-1 fold:m-2" src={artist.galleryImage2} alt="" /></div>
-                <div><img className="bg-cover p-2 laptop:bg-center rounded-xl desktop:m-5 tablet:m-1 fold:m-2" src={artist.galleryImage3} alt="" /></div>
+                <div><img className="bg-cover w-60 flex p-2 laptop:bg-center rounded-xl desktop:m-5 tablet:m-1 fold:m-2" src={artist.galleryImage1} alt="" /></div>
+                <div><img className="bg-cover w-60 p-2 laptop:bg-center rounded-xl desktop:m-5 tablet:m-1 fold:m-2" src={artist.galleryImage2} alt="" /></div>
+                <div><img className="bg-cover w-60 p-2 laptop:bg-center rounded-xl desktop:m-5 tablet:m-1 fold:m-2" src={artist.galleryImage3} alt="" /></div>
               </div>
             </div>
             
 
-          
-            
+            {/* A R T I S T  C O M M E N T S */}
             <h1 className="flex laptop:text-3xl tablet:text-xl text-white underline underline-offset-8 justify-start ml-4"> Reviews </h1>
-            <div className="flex flex-row mt-10 bg-gray- rounded-xl col-span-3 justify-start">
+            <div className="flex flex-row mt-2 rounded-xl col-span-3 justify-start">
               
-              <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 ">
+              <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 w-full">
                 {artist.comments && artist.comments.map((comment, index) => {
-                  return <><div key={artist.comments.id} className="bg-red-300 p-2 m-2 rounded-xl w-full flex flex-row">
-                    {/* A R T I S T  A V A T A R */}
+                  return <><div key={artist.comments.id} className="bg-red-300 p-2 mb-3 rounded-xl w-full flex flex-row">
+                    
+                    {/* V E N U E  P O S T E D  O N  A R T I S T  A V A T A R */}
                     <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 ">
                       <img className="flex w-40 rounded-full" src={comment.venue.profileImage} alt="" />
                       <p className="capitalize flex justify-center laptop:text-xl tablet:text-lg fold:text-xs">{comment.venue.artistName}</p>
                     </div>
+                    {/* C O M M E N T  C O N T E N T */}
                     <div key={index} className="flex flex-col grow w-full flex-col justify-end pl-4 bg-gray-200 rounded-xl ">
                       <p className={'text-xs underlineunderline-text-offset-6 tex-black mb-6'}>Posted: At {moment(comment.created_at)._d.toString().split("2022")[1].split("GMT")[0].slice(0, -4)} on {comment.created_at.split("T")[0].split("-"). slice(0).reverse().join(" ")}</p> 
                       <p className={'flex grow w-full flex-col justify-end  bg-gray-200 rounded-xl text-lg'}>{comment.content}</p>
-                      <p className={'flex grow w-full flex-col justify-end bg-gray-200  rounded-xl mt-8 text-m'}>Ratings: {comment.rating}stars</p>
+                      <p className={'flex grow w-full flex-col justify-end bg-gray-200  rounded-xl mt-8 text-m'}>Ratings: {comment.rating} stars</p>
+                      
+                      {/* V E N U E  L I K I N G  A R T I S T  */}
                       <div className="flex items-end bg-gray-200 rounded-xl" onClick={() => setLike(!like)}>
-                        {like ? <img src={heart} alt="like"></img> : <img src={unheart} alt="unheart"></img>}
+                        {like ? 
+                          <img src={heart} alt="like"></img> : <img src={unheart} alt="unheart"></img>
+                        }
                       </div>
                     </div>
                   </div>
-                  {/* C O M M E N T  C O N T E N T */}
-                  {/* <div className={"flex grow w-full flex-col justify-end pl-4 bg-gray-200  p-2 ml-4 rounded-xl"}>
-                    
-                  </div> */}
                   </>          
                 })}
-                {/* A R T I S T  L I K E  */}
                   
               </div>
           
             </div>
 
-            {/*  // P O S T I N G  A  C O M M E N T // }
+            {/*  // V E N U E  P O S T I N G  A  C O M M E N T // }
           {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-            <div key={artist.comments} className={"flex flex-col w-1/2 m-10 bg-gray-400 rounded-xl col-span-3"}>
+            <div key={artist.comments} className={"grid grid-2 m-4 bg-gray-500 rounded-xl col-span-3"}>
               {/* {getLoggedInUserId() &&  */}
-              <article>
+              <article className="w-full">
                 <div className={""}>
-                  <div className="">
+                  <div className="m-4">
                     <textarea 
-                      className="mt-4 mb-4 ml-4 flex flex-col w-3/4 mt-4 rounded-xl col-span-3 "
+                      className="mt-4 mb-4 flex w-full mt-4 rounded-xl"
                       maxLength={280}
                       placeholder="Write out your post here.."
                       onChange={(event) => setCommentContent(event.target.value)}>
                     </textarea>
+                  </div>
+
+                  <h2 className="text-sm flex justify-start m-4"> 1 is low and 4 is best</h2>
+                  <div className="">
+                    <input 
+                      className="flex m-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none  focus:ring-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 mt-4 mb-4 flex flex-col w-1/2 mt-4 rounded-xl col-span-3"
+                      type="number"
+                      placeholder='Select rating'
+                      min='1'
+                      max='4'
+                      onChange={(event) => setVenueRating(event.target.value)}>
+                    </input>
                   </div>
                 
                   <div className="field">
@@ -234,13 +250,13 @@ function ShowArtists() {
                       <button 
                         className="ml-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                         onClick={handleComment}>
-                        Submit
+                        Post comment
                       </button>
                     </div>
                   </div>
                 </div>
               </article>
-              {/* }  */}
+              {/* } */}
             </div>
     
             {console.log(artist)}

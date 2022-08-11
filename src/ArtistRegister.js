@@ -26,8 +26,14 @@ function ArtistRegister() {
 
   const progressBar = document.getElementById("progress")
 
+
+  
+  // F O R M   R E T U R N
+
+  
+
   const [genreType, setGenreType] = React.useState(
-    { genre: '' })
+    { genre: [] })
   
   const [formData, setFormData] = useState({
     username: "",
@@ -53,7 +59,7 @@ function ArtistRegister() {
     twitterUrl: "",
     youTubeUrl: "",
     instagramUrl: "",
-    genre: "",
+    genre: [],
   })
 
   const [errors, setErrors] = useState({
@@ -79,7 +85,7 @@ function ArtistRegister() {
     twitterUrl: "",
     youTubeUrl: "",
     instagramUrl: "",
-    genre: "",
+    genre: [],
   })
 
 
@@ -103,11 +109,11 @@ function ArtistRegister() {
       [name]: '',
     })
     setGenreType({
-      genre: [{ genre: (genres) }],
+      genre: (genreType.map(genreElem => ({ genre: genreElem.value }))),
       // genreArray: e.target.value,
-      // genreObjects: genreArray.map(genreElem => ({ genre: genreElem })),
+      // genreObjects: genreArray.map(genreElem => ({ genre: genreElem.value })),
     })
-    console.log(genres)
+    console.log(genreType)
   }
 
   function handleProfileUpload() {
@@ -244,7 +250,12 @@ function ArtistRegister() {
     }
   }
   
-    
+  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  
+  // Q U E S T I O N    R E N D E R I N G 
+  
+  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
   function postQ1() {
     setQ1(false)
     {errors.email && <small className="errors">{errors.email}</small>}
@@ -353,6 +364,13 @@ function ArtistRegister() {
     }
   }
  
+  
+  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  
+  // J S X    R E T U R N
+  
+  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
   return (
     <>
       <progress id="progress" className={styles.formprogress} value="0" max="100"></progress>
@@ -612,7 +630,8 @@ function ArtistRegister() {
             options={genres}
             className="basic-multi-select"
             classNamePrefix="select"
-            onChange={(genre) => setFormData({ ...formData, genre })}
+            // onChange={(genre) => setFormData({ ...formData, genre })}
+            onChange={handleChange}
             value={formData.genre}
           />
           {errors.genre && <small className="errors">{errors.genre}</small>}
