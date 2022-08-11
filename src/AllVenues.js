@@ -22,6 +22,7 @@ function AllVenues() {
   function handleselect(e) {
     console.log(e.target.value)
     const _filter = e.target.value
+    console.log(_filter)
     setfilter(_filter)
     console.log(filter)
   }
@@ -32,7 +33,7 @@ function AllVenues() {
       })
     } else if (filter === 'name') {
       return venues.filter((venue) => {
-        return ( venue.location.toLowerCase().includes(searchparam.toLowerCase()))
+        return ( venue.venueName.toLowerCase().includes(searchparam.toLowerCase()))
       })
     } else {
       return venues 
@@ -55,8 +56,8 @@ function AllVenues() {
           <select 
             className="rounded-3xl" 
             name={'filter'}
-            value={filter}
             onChange={handleselect}>
+            <option>Filter by...</option>
             <option value="location">Location</option>
             <option value="name">Name</option>
           </select>    

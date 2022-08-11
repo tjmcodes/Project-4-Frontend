@@ -13,11 +13,19 @@ function ArtistLogin() {
     email: "",
   })
 
+  const [errors, setErrors] = React.useState({
+    password: "",
+    email: "",
+  })
   function handleChange(e) {
     const { name, value } = e.target
     setFormData({
       ...formData,
       [name]: value,
+    })
+    setErrors({
+      ...errors,
+      [name]: '',
     })
     console.log(formData)
   }
@@ -29,8 +37,10 @@ function ArtistLogin() {
       const { data } = await axios.post('/api/artist-login', formData)
       localStorage.setItem('token', data.token)
       console.log(data.token)
-      navigate('/venues')
+      
     } catch (err) {
+      console.log(err)
+      setErrors(err.response.data.errors)
       console.log(err.response.data)
     }
   }
@@ -57,6 +67,7 @@ function ArtistLogin() {
                 value={formData.email}
                 onChange={handleChange}>
               </input>
+              {/* {errors.email === "" ? null : <small>{errors.email}</small>}  */}
               <label className={styles.label}>Password</label>
               <input 
                 className={styles.textinput} 
@@ -66,6 +77,7 @@ function ArtistLogin() {
                 value={formData.password}
                 onChange={handleChange}>
               </input>
+              {/* {errors.password === "" ? null : <small>{errors.password}</small>}  */}
               <div className={styles.buttondiv}>
 
                 <button className={styles.loginbutton}>Log in </button>

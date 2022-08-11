@@ -1,12 +1,14 @@
-
+.titlebanner {
+  height: 80px;
+}
 
 h2 { 
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
 }
 
 .questionbox {
-  margin-top: 15vh;
+  margin-top: 10vh;
   margin-bottom: 50vh;
   width: 80%;
   height: 40vh;
@@ -14,6 +16,16 @@ h2 {
   margin-right: 10%;
   text-align: center;
 }
+
+.textinput {
+  width: 90%;
+  height: 50px;
+  margin-top: 10px;
+  border: none;
+  border-bottom: 1px black solid;
+  font-size: 30px;
+}
+
 
 .proccedlogin {
   margin-top: 15vh;
@@ -25,9 +37,6 @@ h2 {
   text-align: center;
 }
 
-.titlebanner {
-  height: 100px;
-}
 
 .h3 {
   font-size: 30px;
@@ -35,14 +44,6 @@ h2 {
   margin-left: 5%;
 }
 
-.textinput {
-  width: 90%;
-  height: 60px;
-  margin-top: 10px;
-  border: none;
-  border-bottom: 1px black solid;
-  font-size: 40px;
-}
 
 .textinput:focus {
   outline:none;
@@ -54,7 +55,7 @@ h2 {
   margin-top: 5px;
   border: none;
   border-bottom: 1px black solid;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .optioninput:focus {
@@ -63,13 +64,28 @@ h2 {
 }
 .nextbutton {
   display: block;
+  float: right;
   margin-top: 30px;
-  margin-left: 5%;
-  font-size: 40px;
+  margin-right: 5%;
+  font-size: 30px;
   color: white;
-  background-color: green;
+  background-color: rgb(0, 0, 0);
   border: none;
-  padding: 5px 20px;
+  padding: 2px 20px;
+  border-radius: 30px;
+}
+
+.backbutton {
+  display: block;
+  float: right;
+  margin-top: 30px;
+  margin-right: 5%;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border: none;
+  padding: 2px 20px;
+  border-radius: 30px;
 }
 
 progress::-webkit-progress-bar {
@@ -79,7 +95,7 @@ progress::-webkit-progress-bar {
 
 progress::-webkit-progress-value {
   transition: all 1s;
-  background-color: green
+  background-color: rgb(0, 0, 0)
 }
 
 .formprogress {
@@ -129,4 +145,42 @@ progress::-webkit-progress-value {
   border: none;
   background-color: transparent;
   font-size: 20px;
+}
+
+.textarea {
+  margin-left: 5%;
+  width: 90%;
+  height: 20vh;
+  border: black solid 1px;
+  border-radius: 10px;
+}
+
+.subheading {
+  margin-left: 5%;
+  text-align: left;
+}
+
+.uploadbutton {
+  display: block;
+  margin-top: 30px;
+  margin-left: 5%;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border: solid 1px black;
+  padding: 2px 20px;
+  border-radius: 30px;
+}
+
+.gallerybutton {
+  display: block;
+  margin-top: 30px;
+  margin-left: 5%;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border: solid 1px black;
+  padding: 2px;
+  width: 40%;
+  border-radius: 30px;
 }
