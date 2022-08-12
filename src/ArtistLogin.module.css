@@ -27,6 +27,8 @@
   justify-content:center;
   align-items:center;
 }
+
+
 .signinpage {
   margin-top: 0;
   background: rgb(255,255,255);
@@ -128,4 +130,52 @@
 }
 .link {
   color: rgba(230,75,17,1);
+}
+
+.errorhandlingtext {
+  color: red;
+  margin-left: 5%;
+  width: 90%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+
+  .page {
+    display: flex;
+    flex-direction: column;
+  }
+  .imageside {
+    display: none;
+  }
+
+  .signinpage {
+    width: 100%;
+  }
+
+  .welcome {
+    height: 1vh;
+  }
+
+  .welcometext {
+    font-size: 65px;
+    text-align: left;
+    margin-left: 4.6%;
+    margin-bottom: 20px;
+    color: rgba(230,75,17,1)
+  }
+
+  .loginbanner {
+    width: 100;
+    margin-left: 5%;
+    font-size: 25px;
+    border-radius: 10px 10px 0px 0px;
+    color: rgb(60, 60, 60);
+  }
+
+  .buttondiv {
+    margin-top: 15px;
+  }
+  
 }

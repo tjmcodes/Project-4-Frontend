@@ -40,11 +40,16 @@ function ArtistLogin() {
       console.log('logged in')
       navigate('/venues') 
     } catch (err) {
-      console.log(err)
-      setErrors(err.response.data.message)
-      // console.log(err.response.data.message)
+      if (err.response.data.message === "No Registered user with this email, please try again") {
+        setErrors({ email: err.response.data.message })
+        console.log(errors)
+      } else if (err.response.data. message === "Incorrect Password") {
+        setErrors({ password: err.response.data.message })
+        console.log(errors)
+      }
     }
   }
+  
   
 
   return ( <>
@@ -69,6 +74,7 @@ function ArtistLogin() {
                 value={formData.email}
                 onChange={handleChange}>
               </input>
+              {errors.email === "" ? null : <small className={styles.errorhandlingtext}>{errors.email}</small>} 
 
               <label className={styles.label}>Password</label>
               <input 
@@ -79,7 +85,7 @@ function ArtistLogin() {
                 value={formData.password}
                 onChange={handleChange}>
               </input>
-              {errors.password === "" ? null : <small>{errors.password}</small>} 
+              {errors.password === "" ? null : <small className={styles.errorhandlingtext}>{errors.password}</small>} 
               <div className={styles.buttondiv}>
 
                 <button className={styles.loginbutton}>Log in </button>

@@ -1,8 +1,8 @@
 import React from "react";
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './VenueLogin.module.css'
-import { useNavigate } from "react-router-dom";
+
 
 function VenueLogin() {
 
@@ -19,8 +19,6 @@ function VenueLogin() {
     password: "",
     
   })
-
-  console.log(errors)
 
   function handleChange(e) {
     const { name, value } = e.target  // name = the key in the formData and the value = ''
@@ -40,11 +38,16 @@ function VenueLogin() {
       console.log(data.token)
       navigate('/artists') 
     } catch (err) {
-      console.log(err)
-      setErrors(err.response.data.message)
-      console.log(err.response.data.message)  
+      if (err.response.data.message === "No Registered user with this email, please try again") {
+        setErrors({ email: err.response.data.message })
+        console.log(errors)
+      } else if (err.response.data. message === "Incorrect Password") {
+        setErrors({ password: err.response.data.message })
+        console.log(errors)
+      }
     }
   }
+
 
   return ( <>
     <div className={styles.page}>
@@ -60,7 +63,6 @@ function VenueLogin() {
           <div className={styles.loginform}>
             <form onSubmit={handleSubmit}>
               <label className={styles.label}>Email</label>
-              {errors === "" ? null : <small>{errors}</small>} 
               <input 
                 className={styles.textinput} 
                 type="text" 
@@ -69,6 +71,7 @@ function VenueLogin() {
                 value={formData.email} // value is the right side value entry for key-value pair of formData attribute
                 onChange={handleChange}>
               </input>
+              {errors.email === "" ? null : <small className={styles.errorhandlingtext}>{errors.email}</small>} 
               <label className={styles.label}>Password</label>
               <input 
                 className={styles.textinput} 
@@ -78,6 +81,7 @@ function VenueLogin() {
                 value={formData.password}
                 onChange={handleChange}>
               </input>
+              {errors.password === "" ? null : <small className={styles.errorhandlingtext}>{errors.password}</small>} 
               <div className={styles.buttondiv}>
                 <button className={styles.loginbutton}>Log in </button>
                 <button className={styles.button} >Switch to Venue Login</button>

@@ -1,3 +1,8 @@
+.page {
+  height: 100vh;
+  overflow: hidden;
+}
+
 .titlebanner {
   height: 80px;
 }
@@ -9,9 +14,9 @@ h2 {
 
 .questionbox {
   margin-top: 10vh;
-  margin-bottom: 50vh;
+  margin-bottom: 5vh;
   width: 80%;
-  height: 40vh;
+  height: 80vh;
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;
@@ -77,10 +82,10 @@ h2 {
 
 .backbutton {
   display: block;
-  float: right;
+  float: left;
   margin-top: 30px;
   margin-right: 5%;
-  font-size: 30px;
+  font-size: 20px;
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   border: none;
@@ -184,3 +189,12 @@ progress::-webkit-progress-value {
   width: 40%;
   border-radius: 30px;
 }
+
+.buttondiv {
+
+}
+
+.questioncontainer {
+
+}
+

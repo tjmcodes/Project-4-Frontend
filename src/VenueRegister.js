@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import styles from "./VenueRegister.module.css"
+
 // import features from './data/features.js'
 // import Select from 'react-select'
 
@@ -349,7 +350,7 @@ function VenueRegister() {
 
 
   return (
-    <>
+    <div className={styles.page}>
       <progress id="progress" className={styles.formprogress} value="0" max="100"></progress>
       {Q1 ? <>
         <h2 className={styles.titlebanner}>To get started lets setup your login credentials</h2>
@@ -405,6 +406,7 @@ function VenueRegister() {
           <div>
             <h3 className={styles.h3}>What is your name? (This will be displayed on our site)</h3>
           </div>
+          <div className={styles.questioncontainer}>
           <input 
             onChange={handleChange} 
             className={styles.textinput} 
@@ -424,8 +426,11 @@ function VenueRegister() {
             name={'role'}
             value={formData.role}>
           </input>
-          <button onClick={postQ2} className={styles.nextbutton}>Next Step</button>
-          <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
+          </div>
+          < div className={styles.buttondiv}>
+            <button onClick={postQ2} className={styles.nextbutton}>Next Step</button>
+            <button onClick={postQ2} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
+          </div>
         </div></> : null }
   
       {Q3 ? <>
@@ -442,7 +447,7 @@ function VenueRegister() {
             value={formData.venueName}>
           </input>
           <button onClick={postQ3} className={styles.nextbutton}>Next Step</button>
-          <button onClick={postQ3} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ3} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
   
       {Q4 ? <>
@@ -467,8 +472,8 @@ function VenueRegister() {
             placeholder="Enter your street address"
             name={'address'}
             value={formData.address}></input>
-          <button onClick={postQ4} className={styles.nextbutton}>{`Next -> `}</button>
-          <button onClick={postQ4} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ4} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ4} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
     
       {Q5 ? <>
@@ -484,8 +489,8 @@ function VenueRegister() {
             name={'description'}
             value={formData.description}
           ></textarea>
-          <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button>
-          <button onClick={postQ5} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ5} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ5} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
   
       {Q6 ? <>
@@ -504,7 +509,6 @@ function VenueRegister() {
           </input>
           <div>
             <h3 className={styles.h3}>what is your budget for performers(£)</h3>
-            <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
           </div>
           <input 
             onChange={handleChange} 
@@ -514,8 +518,8 @@ function VenueRegister() {
             name={'budget'}
             value={formData.budget}>
           </input>
-          <button onClick={postQ6} className={styles.nextbutton}>{`Next -> `}</button>
-          <button onClick={postQ6} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ6} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ6} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
 
       { Q7 ? <>
@@ -530,8 +534,8 @@ function VenueRegister() {
           <button onClick={handleGalleryUpload2} className={styles.gallerybutton}>upload gallery image</button>            
           <button onClick={handleGalleryUpload3} className={styles.gallerybutton}>upload gallery image</button>            
 
-          <button onClick={postQ7} className={styles.nextbutton}>{`Next -> `}</button>
-          <button onClick={postQ7} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ7} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ7} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
 
         </div></> : null}
 
@@ -576,8 +580,8 @@ function VenueRegister() {
       {addanother1 && <><input onChange={handleChange} className={styles.textinput} type="text" placeholder="post the link to another social media account"></input>
         <button onClick={addanother}className={styles.addanotherbutton }>add another + </button></>}
       <button onClick={postQ5} className={styles.nextbutton}>{`Next -> `}</button> */}
-          <button onClick={postQ8} className={styles.nextbutton}>{`Next -> `}</button>
-          <button onClick={postQ8} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ8} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ8} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
 
       {Q9 ? <>
@@ -593,8 +597,8 @@ function VenueRegister() {
             name="type" 
             value={formData.type}
           />
-          <button onClick={postQ9} className={styles.nextbutton}>{`Submit form -> `}</button>
-          <button onClick={postQ9} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ9} className={styles.nextbutton}>Submit Form </button>
+          <button onClick={postQ9} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
 
       {proccedlogin ? <>
@@ -602,10 +606,10 @@ function VenueRegister() {
           <div className={styles.logintext}>
             <h3 className={styles.h3login}>You are now Registered!</h3>
             <h4 className={styles.h4login}>Welcome to our talented family</h4>
-            <button onClick={handleSubmit} className={styles.loginbutton}>Click to proceed to login</button>
+            <button onClick={handleSubmit} className={styles.loginbutton}><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
           </div>
         </div></> : null }
-    </>
+    </div>
   )
 }
 
