@@ -14,12 +14,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import VenueRegister from './VenueRegister.js'
 import ArtistDashboard from './ArtistDashboard.js'
 // import VenueDashboard from './VenueDashboard.js'
+import NavBar from './NavBar.js'
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path='/' element={<LandingPage />} />
+        <Route path='/nav' element={<NavBar />} />
         <Route path='/venues' element={<AllVenues />} />
         <Route path='/show-venue/:venueId' element={<ShowVenue />} />
         <Route path='/artists' element={<AllArtists />} />

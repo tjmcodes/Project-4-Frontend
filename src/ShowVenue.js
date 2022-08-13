@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import heart from './images/heart.jpg'
 import unheart from './images/unheart.jpg'
 import moment from 'moment'
-import NavBar from './NavBar.js'
-// import { getLoggedInUserId } from './lib/auth.js'
+// import NavBar from './NavBar.js'
+import { getLoggedInUserId } from './lib/auth.js'
 import axios from 'axios'
 
 
@@ -12,10 +12,22 @@ function ShowVenues() {
   const [venue, setVenue] = useState([])
   const { venueId } = useParams()
   const [like, setLike] = useState(false)
-  const [commentContent, setCommentContent] = React.useState('')
+  const [commentContent, setCommentContent] = React.useState("")
   const [venueRating , setVenueRating] = useState()
+  const [toggleDeleteConfirmation, setToggleDeleteConfirmation] = React.useState(false)
+  const [deletedMessage, setdeletedMessage] = React.useState(false)
+  const [artist, setArtist] = React.useState("")
+ 
+  React.useEffect(() => {
+    const yy = 7
+    console.log(yy)
+    const getuser = getLoggedInUserId()
+    console.log(getuser)
+    setArtist("pop")
+    console.log(artist)
+  }, [])
 
-  
+  const navigate = useNavigate()
   // const [activeLike, setactivelike] = React.useState()
 
   React.useEffect(() => {
@@ -50,9 +62,31 @@ function ShowVenues() {
     }    
   }
 
+  async function handleDelete() {
+    try {
+      await axios.delete(`api/venues/${venueId}`, { 
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
+      })
+      setToggleDeleteConfirmation(!toggleDeleteConfirmation)
+      setdeletedMessage(!deletedMessage)
+
+      setTimeout(function() {
+        navigate('/all-sounds')
+      }, 1500);
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  function toggleModal() {
+    setToggleDeleteConfirmation(!toggleDeleteConfirmation)
+  }
+    
+
+
   return ( 
     <div className="bg-black grid">
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="bg-hero-pattern bg-cover bg-fixed tablet:bg-center pt-10 pb-20">
         {venue ? ( 
           <div style={{ backgroundColor: "rgba(250, 32, 84, 0.2)", width: "100%" }} className="flex desktop:p-8 desktop:m-0 mx-auto laptop:p-8 laptop:m-0 tablet:m-0 fold:p-2 fold:m-2 grid">
@@ -193,8 +227,11 @@ function ShowVenues() {
               </div>
             </div>
 
-            {/* V E N U E  C O M M E N T S */}
+            
 
+        
+
+            {/* V E N U E  C O M M E N T S */}
             <h1 className="flex laptop:text-3xl tablet:text-xl text-white underline underline-offset-8 justify-start ml-4"> Reviews </h1>
             <div className="flex flex-row mt-2 rounded-xl col-span-3 justify-start">
               
@@ -202,6 +239,37 @@ function ShowVenues() {
                 {venue.comments && venue.comments.map((comment, index) => {
                   return <><div key={venue.comments} className="bg-red-300 p-2 m-2 rounded-xl w-full flex flex-row">
                     
+                    {/* D E L E T E  P O S T  B Y  O R I G I N A L  U S E R  */}
+                    <div className="">
+                      {/* // ? Only show the button if the post was made by the user. */}
+                      {/* Here we're calling it to check if the venue ID matches the logged in user ID and if it does you show the button, if it doesn't you don't show them.*/}
+                      {/* We have included the or operator to check venue id once a comment has been posted due to the structure of object that is returned */}
+                      {artist && (artist.id === (comment.artist.id)) ? <button className={{ backgroundColor: "green" }} onClick={toggleModal}>
+                        Delete sound
+                        {console.log(artist)}
+                        {console.log(comment.artist)}
+                      </button> : <button className={{ backgroundColor: "orange" }}>
+                        not posting user
+                      </button> }
+                      { toggleDeleteConfirmation &&  
+                      <div className="">
+                        <div className="">
+                          <h2 className="is-size-2 has-text-centered">Are you sure you want to delete this sound?</h2>
+                          <p className="is-size-4 has-text-centered">This action cannot be undone</p>
+                          <div className="is-size-2 has-text-centered">
+                            <button onClick={handleDelete} className="button is-danger m-4">Delete sound</button>
+                            <button onClick={toggleModal} className="button is-primary m-4">Return to Sound</button>
+                          </div>
+                        </div>
+                      </div>}
+                      {deletedMessage && 
+                      <div className="">
+                        <div className="">
+                          <h2 className="is-size-2 has-text-centered">Your sound has been deleted</h2>
+                          <p className="is-size-4 has-text-centered">redirecting you back to all sounds</p>
+                        </div>
+                      </div>}
+                    </div>
                     {/* A R T I S T  P O S T E D  O N  V E N U E  A V A T A R */}
                     <div className="tablet:mt-8fold:p-2 fold:m-2 fold:mt-8 ">
                       <img className="flex w-40 rounded-full" src={comment.artist.profileImage} alt="" />
@@ -227,9 +295,8 @@ function ShowVenues() {
               </div>
           
             </div>
-
-            {/*  // A R T I S T P O S T I N G  A  C O M M E N T // }
-          {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
+            {/*  // A R T I S T  P O S T I N G  A  C O M M E N T // }
+            {*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
             <div key={venue.id} className={"grid grid-2 m-4 bg-gray-500 rounded-xl col-span-3"}>
               {/* {getLoggedInUserId() &&  */}
               <article className={"w-full"}>
@@ -242,7 +309,6 @@ function ShowVenues() {
                       onChange={(event) => setCommentContent(event.target.value)}>
                     </textarea>
                   </div>
-
                   <h2 className="text-sm flex justify-start m-4"> 1 is low and 4 is best</h2>
                   <div className="">
                     <input 
@@ -270,6 +336,7 @@ function ShowVenues() {
             </div>
             {console.log(venue)}
           </div>
+         
           
         ) : (
           <p>...loading</p>

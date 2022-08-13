@@ -17,7 +17,7 @@ module.exports = {
     './src/StartJourney.js',
     './node_modules/flowbite/**/*.{js,jsx}',
     './src/VenueStart.js',
-    './src/ArtistStart.js',
+    './src/ArtistStart.js'
   ],
   theme: {
     backgroundSize: {
@@ -46,10 +46,9 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': "url('/src/images/oscar-keys-background-dark.jpg')",
         'footer-texture': "url('/img/footer-texture.png')",
-      }
+      },
     },
   },
   plugins: [
-    require('flowbite/plugin')
-],
+  ],
 }
