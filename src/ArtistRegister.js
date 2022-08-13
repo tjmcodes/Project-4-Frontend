@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 // import { useNavigate } from 'react-router-dom'
 import styles from './ArtistRegister.module.css'
+import { baseUrl } from './config.js'
 
 
 function ArtistRegister() {
@@ -90,7 +91,6 @@ function ArtistRegister() {
 
 
   function handleChange(e) {
-    console.log(e.target.value)
     const { name, value } = e.target
     setFormData({
       ...formData, //  This is whatever the form data was before, all it's fields.
@@ -140,7 +140,7 @@ function ArtistRegister() {
       }
     ).open()
   }
-  console.log(formData)
+
     
   function handleBackgroundUpload() {
     window.cloudinary.createUploadWidget(
@@ -164,7 +164,6 @@ function ArtistRegister() {
       }
     ).open()
   }
-  console.log(formData)
   function handleGalleryUpload1() {
     window.cloudinary.createUploadWidget(
       {
@@ -187,7 +186,6 @@ function ArtistRegister() {
       }
     ).open()
   }
-  console.log(formData)
 
   function handleGalleryUpload2() {
     window.cloudinary.createUploadWidget(
@@ -211,7 +209,6 @@ function ArtistRegister() {
       }
     ).open()
   }
-  console.log(formData)
 
   function handleGalleryUpload3() {
     window.cloudinary.createUploadWidget(
@@ -235,7 +232,6 @@ function ArtistRegister() {
       }
     ).open()
   }
-  console.log(formData)
 
 
   // F O R M   S U B M I T //
@@ -252,7 +248,6 @@ function ArtistRegister() {
       setreview(false)
       setproccedlogin(true)
     } catch (err) {    
-      console.log(err)
       // setErrors(err.response.data.errors[0])
       // if (err.response.data.errors.travel !== null) {
       //   console.log(err.response.data.errors.travel[0])
@@ -280,8 +275,6 @@ function ArtistRegister() {
       //   console.log("i'm broke")
       // }
     }
-    console.log(newFormData.genre)
-    console.log(errors)
   }
   
   // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -427,7 +420,7 @@ function ArtistRegister() {
             type="text" 
             name="email"
             value={formData.email} 
-            placeholder="examaple@example.com">
+            placeholder="example@example.com">
           </input>
           
           

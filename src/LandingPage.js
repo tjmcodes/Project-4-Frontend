@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import heart from './images/heart.jpg'
 import unheart from './images/unheart.jpg'
 import NavBar from './NavBar.js'
+import { baseUrl } from './config.js'
 
 function LandingPage() {
   const [artists, setArtists] = React.useState([])
@@ -12,7 +13,7 @@ function LandingPage() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('${baseUrl}/artists')
+      const res = await fetch(`${baseUrl}/artists`)
       const json = await res.json()
       setArtists(json)
     }
@@ -21,7 +22,7 @@ function LandingPage() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('${baseUrl}/venues')
+      const res = await fetch(`${baseUrl}/venues`)
       const json = await res.json()
       setVenues(json)
     }
@@ -118,7 +119,7 @@ function LandingPage() {
               </div>
             )}
           </div>
-          {console.log(artists)}
+
         </div>
         
         {/* V E N U E S   T I T L E */}
@@ -176,7 +177,7 @@ function LandingPage() {
               </div>
             )}
           </div>
-          {console.log(venues)}
+    
         </div>
       </div>
     </div>

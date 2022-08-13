@@ -6,6 +6,7 @@ import moment from 'moment'
 // import NavBar from './NavBar.js'
 import { getLoggedInUserId } from './lib/auth.js'
 import axios from 'axios'
+import { baseUrl } from './config.js'
 
 
 function ShowVenues() {
@@ -38,13 +39,11 @@ function ShowVenues() {
     }
     getData()
   }, [venueId])
-  console.log(venue)
 
   async function handleComment() {
   
     try {
-      console.log('function started')
-      console.log(commentContent)
+
       const { data } = await axios.post(
         `${baseUrl}/venues/${venueId}/comments`, 
         { content: commentContent,
@@ -56,7 +55,6 @@ function ShowVenues() {
       )
       setVenue(data)
       window.location.reload()
-      console.log(data)
     } catch (err) { 
       console.log(err)
     }    
@@ -221,9 +219,9 @@ function ShowVenues() {
             <div key={venue.venueId} className="flex flex-row rounded-xl">
   
               <div className="flex flex-col">
-                <div><img className="bg-cover flex grow p-2 laptop:bg-center rounded-2xl desktop:m-5 tablet:m-1 fold:m-2" src={venue.galleryImage1} alt="" /></div>
-                <div><img className="bg-cover p-2 laptop:bg-center rounded-2xl desktop:m-5 tablet:m-1 fold:m-2" src={venue.galleryImage2} alt="" /></div>
-                <div><img className="bg-cover p-2 laptop:bg-center rounded-2xl desktop:m-5 tablet:m-1 fold:m-2" src={venue.galleryImage3} alt="" /></div>
+                <div><img className="bg-cover h-60 p-2 laptop:bg-center rounded-2xl desktop:m-5 tablet:m-1 fold:m-2" src={venue.galleryImage1} alt="" /></div>
+                <div><img className="bg-cover h-60 p-2 laptop:bg-center rounded-2xl desktop:m-5 tablet:m-1 fold:m-2" src={venue.galleryImage2} alt="" /></div>
+                <div><img className="bg-cover h-60 p-2 laptop:bg-center rounded-2xl desktop:m-5 tablet:m-1 fold:m-2" src={venue.galleryImage3} alt="" /></div>
               </div>
             </div>
 
@@ -246,8 +244,6 @@ function ShowVenues() {
                       {/* We have included the or operator to check venue id once a comment has been posted due to the structure of object that is returned */}
                       {artist && (artist.id === (comment.artist.id)) ? <button className={{ backgroundColor: "green" }} onClick={toggleModal}>
                         Delete sound
-                        {console.log(artist)}
-                        {console.log(comment.artist)}
                       </button> : <button className={{ backgroundColor: "orange" }}>
                         not posting user
                       </button> }
@@ -309,12 +305,12 @@ function ShowVenues() {
                       onChange={(event) => setCommentContent(event.target.value)}>
                     </textarea>
                   </div>
-                  <h2 className="text-sm flex justify-start m-4"> 1 is low and 4 is best</h2>
+                  <h2 className="text-sm flex justify-start ml-4 mt-4 mb-2">Select a rating to give the artist (1 is low and 4 is high)</h2>
                   <div className="">
                     <input 
                       className="flex m-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none  focus:ring-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 mt-4 mb-4 flex flex-col w-1/2 mt-4 rounded-xl col-span-3"
                       type="number"
-                      placeholder='Select rating'
+                      placeholder=''
                       min='1'
                       max='4'
                       onChange={(event) => setVenueRating(event.target.value)}>
@@ -334,7 +330,6 @@ function ShowVenues() {
               </article>
               {/* } */}
             </div>
-            {console.log(venue)}
           </div>
          
           

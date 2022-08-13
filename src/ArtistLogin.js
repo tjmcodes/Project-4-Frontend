@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './ArtistLogin.module.css'
 import { Link } from 'react-router-dom';
+import { baseUrl } from './config.js'
 
 function ArtistLogin() {
 
@@ -27,7 +28,6 @@ function ArtistLogin() {
     //   ...errors,
     //   [name]: '',
     // })
-    console.log(formData)
   }
 
   async function handleSubmit(e) {
@@ -36,21 +36,20 @@ function ArtistLogin() {
     setErrors({ email: "" })
 
     try {
-      const { data } = await axios.post('${baseUrl}/artist-login', formData)
+      const { data } = await axios.post(`${baseUrl}/artist-login`, formData)
       localStorage.setItem('token', data.token)
-      console.log(data.token)
-      console.log('logged in')
+    
+  
       navigate('/venues') 
     } catch (err) {
-      console.log(err.response.data)
+  
       if (err.response.data.message === "No Registered user with this email, please try again") {
         setErrors({ email: err.response.data.message })
-        console.log(errors)
+  
       } else if (err.response.data.message === "Password Incorrect") {
         setErrors({ password: err.response.data.message })
-        console.log(errors)
+        
       } else {
-        console.log("not above error")
         console.log(err)
       }
     }

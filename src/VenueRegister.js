@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import styles from "./VenueRegister.module.css"
+import styles from './VenueRegister.module.css'
+import { baseUrl } from './config.js'
 
 // import features from './data/features.js'
 // import Select from 'react-select'
@@ -86,14 +87,13 @@ function VenueRegister() {
 
   
   function handleChange(e) {
-    console.log(e.target.value)
     const { name, value } = e.target
     setFormData({
       ...formData, //  This is whatever the form data was before, all it's fields.
       [name]: value, 
       
     })
-    console.log(formData)
+
     setErrors({
       ...errors,
       [name]: '',
@@ -229,7 +229,6 @@ function VenueRegister() {
       ...formData,
       ...venueType,
     }
-    console.log(event.target.value)
     try {
       await axios.post(`${baseUrl}/venue-signup`, newFormData)
       updateButton(!button)
@@ -238,8 +237,6 @@ function VenueRegister() {
     } catch (err) {    
       setErrors(err.response.data.errors[0])
     }
-    console.log(newFormData.type)
-    console.log(errors)
   }
  
     
@@ -343,20 +340,6 @@ function VenueRegister() {
     progressBar.value = 90
   }
 
-  // function postQ9() {
-  //   console.log("clicked")
-  //   const typearray = formData.type 
-  //   console.log(typearray)
-  //   const typeobject = typearray.map((tag, index) => ({ type: tag, index: index + 1 }));
-  //   console.log(typeobject)
-  //   formData.type = typeobject
-  //   setQ9(false)
-  //   setproccedlogin(true)
-  //   const newCountVal = 100
-  //   progressBar.value = newCountVal
-  // }
-
-
   return (
     <div className={styles.page}>
       <progress id="progress" className={styles.formprogress} value="0" max="100"></progress>
@@ -373,7 +356,7 @@ function VenueRegister() {
             type="text" 
             name={'email'}
             value={formData.email}
-            placeholder="examaple@example.com">
+            placeholder="example@example.com">
           </input>
           <div>
             <h3 className={styles.h3}>Choose a Username</h3>

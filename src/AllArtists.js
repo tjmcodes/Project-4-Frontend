@@ -3,6 +3,7 @@ import unheart from './images/unheart.jpg'
 import Loader from './loader.js'
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar.js'
+import { baseUrl } from "./config.js"
 
 function AllArtists() {
   const [artists, setArtists] = React.useState([])
@@ -11,7 +12,7 @@ function AllArtists() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('${baseUrl}/artists')
+      const res = await fetch(`${baseUrl}/artists`)
       const json = await res.json()
       setArtists(json)
     }
@@ -19,11 +20,10 @@ function AllArtists() {
   }, [])
 
   function handleselect(e) {
-    console.log(e.target.value)
+
     const _filter = e.target.value
-    console.log(_filter)
+  
     setfilter(_filter)
-    console.log(filter)
   }
   function artistsSearch() {
     if (filter === "location") {
@@ -51,7 +51,7 @@ function AllArtists() {
           <input 
             className="ml-12 w-10/12 mt-10 bg-zinc-800 text-2xl pt-2 pb-2 pl-4 border-none"
             type="text" 
-            placeholder="pick a option below and start searching"
+            placeholder="pick an option below and start searching"
             onChange={(e) => setSearchParams(e.target.value)}>
           </input>
           <select 
@@ -121,7 +121,7 @@ function AllArtists() {
               </div>
             )}
           </div> }
-        {console.log(artists)}
+
       </div>
     </div>
   )

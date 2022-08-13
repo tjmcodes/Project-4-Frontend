@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './VenueLogin.module.css'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import { baseUrl } from './config.js'
 
 
 function VenueLogin() {
@@ -27,24 +28,20 @@ function VenueLogin() {
       ...formData,
       [name]: value,
     })
-    console.log(formData)
   }
 
   async function handleSubmit(e) {
     e.preventDefault() // this prevents the page from reloading once you submit the form
 
     try {
-      const { data } = await axios.post('${baseUrl}/venue-login', formData)  // axios communicates with the API endpoint and returns a JSON object
+      const { data } = await axios.post(`${baseUrl}/venue-login`, formData)  // axios communicates with the API endpoint and returns a JSON object
       localStorage.setItem('token', data.token) // token needed to use for secure routes
-      console.log(data.token)
       navigate('/artists') 
     } catch (err) {
       if (err.response.data.message === "No Registered user with this email, please try again") {
         setErrors({ email: err.response.data.message })
-        console.log(errors)
       } else if (err.response.data. message === "Incorrect Password") {
         setErrors({ password: err.response.data.message })
-        console.log(errors)
       }
     }
   }

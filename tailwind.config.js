@@ -1,3 +1,5 @@
+const { Navbar } = require("react-bootstrap");
+
 module.exports = {
   content: [
     './src/App.js',
@@ -11,13 +13,11 @@ module.exports = {
     './src/LandingPage.js',
     './src/ShowArtist.js',
     './src/ShowVenue.js',
-    './src/LandingPageNavBar.js',
-    './src/ArtistNavBar.js',
-    './src/VenueNavBar.js',
     './src/StartJourney.js',
     './node_modules/flowbite/**/*.{js,jsx}',
     './src/VenueStart.js',
-    './src/ArtistStart.js'
+    './src/ArtistStart.js',
+    './src/Navbar.js',
   ],
   theme: {
     backgroundSize: {
@@ -26,6 +26,8 @@ module.exports = {
       'contain': 'contain',
       '50%': '50%',
       '16': '4rem',
+    }, width: {
+      '18/20': '92%',
     },
     screens: {
       'fold': '280px',
@@ -46,7 +48,7 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': "url('/src/images/oscar-keys-background-dark.jpg')",
         'footer-texture': "url('/img/footer-texture.png')",
-      },
+      }, 
     },
   },
   plugins: [
