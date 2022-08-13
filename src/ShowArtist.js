@@ -23,7 +23,7 @@ function ShowArtists() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`/api/artists/${artistId}`)
+      const res = await fetch(`${baseUrl}/artists/${artistId}`)
       const json = await res.json()
       setArtist(json)
     }
@@ -35,7 +35,7 @@ function ShowArtists() {
   
     try {
       const { data } = await axios.post(
-        `/api/artists/${artistId}/comments`, 
+        `${baseUrl}/artists/${artistId}/comments`, 
         { 
           content: commentContent,
           rating: venueRating,        

@@ -36,7 +36,7 @@ function ArtistLogin() {
     setErrors({ email: "" })
 
     try {
-      const { data } = await axios.post('/api/artist-login', formData)
+      const { data } = await axios.post('${baseUrl}/artist-login', formData)
       localStorage.setItem('token', data.token)
       console.log(data.token)
       console.log('logged in')

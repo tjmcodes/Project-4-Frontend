@@ -11,7 +11,7 @@ function AllArtists() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('/api/artists')
+      const res = await fetch('${baseUrl}/artists')
       const json = await res.json()
       setArtists(json)
     }

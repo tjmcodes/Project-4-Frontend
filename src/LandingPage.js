@@ -12,7 +12,7 @@ function LandingPage() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('/api/artists')
+      const res = await fetch('${baseUrl}/artists')
       const json = await res.json()
       setArtists(json)
     }
@@ -21,7 +21,7 @@ function LandingPage() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('/api/venues')
+      const res = await fetch('${baseUrl}/venues')
       const json = await res.json()
       setVenues(json)
     }

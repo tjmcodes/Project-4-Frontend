@@ -247,7 +247,7 @@ function ArtistRegister() {
       ...genreType,
     }
     try {
-      await axios.post(`/api/artist-signup`, newFormData)
+      await axios.post(`${baseUrl}/artist-signup`, newFormData)
       updateButton(!button)
       setreview(false)
       setproccedlogin(true)

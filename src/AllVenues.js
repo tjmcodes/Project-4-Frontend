@@ -12,7 +12,7 @@ function AllVenues() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('/api/venues')
+      const res = await fetch('${baseUrl}/venues')
       const json = await res.json()
       setVenues(json)
       setdata(true)

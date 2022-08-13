@@ -13,7 +13,7 @@ function ShowComments() {
   
     try {
       const { data } = await axios.post(
-        `/api/artists/${artistId}/comments`, 
+        `${baseUrl}/artists/${artistId}/comments`, 
         { 
           content: commentContent,
           rating: venueRating,        

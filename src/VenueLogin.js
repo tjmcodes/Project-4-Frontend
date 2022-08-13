@@ -34,7 +34,7 @@ function VenueLogin() {
     e.preventDefault() // this prevents the page from reloading once you submit the form
 
     try {
-      const { data } = await axios.post('/api/venue-login', formData)  // axios communicates with the API endpoint and returns a JSON object
+      const { data } = await axios.post('${baseUrl}/venue-login', formData)  // axios communicates with the API endpoint and returns a JSON object
       localStorage.setItem('token', data.token) // token needed to use for secure routes
       console.log(data.token)
       navigate('/artists') 

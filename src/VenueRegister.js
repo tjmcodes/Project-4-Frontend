@@ -231,7 +231,7 @@ function VenueRegister() {
     }
     console.log(event.target.value)
     try {
-      await axios.post(`/api/venue-signup`, newFormData)
+      await axios.post(`${baseUrl}/venue-signup`, newFormData)
       updateButton(!button)
       setreview(false)
       setproccedlogin(true)

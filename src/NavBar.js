@@ -16,7 +16,7 @@ function NavBar() {
     e.preventDefault()
 
     try {
-      const { data } = await axios.post('/api/artist-login')
+      const { data } = await axios.post('${baseUrl}/artist-login')
       localStorage.removeItem('token', data.token)
       sessionStorage.removeItem('token', data.token)
       console.log(data.token)
@@ -30,7 +30,7 @@ function NavBar() {
 
   // React.useEffect(() => {
   //   const getData = async () => {
-  //     const res = await fetch(`/api/artists/${artistId}`)
+  //     const res = await fetch(`${baseUrl}/artists/${artistId}`)
   //     const json = await res.json()
   //     setArtist(json)
   //   }

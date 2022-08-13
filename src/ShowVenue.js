@@ -32,7 +32,7 @@ function ShowVenues() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`/api/venues/${venueId}`)
+      const res = await fetch(`${baseUrl}/venues/${venueId}`)
       const json = await res.json()
       setVenue(json)
     }
@@ -46,7 +46,7 @@ function ShowVenues() {
       console.log('function started')
       console.log(commentContent)
       const { data } = await axios.post(
-        `/api/venues/${venueId}/comments`, 
+        `${baseUrl}/venues/${venueId}/comments`, 
         { content: commentContent,
           rating: venueRating,
         },

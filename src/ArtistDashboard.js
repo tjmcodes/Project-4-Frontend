@@ -14,7 +14,7 @@
 
 //   React.useEffect(() => {
 //     const getData = async () => {
-//       const res = await fetch(`/api/artists/${artistId}`)
+//       const res = await fetch(`${baseUrl}/artists/${artistId}`)
 //       const json = await res.json()
 //       setArtist(json)
 //     }
@@ -23,7 +23,7 @@
 
 //   // React.useEffect(() => {
 //   //   const getData = async () => {
-//   //     const res = await fetch('/api/venues')
+//   //     const res = await fetch('${baseUrl}/venues')
 //   //     const json = await res.json()
 //   //     setVenues(json)
 //   //   }
