@@ -502,7 +502,7 @@ function ArtistRegister() {
             value={formData.travel}
           />
           
-          <button onClick={postQ3} className={styles.nextbutton}>{`Next -> `}</button>
+          <button onClick={postQ3} className={styles.nextbutton}>Next Step</button>
           <button onClick={postQ3} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
 
