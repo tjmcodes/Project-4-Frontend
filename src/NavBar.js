@@ -1,4 +1,4 @@
-import {  } from 'react'
+import React, {  } from 'react'
 import axios from 'axios'
 import { Menu } from '@headlessui/react'
 
@@ -8,6 +8,8 @@ function NavBar() {
 
   const navigate = useNavigate()
   // const [isOpen, setIsOpen] = useNavigate()
+  // const [artist, setArtist] = useState([])
+  // const { artistId } = useParams()
 
   async function logout(e) {
 
@@ -25,8 +27,21 @@ function NavBar() {
       console.log(err.response.data)
     }
   }
+
+  // React.useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await fetch(`/api/artists/${artistId}`)
+  //     const json = await res.json()
+  //     setArtist(json)
+  //   }
+  //   getData()
+  // }, [])
  
-  return <div className="relative bg-black bg-fixed flex justify-end p-4">
+  return <div className="relative justify-between bg-black bg-fixed flex justify-end p-4">
+    
+    <div className="flex bg-black shadow dark:bg-gray-700">
+      <img className="absolute fixed" src="https://res.cloudinary.com/tjmcodes/image/upload/ar_1:1,b_rgb:000000,bo_2px_solid_rgb:2f9cff,c_thumb,e_transition,g_auto:face,q_auto,r_40,w_80/v1659981084/Joy-New-2-_ww3vx8.jpg"/> 
+    </div>
     <Menu as="div" className="relative">
     
       {/*BUTTON FOR HAMBURGER MENU */}
@@ -38,9 +53,6 @@ function NavBar() {
         </svg>
       </Menu.Button>
 
-      <div className="flex bg-black shadow dark:bg-gray-700">
-        
-      </div>
 
       {/*MENU ITEMS */}
       <Menu.Items className="justify-start text-white origin-top-right fixed z-90 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-gray-100">  
