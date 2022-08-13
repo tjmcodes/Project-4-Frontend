@@ -13,10 +13,10 @@ function StartJourney() {
       <div className=" w-2/4 mx-auto mt-20 place-content-center">
         <div className="text-pink-700">
           <Link to='/artiststart'>
-            <button className="ml-[5%] bg-black text-white py-3 text-2xl border-solid border-2 border-black rounded-xl w-[90%] my-8">I am an Artist</button>
+            <button className="ml-[5%] bg-pink-700 text-white  py-3 text-2xl border-solid border-2 border-pink-700 rounded-xl w-[90%] my-8">I am an Artist</button>
           </Link>
           <Link to='/venuestart'>
-            <button className="ml-[5%]  text-black py-3 text-2xl border-solid border-2 border-black rounded-xl w-[90%] mt-8">I am a Venue</button>
+            <button className="ml-[5%]  bg-black text-white  py-3 text-2xl border-solid border-2 border-black rounded-xl w-[90%] mt-8">I am a Venue</button>
           </Link>
         </div>
       </div>

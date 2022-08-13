@@ -17,7 +17,7 @@ function ArtistRegister() {
   const [Q9, setQ9] = React.useState(false)
   const [Q10, setQ10] = React.useState(false)
   const [review, setreview] = React.useState(false)
-  // const [proccedlogin, setproccedlogin] = React.useState(false)
+  const [proccedlogin, setproccedlogin] = React.useState(false)
 
   // const [addanother1, setaddanother1] = React.useState(false)
   const [button, updateButton] = useState(false)
@@ -27,8 +27,7 @@ function ArtistRegister() {
 
 
   
-  // F O R M   R E T U R N
-
+  
   
 
   const [genreType, setGenreType] = React.useState(
@@ -88,12 +87,6 @@ function ArtistRegister() {
   })
 
 
-  // Cloudinary 
-  // form submission
-  // Genre
-  //field validation
-  // errors 
-  // rendering 
 
 
   function handleChange(e) {
@@ -115,6 +108,15 @@ function ArtistRegister() {
     })
     // console.log(genreType)
   }
+
+
+    
+  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  
+  // C L O U D I N A R Y   I M A G E   U P L O A D   F U N C T I O N S
+  
+  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
 
   function handleProfileUpload() {
     window.cloudinary.createUploadWidget(
@@ -235,6 +237,9 @@ function ArtistRegister() {
   }
   console.log(formData)
 
+
+  // F O R M   S U B M I T //
+
   async function handleSubmit(event) {
     event.preventDefault()
     const newFormData = {
@@ -244,25 +249,52 @@ function ArtistRegister() {
     try {
       await axios.post(`/api/artist-signup`, newFormData)
       updateButton(!button)
+      setreview(false)
+      setproccedlogin(true)
     } catch (err) {    
-      setErrors(err.response.data.errors)
-      console.log(err.response.data)
+      console.log(err)
+      // setErrors(err.response.data.errors[0])
+      // if (err.response.data.errors.travel !== null) {
+      //   console.log(err.response.data.errors.travel[0])
+      //   setErrors({ travel: err.response.data.errors.travel[0] })
+      // if (err.response.data.username !== null) {
+      //   console.log(err.response.data.username)
+      //   setErrors({ username: err.response.data.username }) 
+      // } else if (err.response.data.email !== null) {
+      //   console.log(err.response.data.email)
+      //   setErrors({ email: err.response.data.email }) 
+    
+      // } else if (err.response.data.errors.profileImage !== null) {
+      //   // console.log(err.response.data.errors.profileImage[0])
+      //   setErrors({ travel: err.response.data.errors.profileImage[0] }) 
+      // } else if (err.response.data.errors.location !== null) {
+      //   console.log(err.response.data.errors.location[0])
+      //   setErrors({ travel: err.response.data.errors.location[0] }) 
+      // } else if (err.response.data.errors.websiteUrl !== null) {
+      //   console.log(err.response.data.errors.websiteUrl[0])
+      //   setErrors({ travel: err.response.data.errors.websiteUrl[0] }) 
+      // } else if (err.response.data.errors.videoUrl !== null) {
+      //   console.log(err.response.data.errors.videoUrl[0])
+      //   setErrors({ travel: err.response.data.errors.videoUrl[0] }) 
+      // } else {
+      //   console.log("i'm broke")
+      // }
     }
     console.log(newFormData.genre)
+    console.log(errors)
   }
   
-  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
   
   // Q U E S T I O N    R E N D E R I N G 
   
-  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   function postQ1() {
     setQ1(false)
     {errors.email && <small className="errors">{errors.email}</small>}
     setQ2(true)
-    const newCountVal = 10
-    progressBar.value = newCountVal
+    progressBar.value =  10
   }
 
   function postQ2(event) {
@@ -364,17 +396,24 @@ function ArtistRegister() {
       progressBar.value = 100
     }
   }
+
+  function postreview() {
+    setreview(false)
+    setQ9(true)
+    progressBar.value = 90
+  }
  
+  //! / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  //! / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
   
-  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  //! J S X    R E T U R N
   
-  // J S X    R E T U R N
-  
-  // / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  //! / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+  //! / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
   return (
     <>
-      <progress id="progress" className={styles.formprogress} value="0" max="100"></progress>
+      <progress id="progress" className={styles.progressing} value="0" max="100"></progress>
       
       {Q1 ? <>
         <h2 className={styles.titlebanner}>To get started lets setup your login credentials</h2>
@@ -444,8 +483,8 @@ function ArtistRegister() {
 
           {errors.location && <small className="errors">{errors.location}</small>}
 
-          <button onClick={postQ2} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ2} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ2} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
 
       {Q3 ? <>
@@ -462,9 +501,9 @@ function ArtistRegister() {
             name="travel" 
             value={formData.travel}
           />
-          {errors.travel && <small className="errors">{errors.travel}</small>}
+          
           <button onClick={postQ3} className={styles.nextbutton}>{`Next -> `}</button>
-          <button onClick={postQ3} className={styles.backbutton} value='back'>Previous step</button>
+          <button onClick={postQ3} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
 
       {Q4 ? <>
@@ -481,8 +520,8 @@ function ArtistRegister() {
             value={formData.websiteUrl}
           />
           {errors.websiteUrl && <small className="errors">{errors.websiteUrl}</small>}
-          <button onClick={postQ4} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ4} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ4} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
       
       {Q5 ? <>
@@ -499,8 +538,8 @@ function ArtistRegister() {
             value={formData.videoUrl}
           />
           {errors.videoUrl && <small className="errors">{errors.videoUrl}</small>}
-          <button onClick={postQ5} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ5} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ5} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
       
       {Q6 ? <>
@@ -517,8 +556,8 @@ function ArtistRegister() {
             value={formData.musicUrl}
           />
           {errors.musicUrl && <small className="errors">{errors.musicUrl}</small>}
-          <button onClick={postQ6} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ6} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ6} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
       
       {Q7 ? <>
@@ -535,8 +574,8 @@ function ArtistRegister() {
           <button onClick={handleGalleryUpload2} className={styles.uploadbutton}>upload gallery image</button>            
           <button onClick={handleGalleryUpload3} className={styles.uploadbutton}>upload gallery image</button>            
 
-          <button onClick={postQ7} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ7} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ7} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
     
       {Q8 ? <>
@@ -566,9 +605,10 @@ function ArtistRegister() {
             value={formData.bio}
           />
           {errors.bio && <small className="errors">{errors.bio}</small>}
-          
-          <button onClick={postQ8} className={styles.backbutton} value='back'>Previous step</button>
+
           <button onClick={postQ8} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ8} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
+
         </div></> : null }
      
       {Q9 ? <>
@@ -615,8 +655,8 @@ function ArtistRegister() {
             value={formData.instagramUrl}
           />
           {errors.instagramUrl && <small className="errors">{errors.instagramUrl}</small>}
-          <button onClick={postQ9} className={styles.backbutton} value='back'>Previous step</button>
           <button onClick={postQ9} className={styles.nextbutton}>Next Step</button>
+          <button onClick={postQ9} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
 
       {Q10 ? <>
@@ -633,117 +673,123 @@ function ArtistRegister() {
             value={formData.genre}
           />
           {errors.genre && <small className="errors">{errors.genre}</small>}
-          <button onClick={postQ10} className={styles.backbutton} value='back'>Previous step</button>
-          <button onClick={handleSubmit} className={styles.nextbutton}>Review and submit</button>
+          <button onClick={postQ10} className={styles.nextbutton}>Review and submit</button>
+          <button onClick={postQ10} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
       {review ? <>
         <h2>Review your details</h2>
         <div>
           <div>
-            <h4 className="font-bold">Email</h4>
-            <p>{formData.email}</p>
-            {errors.email && <small className="text-red-600">{errors.profileImage}</small>}
+            <h2 className={styles.reviewsectiontitle}>Account Details</h2>
+            <div className={styles.reviewcontent}>
+              <h4 className=" font-bold mr-5">Email</h4>
+              <p>{formData.email}</p>
+              {/* {errors.email === "" ? null : <small className={styles.errorhandlingtext}>{errors.email}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">username</h4>
+              <p>{formData.username}</p>
+              {/* {errors.username === "" ? null : <small className={styles.errorhandlingtext}>{errors.username}</small>} */}
+            </div> 
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">password</h4>
+              <p>{formData.password}</p>
+              {/* {errors.password === "" ? null : <small className={styles.errorhandlingtext}>{errors.password}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">profile Avatar</h4>
+              <a>view avatar</a>
+              {/* {errors.profileImage === "" ? null : <small className={styles.errorhandlingtext}>{errors.profileImage}</small>} */}
+            </div>
           </div>
           <div>
-            <h4 className="font-bold">username</h4>
-            <p>{formData.username}</p>
-            {errors.username && <small className="text-red-600">{errors.profileImage}</small>} 
-          </div> 
-          <div>
-            <h4 className="font-bold">password</h4>
-            <p>{formData.password}</p>
-            {errors.password && <small className="text-red-600">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">profile Avatar</h4>
-            <a>view avatar</a>
-            {errors.profileImage && <small className="text-red-600">{errors.profileImage}</small>}
-          </div>
-          <div>
-            <h4 className="font-bold">Location</h4>
-            <p>{formData.location}</p>
-            {errors.location && <small className="text-red-600">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">How far will you travel?</h4>
-            <p>{formData.travel}</p>
-            {errors.travel && <small className="text-red-600">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">Website</h4>
-            <p>{formData.websiteUrl}</p>
-            {errors.websiteUrl && <small className="errors">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">Video of you performing </h4>
-            <p>{formData.videoUrl}</p>
-            {errors.videoUrl && <small className="errors">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">Your music</h4>
-            <p>{formData.musicUrl}</p>
-            {errors.musicUrl && <small className="errors">{errors.profileImage}</small>} 
-            <h4 className="font-bold">Background Card image</h4>
-          </div>
-          <div>
-            <p>{formData.travel}</p>
-            {errors.travel && <small className="errors">{errors.profileImage}</small>} 
-            <h4 className="font-bold">gallery image 1</h4>
-            <p>{formData.galleryImage1}</p>
-            {errors.galleryImage1 && <small className="errors">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">gallery image 2 (optional)</h4>
-          
-            <p>{formData.galleryImage2}</p>
-            {errors.galleryImage2 && <small className="errors">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">gallery image 3 (optional)</h4>
-            <p>{formData.galleryImage3}</p>
-            {errors.profileImage3 && <small className="errors">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">Your Bio</h4>
-            <p>{formData.bio}</p>
-            {errors.bio && <small className="errors">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">ArtistName</h4>
-            <p>{formData.artistName}</p>
-            {errors.artistName && <small className="errors">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">Facebook</h4>
-            <p>{formData.fbUrl}</p>
-            {errors.fbUrl && <small className="errors">{errors.profileImage}</small>} 
-          </div>
-          <div>
-            <h4 className="font-bold">Twitter</h4>
-            <p>{formData.twitterUrl}</p>
-            {errors.twitterUrl && <small className="errors">{errors.profileImage}</small>} 
+            <h2 className={styles.reviewsectiontitle}>Profile details</h2>
             <div>
+              <h4 className="font-bold">Location</h4>
+              <p>{formData.location}</p>
+              {/* {errors.location && <small className="text-red-600">{errors.location}</small>}  */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">How far will you travel?</h4>
+              <p>{formData.travel}</p>
+              {/* {errors.travel === "" ? null : <small className={styles.errorhandlingtext}>{errors.travel}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">Website</h4>
+              <p>{formData.websiteUrl}</p>
+              {/* {errors.websiteUrl === "" ? null : <small className={styles.errorhandlingtext}>{errors.websiteUrl}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">Video of you performing </h4>
+              <p>{formData.videoUrl}</p>
+              {/* {errors.videoUrl === "" ? null : <small className={styles.errorhandlingtext}>{errors.videoUrl}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">Your music</h4>
+              <p>{formData.musicUrl}</p>
+              {/* {errors.musicUrl === "" ? null : <small className={styles.errorhandlingtext}>{errors.musicUrl}</small>} */}
+            </div> 
+            <div className={styles.reviewcontent}> 
+              <h4 className="font-bold">Background Card image</h4>
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">gallery image 1</h4>
+              <p>{formData.galleryImage1}</p>
+              {/* {errors.galleryImage1 === "" ? null : <small className={styles.errorhandlingtext}>{errors.galleryImage1}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">gallery image 2 (optional)</h4>
+              <p>{formData.galleryImage2}</p>
+              {/* {errors.galleryImage2 === "" ? null : <small className={styles.errorhandlingtext}>{errors.galleryImage2}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">gallery image 3 (optional)</h4>
+              <p>{formData.galleryImage3}</p>
+              {/* {errors.galleryImage3 === "" ? null : <small className={styles.errorhandlingtext}>{errors.galleryImage3}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">Your Bio</h4>
+              <p>{formData.bio}</p>
+              {/* {errors.bio === "" ? null : <small className={styles.errorhandlingtext}>{errors.bio}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">ArtistName</h4>
+              <p>{formData.artistName}</p>
+              {/* {errors.artistName === "" ? null : <small className={styles.errorhandlingtext}>{errors.artistName}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">Facebook</h4>
+              <p>{formData.fbUrl}</p>
+              {/* {errors.fbUrl === "" ? null : <small className={styles.errorhandlingtext}>{errors.fbUrl}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
+              <h4 className="font-bold">Twitter</h4>
+              <p>{formData.twitterUrl}</p>
+              {/* {errors.twitterUrl === "" ? null : <small className={styles.errorhandlingtext}>{errors.twitterUrl}</small>} */}
+            </div>
+            <div className={styles.reviewcontent}>
               <h4 className="font-bold">YouTube</h4>
               <p>{formData.youTubeUrl}</p>
-              {errors.youTubeUrl && <small className="errors">{errors.profileImage}</small>} 
+              {/* {errors.youTubeUrl === "" ? null : <small className={styles.errorhandlingtext}>{errors.youTubeUrl}</small>} */}
             </div>
-            <div>
+            <div className={styles.reviewcontent}>
               <h4 className="font-bold">Instagram</h4>
               <p>{formData.instagramUrl}</p>
-              {errors.instagramUrl && <small className="errors">{errors.profileImage}</small>} 
+              {/* {errors.instagramUrl === "" ? null : <small className={styles.errorhandlingtext}>{errors.instagramUrl}</small>} */}
             </div>
           </div>
           <button  className={styles.nextbutton} onClick={handleSubmit}>Submit Registration</button>
+          <button onClick={postreview} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div> </> : null 
       }
-      {/* {proccedlogin ? <>
+      {proccedlogin ? <>
         <div className={styles.procceprdlogin}>
           <div className={styles.logintext}>
             <h3 className={styles.h3login}>You are now Registered!</h3>
             <h4 className={styles.h4login}>Welcome to our talented family</h4>
             <button className={styles.loginbutton}>Click to proceed to login</button>
           </div>
-        </div></> : null } */}
+        </div></> : null }
     </>
   )
 }

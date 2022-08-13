@@ -11,13 +11,13 @@ function Venuestart() {
       <div className=" w-2/4 mx-auto mt-20 place-content-center">
         <div className="text-pink-700">
           <Link to='/venue-login'>
-            <button className="ml-[5%] bg-pink-700 text-white py-3 text-2xl border-solid border-2 border-pink-700 rounded-xl w-[90%] mt-5">Sign In</button>
+            <button className="ml-[5%] bg-black text-white py-3 text-2xl border-solid border-2 border-black rounded-xl w-[90%] mt-5">Sign In</button>
           </Link>
           <Link to='/venue-register'>
-            <button className="ml-[5%]  text-pink-700 py-3 text-2xl border-solid border-2 border-pink-700 rounded-xl w-[90%] mt-8 ">Sign up</button>
+            <button className="ml-[5%]  text-black py-3 text-2xl border-solid border-2 border-black rounded-xl w-[90%] mt-8 ">Sign up</button>
           </Link>
           <Link to='/artists'>
-            <button className="ml-[5%] text-pink-700 py-3 text-2xl w-[90%] my-20 underline">Continue as Guest</button>
+            <button className="ml-[5%] text-black py-3 text-2xl w-[90%] my-20 underline">Continue as Guest</button>
           </Link>
           
         </div>

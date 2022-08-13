@@ -47,20 +47,20 @@ h2 {
 
 .textinput:focus {
   outline:none;
-  border-bottom: 2.5px black solid;
+  border-bottom: 2.5px rgb(191, 18, 93)d;
 }
 .optionInput {
   width: 90%;
   height: 60px;
   margin-top: 5px;
   border: none;
-  border-bottom: 1px black solid;
+  border-bottom: 1px rgb(191, 18, 93);
   font-size: 30px;
 }
 
 .optioninput:focus {
   outline:none;
-  border-bottom: 3px black solid;
+  border-bottom: 3px rgb(191, 18, 93);
 }
 .nextbutton {
   display: block;
@@ -69,7 +69,7 @@ h2 {
   margin-right: 5%;
   font-size: 30px;
   color: white;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(191, 18, 93);
   border: none;
   padding: 2px 20px;
   border-radius: 30px;
@@ -77,10 +77,10 @@ h2 {
 
 .backbutton {
   display: block;
-  float: right;
+  float: left;
   margin-top: 30px;
   margin-right: 5%;
-  font-size: 30px;
+  font-size: 20px;
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   border: none;
@@ -88,17 +88,18 @@ h2 {
   border-radius: 30px;
 }
 
-progress::-webkit-progress-bar {
+.progressing::-webkit-progress-bar {
   background-color: rgb(255, 255, 255);
   border: none;
 }
 
-progress::-webkit-progress-value {
+
+.progressing::-webkit-progress-value {
   transition: all 1s;
-  background-color: rgb(0, 0, 0)
+  background-color: rgb(191, 18, 93)
 }
 
-.formprogress {
+.progressing {
   width: 100%;
   height: 20px;
   border: none;
@@ -140,7 +141,7 @@ progress::-webkit-progress-value {
   text-align: center;
   margin-top: 10px;
   border-radius: 10px;
-  color: green;
+  color: rgb(191, 18, 93);
   text-decoration: none;
   border: none;
   background-color: transparent;
@@ -165,9 +166,9 @@ progress::-webkit-progress-value {
   margin-top: 30px;
   margin-left: 5%;
   font-size: 30px;
-  color: rgb(0, 0, 0);
+  color: rgb(191, 18, 93);
   background-color: rgb(255, 255, 255);
-  border: solid 1px black;
+  border: solid 1px rgb(191, 18, 93);
   padding: 2px 20px;
   border-radius: 30px;
 }
@@ -177,10 +178,24 @@ progress::-webkit-progress-value {
   margin-top: 30px;
   margin-left: 5%;
   font-size: 30px;
-  color: rgb(0, 0, 0);
+  color: rgb(191, 18, 93);
   background-color: rgb(255, 255, 255);
-  border: solid 1px black;
+  border: solid 1px rgb(191, 18, 93);
   padding: 2px;
   width: 40%;
   border-radius: 30px;
+}
+
+.reviewsectiontitle {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.reviewcontent {
+  text-align: left;
+  display: flex;
+  justify-content: left;
+  width: 30%;
+  margin-left: 35%;
+
 }

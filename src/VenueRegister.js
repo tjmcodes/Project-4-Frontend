@@ -17,6 +17,7 @@ function VenueRegister() {
   const [Q7, setQ7] = React.useState(false)
   const [Q8, setQ8] = React.useState(false)
   const [Q9, setQ9] = React.useState(false)
+  const [review, setreview] = React.useState(false)
 
   const [proccedlogin, setproccedlogin] = React.useState(false)
   // const [addanother1, setaddanother1] = React.useState(false)
@@ -232,11 +233,13 @@ function VenueRegister() {
     try {
       await axios.post(`/api/venue-signup`, newFormData)
       updateButton(!button)
-      navigate('/venue-login')
+      setreview(false)
+      setproccedlogin(true)
     } catch (err) {    
-      setErrors(err.response.data.errors)
+      setErrors(err.response.data.errors[0])
     }
     console.log(newFormData.type)
+    console.log(errors)
   }
  
     
@@ -329,11 +332,16 @@ function VenueRegister() {
       setQ8(true)
       progressBar.value = 80
     } else {
-      setproccedlogin(true)
+      setreview(true)
       progressBar.value = 100
     }
   }
 
+  function postreview() {
+    setreview(false)
+    setQ9(true)
+    progressBar.value = 90
+  }
 
   // function postQ9() {
   //   console.log("clicked")
@@ -352,6 +360,7 @@ function VenueRegister() {
   return (
     <div className={styles.page}>
       <progress id="progress" className={styles.formprogress} value="0" max="100"></progress>
+      <p className={styles.indicator}>Venue Registration</p>
       {Q1 ? <>
         <h2 className={styles.titlebanner}>To get started lets setup your login credentials</h2>
         <div className={styles.questionbox}>
@@ -393,9 +402,11 @@ function VenueRegister() {
           <div>
             <h3 className={styles.h3}>Please upload a profile image by clicking on the button below</h3>
           </div>
-          <button onClick={handleProfileUpload} className={styles.uploadbutton}>upload profile picture</button>{
-            formData.profileImage === "" ? null : <img src={formData.profileImage} alt="profile image"></img>
-          }
+          <div className={styles.previewdiv}>
+            <button onClick={handleProfileUpload} className={styles.uploadbutton}>upload profile picture</button>{
+              formData.profileImage === "" ? null : <img src={formData.profileImage} className={styles.avatar} alt="profile image"></img>
+            }
+          </div>
           <button onClick={postQ1} className={styles.nextbutton}>{`Next Step`}</button>
         </div>
       </> : null }
@@ -407,25 +418,25 @@ function VenueRegister() {
             <h3 className={styles.h3}>What is your name? (This will be displayed on our site)</h3>
           </div>
           <div className={styles.questioncontainer}>
-          <input 
-            onChange={handleChange} 
-            className={styles.textinput} 
-            type="text" 
-            placeholder="Enter your Name"   
-            name={'title'}
-            value={formData.title}>
-          </input>
-          <div>
-            <h3 className={styles.h3}>What is your Job title</h3>
-          </div>
-          <input 
-            onChange={handleChange} 
-            className={styles.textinput} 
-            type="text" 
-            placeholder="eg. Assistant Manager, Owner"
-            name={'role'}
-            value={formData.role}>
-          </input>
+            <input 
+              onChange={handleChange} 
+              className={styles.textinput} 
+              type="text" 
+              placeholder="Enter your Name"   
+              name={'title'}
+              value={formData.title}>
+            </input>
+            <div>
+              <h3 className={styles.h3}>What is your Job title</h3>
+            </div>
+            <input 
+              onChange={handleChange} 
+              className={styles.textinput} 
+              type="text" 
+              placeholder="eg. Assistant Manager, Owner"
+              name={'role'}
+              value={formData.role}>
+            </input>
           </div>
           < div className={styles.buttondiv}>
             <button onClick={postQ2} className={styles.nextbutton}>Next Step</button>
@@ -529,10 +540,18 @@ function VenueRegister() {
             <p className={styles.subheading}> add a background cover image and up to three gallery images below</p>
           </div>
                 
-          <button onClick={handleBackgroundUpload} className={styles.gallerybutton}>upload background cover image</button>            
-          <button onClick={handleGalleryUpload1} className={styles.gallerybutton}>upload gallery image</button>            
-          <button onClick={handleGalleryUpload2} className={styles.gallerybutton}>upload gallery image</button>            
-          <button onClick={handleGalleryUpload3} className={styles.gallerybutton}>upload gallery image</button>            
+          <button onClick={handleBackgroundUpload} className={styles.gallerybutton}>upload background cover image</button>{
+            formData.backgroundCardImage === "" ? null : <a href={formData.backgroundCardImage}>Image uploaded Preview here</a>
+          }            
+          <button onClick={handleGalleryUpload1} className={styles.gallerybutton}>upload gallery image</button>{
+            formData.galleryImage1 === "" ? null : <a href={formData.galleryImage1}>Image uploaded Preview here</a>
+          }                      
+          <button onClick={handleGalleryUpload2} className={styles.gallerybutton}>upload gallery image</button>{
+            formData.galleryImage2 === "" ? null : <a href={formData.galleryImage2}>Image uploaded Preview here</a>
+          }                        
+          <button onClick={handleGalleryUpload3} className={styles.gallerybutton}>upload gallery image</button>{
+            formData.galleryImage3 === "" ? null : <a href={formData.galleryImage3}>Image uploaded Preview here</a>
+          }                        
 
           <button onClick={postQ7} className={styles.nextbutton}>Next Step</button>
           <button onClick={postQ7} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
@@ -597,16 +616,93 @@ function VenueRegister() {
             name="type" 
             value={formData.type}
           />
-          <button onClick={postQ9} className={styles.nextbutton}>Submit Form </button>
+          <button onClick={postQ9} className={styles.nextbutton}>Review Details</button>
           <button onClick={postQ9} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
         </div></> : null }
+      {review ? <>
+        <h2>Review your details</h2>
+        <div>
+          <div>
+            <h4 className="font-bold">Email</h4>
+            <p>{formData.email}</p>
+            {/* {errors.email === "" ? null : <small className={styles.errorhandlingtext}>{errors.email}</small>} */}
+          </div>
+          <div>
+            <h4 className="font-bold">username</h4>
+            <p>{formData.username}</p>
+            {/* {errors.username === "" ? null : <small className={styles.errorhandlingtext}>{errors.username}</small>} */}
+          </div> 
+          <div>
+            <h4 className="font-bold">password</h4>
+            <p>{formData.password}</p>
+            {/* {errors.password === "" ? null : <small className={styles.errorhandlingtext}>{errors.password}</small>} */}
+          </div>
+          <div>
+            <h4 className="font-bold">profile Avatar</h4>
+            <a href={formData.profileImage}>view avatar</a>
+            {/* {errors.profileImage === "" ? null : <small className={styles.errorhandlingtext}>{errors.profileImage}</small>} */}
+          </div>
+          <div>
+            <h4 className="font-bold">Venue Name</h4>
+            <p>{formData.venueName}</p>
+          </div>
+          <div>
+            <h4 className="font-bold">Your description</h4>
+            <p>{formData.description}</p>
+          </div>
+          <div>
+            <h4 className="font-bold">Location</h4>
+            <p>{formData.location}</p>
+            {/* {errors.location && <small className="text-red-600">{errors.location}</small>}  */}
+          </div>
+          <div>
+            <h4 className="font-bold">Website</h4>
+            <p>{formData.websiteUrl}</p>
+            {/* {errors.websiteUrl === "" ? null : <small className={styles.errorhandlingtext}>{errors.websiteUrl}</small>} */}
+          </div>
+          <div>
+            <h4 className="font-bold">gallery image 1</h4>
+            <p>{formData.galleryImage1}</p>
+            {/* {errors.galleryImage1 === "" ? null : <small className={styles.errorhandlingtext}>{errors.galleryImage1}</small>} */}
+          </div>
+          <div>
+            <h4 className="font-bold">gallery image 2 (optional)</h4>
+          
+            <p>{formData.galleryImage2}</p>
+            {/* {errors.galleryImage2 === "" ? null : <small className={styles.errorhandlingtext}>{errors.galleryImage2}</small>} */}
+          </div>
+          <div>
+            <h4 className="font-bold">gallery image 3 (optional)</h4>
+            <p>{formData.galleryImage3}</p>
+            {/* {errors.galleryImage3 === "" ? null : <small className={styles.errorhandlingtext}>{errors.galleryImage3}</small>} */}
+          </div>
+          <div>
+            <h4 className="font-bold">Facebook</h4>
+            <p>{formData.fbUrl}</p>
+          </div>
+          <div>
+            <h4 className="font-bold">Twitter</h4>
+            <p>{formData.twitterUrl}</p>
+            <div>
+              <h4 className="font-bold">YouTube</h4>
+              <p>{formData.youTubeUrl}</p>
+            </div>
+            <div>
+              <h4 className="font-bold">Instagram</h4>
+              <p>{formData.instagramUrl}</p>
+            </div>
+          </div>
+          <button  className={styles.nextbutton} onClick={handleSubmit}>Submit Registration</button>
+          <button onClick={postreview} className={styles.backbutton} value='back'><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
+        </div> </> : null 
+      }
 
       {proccedlogin ? <>
         <div className={styles.proccedlogin}>
           <div className={styles.logintext}>
             <h3 className={styles.h3login}>You are now Registered!</h3>
-            <h4 className={styles.h4login}>Welcome to our talented family</h4>
-            <button onClick={handleSubmit} className={styles.loginbutton}><i className="fa-solid fa-arrow-left-long"></i> Previous step</button>
+            <h4 className={styles.h4login}>You can now find Talented artists</h4>
+            <button onClick={navigate("/venue-login")} className={styles.loginbutton}>Proceed to Login</button>
           </div>
         </div></> : null }
     </div>

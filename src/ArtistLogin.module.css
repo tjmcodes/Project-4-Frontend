@@ -8,7 +8,7 @@
 }
 
 .sideHeroText h2 {
-  color: rgba(230,75,17,1);
+  color: rgba(191,18,93,1);
   font-size: 80px;
   width: 100%;
   font-weight: 700;
@@ -18,7 +18,7 @@
   margin-top: 0;
   height: 100vh;
   width: 50%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/p4trial.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/john-matychuk-live-modified.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,7 +37,7 @@
 }
 .welcome {
   height: 14vh;
-  color: rgba(230,75,17,1);
+  color: rgba(191,18,93,1);
   margin-top: 1vh;
   margin-left: 1%;
 }
@@ -47,7 +47,7 @@
   text-align: left;
   margin-left: 4.6%;
   margin-bottom: 20px;
-  color: rgba(230,75,17,1)
+  color: rgba(191,18,93,1)
 }
 .signinform {
   /* box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px; */
@@ -91,7 +91,7 @@
 
 .textinput:focus {
   outline: none;
-  border: solid 1.25px rgba(230,75,17,1);
+  border: solid 1.25px rgba(191,18,93,1);
 }
 
 .loginbutton {
@@ -100,7 +100,7 @@
   margin-top: 20px;
   margin-bottom: 10px;
   margin-left: 5%;
-  background: rgba(230,75,17,1);
+  background: rgba(191,18,93,1);
   color: white;
   border: none;
   border-radius: 10px;
@@ -112,9 +112,9 @@
   margin-top: 5px;
   margin-bottom: 10px;
   background-color: white;
-  color: rgba(230,75,17,1);
+  color: rgba(191,18,93,1);
   margin-left: 5%;
-  border: solid rgba(230,75,17,1) 1px;
+  border: solid rgba(191,18,93,1) 1px;
   border-radius: 10px;
 }
 
@@ -129,7 +129,7 @@
   border: none;
 }
 .link {
-  color: rgba(230,75,17,1);
+  color: rgba(191,18,93,1);
 }
 
 .errorhandlingtext {
@@ -163,7 +163,7 @@
     text-align: left;
     margin-left: 4.6%;
     margin-bottom: 20px;
-    color: rgba(230,75,17,1)
+    color: rgba(191,18,93,1)
   }
 
   .loginbanner {

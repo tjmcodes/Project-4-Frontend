@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './VenueLogin.module.css'
+import { Link } from "react-router-dom";
 
 
 function VenueLogin() {
@@ -83,9 +84,13 @@ function VenueLogin() {
               </input>
               {errors.password === "" ? null : <small className={styles.errorhandlingtext}>{errors.password}</small>} 
               <div className={styles.buttondiv}>
-                <button className={styles.loginbutton}>Log in </button>
-                <button className={styles.button} >Switch to Venue Login</button>
-                <button className={styles.venuebutton}>Dont have an account? <b className={styles.link}>Sign up</b></button>
+                <button onClick={handleSubmit} className={styles.loginbutton}>Log in </button>
+                <Link to="/artist-login">
+                  <button className={styles.button} >Switch to Venue Login</button>
+                </Link>
+                <Link to="/venue-register">
+                  <button className={styles.venuebutton}>Dont have an account? <b className={styles.link}>Sign up</b></button>
+                </Link>
               </div>
             </form>
           </div>

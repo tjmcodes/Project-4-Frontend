@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 function AllArtists() {
   const [artists, setArtists] = React.useState([])
   const [searchparam, setSearchParams] = React.useState("")
+  const [filter,setfilter] = React.useState()
 
   React.useEffect(() => {
     const getData = async () => {
@@ -16,12 +17,27 @@ function AllArtists() {
     getData()
   }, [])
 
-  function artistsSearch() {
-    return artists.filter((artist) => {
-      return ( artist.artistName.toLowerCase().includes(searchparam.toLowerCase())
-      )
-    })
+  function handleselect(e) {
+    console.log(e.target.value)
+    const _filter = e.target.value
+    console.log(_filter)
+    setfilter(_filter)
+    console.log(filter)
   }
+  function artistsSearch() {
+    if (filter === "location") {
+      return artists.filter((artist) => {
+        return ( artist.location.toLowerCase().includes(searchparam.toLowerCase()))
+      })
+    } else if (filter === 'name') {
+      return artists.filter((artist) => {
+        return ( artist.venueName.toLowerCase().includes(searchparam.toLowerCase()))
+      })
+    } else {
+      return artists
+    }
+  }
+  
 
   return (
     <div className="bg-hero-pattern bg-cover bg-fixed min-h-screen bg-center">
@@ -31,11 +47,19 @@ function AllArtists() {
         </div>
         <div className='col-span-2 flex flex-wrap content-center'>
           <input 
-            className="ml-12 w-10/12 mt-10 rounded-3xl text-2xl pt-2 pb-2 pl-4"
+            className="ml-12 w-10/12 mt-10 bg-zinc-800 text-2xl pt-2 pb-2 pl-4 border-none"
             type="text" 
-            placeholder="filter artists by"
+            placeholder="pick a option below and start searching"
             onChange={(e) => setSearchParams(e.target.value)}>
           </input>
+          <select 
+            className="ml-12 w-10/12 mt10 bg-pink-700 text-white border-none" 
+            name={'filter'}
+            onChange={handleselect}>
+            <option>Filter by...</option>
+            <option value="location">Location</option>
+            <option value="name">Name</option>
+          </select>    
         </div>
       </div>
       <p className='text-white ml-12 mt-10 text-xl'>Click on a card to view full Artist profile</p>

@@ -1,6 +1,6 @@
-/*  orange :  rgba(191, 18, 93,1) */
+/*  orange :  black */
 /* black: black */
-/* accent:  rgba(191, 18, 93,1)*/
+/* accent:  black*/
 .page {
   height: 100vh;
   margin: 0;
@@ -11,7 +11,7 @@
 }
 
 .sideHeroText h2 {
-  color:  rgba(191, 18, 93,1);
+  color:  rgb(255, 255, 255);
   font-size: 80px;
   width: 100%;
   font-weight: 700;
@@ -38,7 +38,7 @@
 }
 .welcome {
   height: 14vh;
-  color:  rgba(191, 18, 93,1);
+  color:  rgb(255, 255, 255);
   margin-top: 1vh;
   margin-left: 1%;
 }
@@ -48,7 +48,7 @@
   text-align: left;
   margin-left: 4.6%;
   margin-bottom: 20px;
-  color:  rgba(191, 18, 93,1)
+  color:  rgb(0, 0, 0)
 }
 .signinform {
   /* box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px; */
@@ -63,8 +63,7 @@
   margin-left: 5%;
   font-size: 25px;
   border-radius: 10px 10px 0px 0px;
-  color: rgb(60, 60, 60);
-  
+  color:rgb(107 107 107);
 }
 
 .loginform {
@@ -84,6 +83,7 @@
   border: none;
   border: 1px black solid;
   padding-left: 5px;
+  outline: black;
 }
 
 .buttondiv {
@@ -91,8 +91,9 @@
 }
 
 .textinput:focus {
-  outline: none;
-  border: solid 1.25px  rgba(191, 18, 93,1);
+  border-color: rgb(128, 128, 128);
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .loginbutton {
@@ -101,7 +102,7 @@
   margin-top: 20px;
   margin-bottom: 10px;
   margin-left: 5%;
-  background:  rgba(191, 18, 93,1);
+  background:  black;
   color: white;
   border: none;
   border-radius: 10px;
@@ -113,9 +114,9 @@
   margin-top: 5px;
   margin-bottom: 10px;
   background-color: white;
-  color:  rgba(191, 18, 93,1);
+  color:  black;
   margin-left: 5%;
-  border: solid  rgba(191, 18, 93,1) 1px;
+  border: solid  black 1px;
   border-radius: 10px;
 }
 
@@ -130,7 +131,7 @@
   border: none;
 }
 .link {
-  color:  rgba(191, 18, 93,1);
+  color:  black;
 }
 
 .errorhandlingtext {

@@ -50,13 +50,13 @@ function AllVenues() {
         </div>
         <div className='col-span-2 flex flex-wrap content-center'>
           <input 
-            className="ml-12 w-10/12 mt-10 rounded-3xl text-2xl pt-2 pb-2 pl-4"
+            className="ml-12 w-10/12 mt-10 bg-zinc-800 text-2xl pt-2 pb-2 pl-4 border-none"
             type="text" 
-            placeholder="filter artists by"
+            placeholder="pick a option below and start searching"
             onChange={(e) => setSearchParams(e.target.value)}>
           </input>
           <select 
-            className="rounded-3xl" 
+            className="ml-12 w-10/12 mt10 bg-pink-700 text-white border-none" 
             name={'filter'}
             onChange={handleselect}>
             <option>Filter by...</option>

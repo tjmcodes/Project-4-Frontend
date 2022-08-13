@@ -9,13 +9,13 @@ function ArtistLogin() {
   //  --> this will allow the page to navigate to ... once user is logged in.
   const navigate = useNavigate()
   const [formData, setFormData] = React.useState({
-    password: "",
     email: "",
+    password: "",
   })
 
   const [errors, setErrors] = React.useState({
-    password: "",
     email: "",
+    password: "",
   })
   function handleChange(e) {
     const { name, value } = e.target
@@ -23,15 +23,17 @@ function ArtistLogin() {
       ...formData,
       [name]: value,
     })
-    setErrors({
-      ...errors,
-      [name]: '',
-    })
+    // setErrors({
+    //   ...errors,
+    //   [name]: '',
+    // })
     console.log(formData)
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
+    setErrors({ email: "" })
+    setErrors({ email: "" })
 
     try {
       const { data } = await axios.post('/api/artist-login', formData)
@@ -40,12 +42,16 @@ function ArtistLogin() {
       console.log('logged in')
       navigate('/venues') 
     } catch (err) {
+      console.log(err.response.data)
       if (err.response.data.message === "No Registered user with this email, please try again") {
         setErrors({ email: err.response.data.message })
         console.log(errors)
-      } else if (err.response.data. message === "Incorrect Password") {
+      } else if (err.response.data.message === "Password Incorrect") {
         setErrors({ password: err.response.data.message })
         console.log(errors)
+      } else {
+        console.log("not above error")
+        console.log(err)
       }
     }
   }
@@ -88,14 +94,11 @@ function ArtistLogin() {
               {errors.password === "" ? null : <small className={styles.errorhandlingtext}>{errors.password}</small>} 
               <div className={styles.buttondiv}>
 
-                <button className={styles.loginbutton}>Log in </button>
+                <button onClick={handleSubmit} className={styles.loginbutton}>Log in </button>
                 
                 <Link to="/venue-login"> 
                   <button className={styles.button} >Switch to Venue Login</button>
                 </Link>
-                
-                {/* <button onClick={logout} className={styles.loginbutton}>Log out </button> */}
-
                 <Link to="/artist-register">
                   <button className={styles.venuebutton}>Dont have an account? <b className={styles.link}>Sign up</b></button>
                 </Link>
