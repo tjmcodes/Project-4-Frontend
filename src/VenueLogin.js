@@ -9,9 +9,18 @@ function VenueLogin() {
   //  --> this will allow the page to navigate to ... once user is logged in.
   const navigate = useNavigate()
   const [formData, setFormData] = React.useState({
-    password: "",
     email: "",
+    password: "",
+    
   })
+
+  const [errors, setErrors] = React.useState({
+    email: "",
+    password: "",
+    
+  })
+
+  console.log(errors)
 
   function handleChange(e) {
     const { name, value } = e.target  // name = the key in the formData and the value = ''
@@ -31,7 +40,9 @@ function VenueLogin() {
       console.log(data.token)
       navigate('/artists') 
     } catch (err) {
-      console.log(err.response.data)  
+      console.log(err)
+      setErrors(err.response.data.message)
+      console.log(err.response.data.message)  
     }
   }
 
@@ -49,6 +60,7 @@ function VenueLogin() {
           <div className={styles.loginform}>
             <form onSubmit={handleSubmit}>
               <label className={styles.label}>Email</label>
+              {errors === "" ? null : <small>{errors}</small>} 
               <input 
                 className={styles.textinput} 
                 type="text" 
