@@ -4,7 +4,7 @@
   </h2>
 </div>
  
-## Project 4 - Full-stack Backend / Frontend
+## Project 4 - Full-stack Frontend (Backend link [here](https://github.com/tjmcodes/Project-4-Backend))
  
 Venues and Artists is an application which allows two types of users; artists and venues to connect with each other. Venues can book artists and artists can book venues. It works on the basis of venues recommending artists and artists recommending venues. 
  
@@ -81,7 +81,7 @@ TestUser1!
 <div id='projectoverview'></div>
  
 ### The Overview
-This fourth and last project at GA involved building a full stack web application as a pari in just over two weeks (part-time schedule). It utilises python and flask as a backend and JavaScript, React and TailwindCSS on the frontend. The application was based on two user models being able to interact with each other; a directory of artists and venues. It is reliant on users signing up with their details, and to make the experience engaging the application features a sign up form that is similar to typeform multi page sign up form. 
+This fourth and last project at GA involved building a full stack web application in just over two weeks (pair programming, part-time schedule). It utilises python and flask as a backend and JavaScript, React and TailwindCSS on the frontend. The application was based on two user models being able to interact with each other; a directory of artists and venues. It is reliant on users signing up with their details, and to make the experience engaging the application features a sign up form that is similar to typeform multi page sign up form. 
  
 <br/>
 
@@ -602,8 +602,4 @@ Despite a successful start in the planning stages by successfully creating the d
 - [Teresa Morini](https://github.com/tjmcodes)
 ---
  
-<!-- Stats -->
-<div align='center'>
- <img height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=tjmcodes&theme=vue-dark&custom_title=Languages&layout=compact">
- <img height="150em" src="https://github-readme-stats.vercel.app/api?username=tjmcodes&show_icons&theme=tokyonight">
-</div>
+
