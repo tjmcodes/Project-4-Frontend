@@ -232,7 +232,8 @@ Using the Quick Database Diagrams app, allowed us to decide on what tables we wo
  
 ### Project management
  
-Jira proved to be a powerful tool to use in which we were able to organise Epics and Issues into two sprints. The first sprint was for building the backend and the second for the frontend.
+Jira proved to be a powerful tool to use in which we were able to organise Epics and Issues into two sprints. The first sprint was for building the backend and the second for the frontend. We communicated using slack and zoom, which proved to be effective for instantly sharing work. We communicated every day in the two weeks and organised a zoom session almost everyday where we were able to tackle debugging issues as well as updating Jira tickets.
+
  
 </br>
  
