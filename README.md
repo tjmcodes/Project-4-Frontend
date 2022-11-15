@@ -197,15 +197,6 @@ To learn from the previous project where the styling suffered, some time was spe
 
 ### Whiteboarding
  
-We worked collaboratively to create a wireframe for our project using excalidraw. This allowed us to pitch ideas quickly for us to decide on what will be implemented for MVP. 
-<br/>
- 
-<div align="center">
-  <a href="https://ibb.co/DG7NmTr"><img src="https://i.ibb.co/TKHZJdW/Project3-wireframe.png" alt="Project3 wireframe" border="0"></a>
-</div>
-
-<br/>
-<br/>
  
 After establishing some ideas about what the app could be, we used Figma to map out the user experience. This then allowed us to think more about what data would be stored in our databases.
 <br/>
